@@ -1,0 +1,52 @@
+<!--p>
+  Campeonato: {{idCamp}} {{nCamp}}
+  div: {{idDiv}}
+  fecha: {{idFec}}
+  zona: {{idZon}}
+  Instancia: {{idIns}}
+  boletin: {{idBol}}
+<p-->
+<app-loader *ngIf="!buscando"></app-loader>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead">
+      <tr class="table-info">
+                <!--<th>id</th>-->
+                <th>Fecha</th>
+                <th class="text-center" colspan="2">Loc.</th>
+                <th class="text-center">Res.</th>
+                <th class="text-center" colspan="2">Vis.</th>
+                <th>Zo</th>
+                <th>Est</th>
+                <th>Ver</th>
+                <!--<th>Admin</th>-->
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of detalleTabla">
+            <td class="mr-0 pr-0">{{t.fechapartido}}</td>
+            <td class="mr-0 pr-0 pl-0 ml-0"><img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.jpg'/></td>
+            <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.loc}}</td>
+            <td class="text-center mr-0 pr-0 pl-0 ml-0">
+              <span *ngIf="determinaGanador('loc', t.id, t.TantosLoc, t.TantosVis);" class='{{ganaloc}}'>
+                {{t.TantosLoc}}
+              </span> -
+              <span *ngIf="determinaGanador('vis', t.id, t.TantosLoc, t.TantosVis);" class='{{ganavis}}'>
+                {{t.TantosVis}}
+              </span>
+            </td>
+            <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.visitante}}</td>
+            <td><img class="logoclub pl-0 mr-0" src='./assets/logos/clubes/{{t.v}}.jpg'/></td>
+            <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.zona}}</td>
+            <td class="mr-0 pr-0 pl-0 ml-0">{{t.estado}}</td>
+            <td class="pl-0 ml-0">
+              <a type='button' value='Ver' routerLink="/partido/{{t.id}}"
+                >
+                <i class="fa fa-angle-right pr-2 pl-2" aria-hidden="true"></i>
+              </a>
+            </td>
+
+        </tr>
+    </tbody>
+  </table>
+</div>

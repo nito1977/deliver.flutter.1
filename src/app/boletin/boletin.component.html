@@ -1,0 +1,118 @@
+  <app-loader *ngIf="buscando"></app-loader>
+<nav class="nav nav-pills flex-column flex-sm-row padd-r-2">
+  <div class="btn-group btn-block mb-2" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Boletin {{bolSel}} Año {{anioSel}}
+    </button>
+    <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
+
+      <a *ngFor="let b of detalleBoletines" class="dropdown-item " href="#" (click)="cargaBoletines(b.anio, b.id);" >Boletín {{b.nombre}} Año {{b.anio
+      }}</a>
+
+    </div>
+  </div>
+</nav>
+<div class="accordion padd-r-2" id="accordionExample">
+  <div class="card"  *ngFor="let item of detalleCamp">
+    <div class="card-header p-2" id="{{item.id}}">
+      <h2 class="mb-0">
+      <button (click)="irDetallePartidos('/partido', item.divi, item.id, item.zona, item.fecha, item.Boletin, item.id)" class="btn btn-link w-100" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + item.id + 'div' + item.divi + 'fec' + item.Fecha + 'zo' + item.zona"  [attr.aria-controls]="'collapse' + item.id + 'div' + item.divi">
+          <div class="row p-0">
+            <div class="col-12 col-md-12 p-0 pl-2"><h5>{{item.nombre}}</h5></div>
+            <div class="col-12 col-md-12 p-0 ">
+              Fecha <span class="badge badge-primary">{{item.Fecha}}</span>
+              División <span class="badge badge-primary">{{item.categ}}</span>
+              Zona <span class="badge badge-primary">{{item.zona}}</span>
+            </div>
+          </div>
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapse{{item.id}}div{{item.divi}}fec{{item.Fecha}}zo{{item.zona}}" class="collapse" [attr.aria-labelledby]="'heading' + item.id + 'div' + item.divi + 'fec' + item.Fecha + 'zo' + item.zona" data-parent="#accordionExample">
+      <div class="card-body p-0">
+        <app-partidoslist  [idCamp]= "item.id" [nCamp]="item.nombre" [idDiv]="item.divi" [idFec]="item.Fecha" [idZon]="item.zona" [idBol]="item.boletin" ></app-partidoslist>
+        <!--<div class="table responsive">
+          <table class="table" id="DataTables_Table_1" >
+
+            <thead>
+              <tr>
+                <!--<th>id</th>
+                <th>Fecha</th>
+                <th class="text-center" colspan="2">Loc.</th>
+                <th class="text-center">Res.</th>
+                <th class="text-center" colspan="2">Vis.</th>
+
+                <th>Zo</th>
+                <th>Est</th>
+                <th>Ver</th>
+                <!--<th>Admin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!--<td>37600</td>
+
+                <td>2020-03-11</td>
+                <td><img class="logoclub" src="/assets/logos/clubes/61.jpg"></td>
+                <td>MDO</td>
+                <td class="text-center bg-info">0 - 0</td>
+                <td>DUE</td>
+                <td><img class="logoclub" src="/assets/logos/clubes/3.jpg"></td>
+                <td>A</td>
+                <th>Com.
+                </th>
+                <td>
+                  <a class="btn btn-warning" value="Detalle"
+                    onclick="window.open('../Ver_detalle_partido.php?partido=37600')">
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <!--<td>
+                  <a class="btn btn-info"
+                    onclick="window.open('modificar_arbitros.php?partido=37600&amp;fecha=1&amp;cate=&amp;camp=122')">
+                    <i class="fa fa-gavel" aria-hidden="true"></i>
+                  </a>
+                  <a class="btn btn-success"
+                    onclick="window.open('modificar_partido.php?partido=37600&amp;fecha=1&amp;cate=&amp;camp=122')">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <!--<td>37598</td>
+
+                <td>2020-03-11</td>
+                <td><img class="logoclub" src="logos/clubes/4.jpg"></td>
+                <td>OPC</td>
+                <td class="text-center bg-info">0 - 0</td>
+                <td>LDR</td>
+                <td><img class="logoclub" src="logos/clubes/6.jpg"></td>
+                <td>A</td>
+                <th>Com.
+                </th>
+                <td>
+                  <a class="btn btn-warning" value="Detalle"
+                    onclick="window.open('../Ver_detalle_partido.php?partido=37598')">
+                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <!--<td>
+                  <a class="btn btn-info"
+                    onclick="window.open('modificar_arbitros.php?partido=37598&amp;fecha=1&amp;cate=&amp;camp=122')">
+                    <i class="fa fa-gavel" aria-hidden="true"></i>
+                  </a>
+                  <a class="btn btn-success"
+                    onclick="window.open('modificar_partido.php?partido=37598&amp;fecha=1&amp;cate=&amp;camp=122')">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>-->
+
+      </div>
+    </div>
+  </div>
+</div>

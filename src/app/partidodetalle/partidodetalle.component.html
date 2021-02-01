@@ -1,0 +1,59 @@
+<div class="table-responsive p-0">
+
+  <p class="Titulo">Eventos del partido</p>
+  <table class="table table-sm">
+
+    <thead class="thead-white">
+      <tr>
+        <th></th>
+        <th>Apellido</th>
+
+        <th class="text-center">Club</th>
+        <th class="text-center">H.</th>
+        <th class="text-center">T.</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let t of detallePartido">
+        <td *ngIf="determinaEvento(t.estado)">
+          <img  src="./assets/imagenes/{{eventoimg}}" alt="gol" longdesc="gol mediosweb"></td>
+          <td>{{t.Apellido}}, {{t.nomjuga}}</td>
+
+        <td class="text-center">{{t.Nombreclub}}</td>
+        <td class="text-center">{{t.mingol}}:{{t.seggol}}</td>
+        <td class="text-center">{{t.tiempo}}</td>
+      </tr>
+      <!--
+      <tr>
+        <td>
+          <img src="./assets/imagenes/amarilla.jpg" alt="gol" longdesc="gol mediosweb"></td>
+        <td><strong>RECABARREN CANTO, GABRIEL CRUZ</strong></td>
+
+        <td class="text-center">CJR</td>
+        <td class="text-center"><strong>0:0</strong></td>
+        <td class="text-center">0</td>
+      </tr>
+      <tr>
+        <td>
+          <img src="./assets/imagenes/azul.jpg" alt="gol" longdesc="gol mediosweb"></td>
+        <td><strong>RECABARREN CANTO, GABRIEL CRUZ</strong></td>
+
+        <td class="text-center">CJR</td>
+        <td class="text-center"><strong>0:0</strong></td>
+        <td class="text-center">0</td>
+      </tr>
+      <tr>
+        <td>
+          <img src="./assets/imagenes/roja.jpg" alt="gol" longdesc="gol mediosweb"></td>
+        <td><strong>RECABARREN CANTO, GABRIEL CRUZ</strong></td>
+
+        <td class="text-center">CJR</td>
+        <td class="text-center"><strong>0:0</strong></td>
+        <td class="text-center">0</td>
+      </tr>
+      -->
+    </tbody>
+  </table>
+</div>
