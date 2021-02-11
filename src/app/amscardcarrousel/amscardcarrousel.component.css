@@ -1,3 +1,6 @@
+/* CSS Document */
+
+body{margin-top: 50px; margin-bottom: 100px;}
 
 /* equal card height */
 .row-equal > div[class*='col-'] {
@@ -27,13 +30,13 @@
 /* control image height */
 .card-img-top-250 {
     height: 200px;
+    max-height: 250px;
     overflow:hidden;
 }
-
 .img-fluid {
     width: 100%;
     max-width: 100%!important;
-    height: 200px!important;
+    min-height: 200px!important;
 }
 .bg-light {
     background-color: #edeeef!important;

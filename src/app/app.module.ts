@@ -42,6 +42,8 @@ import { TabladetalleComponent } from './tabladetalle/tabladetalle.component';
 import { PartidoeventosComponent } from './partidoeventos/partidoeventos.component';
 import { BotonlinkComponent } from './componentes/utiles/botonlink/botonlink.component';
 import { AmscardcarrouselComponent } from './amscardcarrousel/amscardcarrousel.component';
+import { AmsclubessliderComponent } from './amsclubesslider/amsclubesslider.component';
+import { AmsmapsComponent } from './amsmaps/amsmaps.component';
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { AmscardcarrouselComponent } from './amscardcarrousel/amscardcarrousel.c
     AmsnoticiasComponent,
     BotonvolverComponent,
     PartidosComponent, BoletinComponent, PartidoslistComponent, PaginaComponent, PartidoComponent, PartidodetalleComponent,
-    TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent, AmscardcarrouselComponent
+    TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
+    AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent
 
   ],
   imports: [

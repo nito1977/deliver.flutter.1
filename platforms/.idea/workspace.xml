@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8a88b38f-3882-4ab0-8745-a7d39a730817" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../src/app/amscardcarrousel/amscardcarrousel.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/amscardcarrousel/amscardcarrousel.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/amscardcarrousel/amscardcarrousel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/amscardcarrousel/amscardcarrousel.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/amsnoticias/amsnoticias.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/amsnoticias/amsnoticias.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/amsnoticias/amsnoticias.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/amsnoticias/amsnoticias.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/pagina/pagina.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/pagina/pagina.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/assets/logoams.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/main.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/polyfills-es5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/polyfills-es5.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/polyfills.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/runtime.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/scripts.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/styles.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../www/vendor.js.map" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1oFSjv4WmQglB8wRgHXREsalkPH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8a88b38f-3882-4ab0-8745-a7d39a730817" name="Default Changelist" comment="" />
+      <created>1612880983899</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612880983899</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612882236160">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="137" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768/1366.0.1440.900@0.0.1366.768" timestamp="1612882236160" />
+  </component>
+</project>
