@@ -6,8 +6,13 @@ body{
   background-color: #0062cc!important;
   border-color: #17a2b8;
 }
-header.navbar.navbar-expand.navbar-dark.bg-primary.flex-column.flex-md-row.bd-navbar {
+.navbar{
+  z-index: 1001;
+}
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.bd-navbar {
   background: #0a1159!important;
+  z-index: 1000;
+  box-shadow: 0px 1px 7px 7px rgb(122 158 169 / 50%);
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.86)!important;
@@ -60,7 +65,7 @@ a:hover {
   color: white!important;
 }
 .colorFondoLogin {
-  background: rebeccapurple!important;
+  background: #0a1159!important;
 }
 .colorInputLogin {
   background: gray!important;

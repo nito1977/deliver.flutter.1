@@ -28,6 +28,22 @@ body{margin-top: 50px; margin-bottom: 100px;}
 
 
 /* control image height */
+@media (min-width: 200px) and (max-width: 767.98px) {
+    .card-img-top-250 {
+        height: 180px;
+        max-height: 250px;
+        overflow:hidden;
+    }
+    
+}
+section#postsCarousel {
+    border-top: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;
+    background-color: #fcfcfc!important;
+    background-repeat: round;
+    max-height: 440px!important;
+    overflow: hidden;
+}
 .card-img-top-250 {
     height: 200px;
     max-height: 250px;

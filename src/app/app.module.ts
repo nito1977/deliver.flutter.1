@@ -44,6 +44,8 @@ import { BotonlinkComponent } from './componentes/utiles/botonlink/botonlink.com
 import { AmscardcarrouselComponent } from './amscardcarrousel/amscardcarrousel.component';
 import { AmsclubessliderComponent } from './amsclubesslider/amsclubesslider.component';
 import { AmsmapsComponent } from './amsmaps/amsmaps.component';
+import { CuotasformComponent } from './cuotasform/cuotasform.component';
+import { FileuploadService } from './services/fileupload.service';
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { AmsmapsComponent } from './amsmaps/amsmaps.component';
     BotonvolverComponent,
     PartidosComponent, BoletinComponent, PartidoslistComponent, PaginaComponent, PartidoComponent, PartidodetalleComponent,
     TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
-    AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent
+    AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent,
+    CuotasformComponent
 
   ],
   imports: [
@@ -72,7 +75,7 @@ import { AmsmapsComponent } from './amsmaps/amsmaps.component';
     AppRoutingModule
      ],
   exports: [ HttpClientModule ],
-  providers: [ServicioService, UserService, PushService, CanActivateViaAuthGuard],
+  providers: [ServicioService, UserService, PushService, CanActivateViaAuthGuard, FileuploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

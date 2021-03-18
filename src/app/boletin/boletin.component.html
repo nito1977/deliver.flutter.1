@@ -2,11 +2,10 @@
 <nav class="nav nav-pills flex-column flex-sm-row padd-r-2">
   <div class="btn-group btn-block mb-2" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Boletin {{bolSel}} Año {{anioSel}}
+    Boletin {{mesSel}} Año {{anioSel}}
     </button>
     <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
-
-      <a *ngFor="let b of detalleBoletines" class="dropdown-item " href="#" (click)="cargaBoletines(b.anio, b.id);" >Boletín {{b.nombre}} Año {{b.anio
+      <a *ngFor="let b of detalleBoletines" class="dropdown-item " href="#" routerLink="/boletines/{{b.anio}}/{{b.id}}/{{b.mes}}" >Boletín {{b.mes}} Año {{b.anio
       }}</a>
 
     </div>
@@ -23,6 +22,7 @@
               Fecha <span class="badge badge-primary">{{item.Fecha}}</span>
               División <span class="badge badge-primary">{{item.categ}}</span>
               Zona <span class="badge badge-primary">{{item.zona}}</span>
+              &nbsp;<a class="btn btn-info" ><i class="fa fa-angle-right pr-2 pl-2"></i></a>
             </div>
           </div>
         </button>

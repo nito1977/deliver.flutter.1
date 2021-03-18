@@ -18,6 +18,7 @@ import { PartidoComponent } from './partido/partido.component';
 import { PartidodetalleComponent } from './partidodetalle/partidodetalle.component';
 import { TabladetalleComponent } from './tabladetalle/tabladetalle.component';
 import { PartidoeventosComponent } from './partidoeventos/partidoeventos.component';
+import { CuotasformComponent } from './cuotasform/cuotasform.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -30,8 +31,10 @@ const appRoutes: Routes = [
   { path: 'partido/:idPartido', component: PartidoComponent},
   { path: 'partidodet/:idPartido', component: PartidodetalleComponent},
   { path: 'tabladet', component: TabladetalleComponent},
-  { path: 'boletines', component: BoletinComponent},
+  { path: 'boletines/', component: BoletinComponent},
+  { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
+  { path: 'cuotas', component: CuotasformComponent },
   { path: '**', component: LoginComponent }
 ];
 
@@ -39,7 +42,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true} // <-- debugging purposes only
+      { useHash: true, onSameUrlNavigation: 'reload'} // <-- debugging purposes only
     )
   ],
   exports: [

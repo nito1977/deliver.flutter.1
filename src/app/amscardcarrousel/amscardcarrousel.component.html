@@ -1,18 +1,19 @@
 
-<section class="carousel slide bg-light " data-ride="carousel" id="postsCarousel" style="border-top: solid 1px lightgray;
-    border-bottom: solid 1px lightgray; background-image: url('assets/noticias/carrouselback.png');background-color: #fcfcfc!important;    background-repeat: round; max-height: 483px!important;
-    overflow: hidden;">
+<section class="carousel slide bg-light " data-ride="carousel" id="postsCarousel" >
+   
         <div class="container p-t-0 pb-2 m-t-2">
             <div class="d-flex bd-highlight mb-3">
                 <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Últimas</strong> noticias</h3></div>
-                <div class="p-2 bd-highlight">
+                <!-- <div class="p-2 bd-highlight">
                     <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
                 </div>
                 <div class="p-2 bd-highlight">
                     <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
                 </div>
+                -->
             </div>
         </div>
+  
         <div class="container p-t-0 m-t-2 carousel-inner">
             <div  class="row row-equal carousel-item active m-t-0" >
                 <div  *ngFor="let noticias of listado;let j=index" class="col-md-4 pr-0 pb-2">

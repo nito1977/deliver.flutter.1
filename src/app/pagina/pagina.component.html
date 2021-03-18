@@ -1,6 +1,7 @@
-<div class="container">
+<!--<div class="container">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Novedades</strong> FSP</h3></div>
 </div>
+-->
 <app-amsnoticias></app-amsnoticias>
 <app-amscardcarrousel></app-amscardcarrousel>
 <!-- <app-amsclubesslider></app-amsclubesslider>-->
@@ -33,11 +34,14 @@
   <div class="container">
     <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
   </div>
-  <app-amsmaps></app-amsmaps>
+  
+  <app-amsmaps [mapaurl]="paginaMapaClubes"></app-amsmaps>
+  
   <div class="container">
     <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Ubicación</strong> FSP</h3></div>
-  </div>
-  <app-amsmaps></app-amsmaps>
+  </div>  
+  <app-amsmaps [mapaurl]="paginaMapaUbicacion"></app-amsmaps>
+  
 
 </div>
 <div class="container">

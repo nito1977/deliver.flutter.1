@@ -14,7 +14,7 @@ import { ServiciosamsService } from '../servicios/serviciosams.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  public titulo = 'Asociación Médica Sarmiento';
+  public titulo = 'Federación Sanjuanina de Patín';
   public user: Usuarios;
   public mesagge: String;
   public status: Boolean;

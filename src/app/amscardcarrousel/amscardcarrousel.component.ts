@@ -35,7 +35,7 @@ export class AmscardcarrouselComponent implements OnInit {
   }
   verNoticias() {
     this.buscando = true;
-    this.http.getNoticias(118).subscribe(data => {
+    this.http.getNoticias(118, 63).subscribe(data => {
         this.buscando = false;
         this.listado = data;
         // this.localStorageService = localStorage;

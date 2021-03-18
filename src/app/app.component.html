@@ -1,18 +1,24 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand mr-0 mr-md-2"  aria-label="FSP" routerLink="/">
-    <img src="./assets/logochico.png" width="30" height="30" class="d-inline-block align-top " alt="">
+    <img src="./assets/logochico.png" width="25" height="25" class="d-inline-block align-top " alt="">
     {{title}}
   </a>
 </nav>
-<header class="navbar navbar-expand navbar-dark bg-primary flex-column flex-md-row bd-navbar">
-  
-  <div class="navbar-nav-scroll">
-    <ul class="navbar-nav bd-navbar-nav flex-row">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary bd-navbar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link active" routerLink="/">Inicio</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link " routerLink="/campeonatos">Estadísticas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/cuotas" >Aviso Pago</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " routerLink="/boletines" >Programación</a>
@@ -76,7 +82,7 @@
 
   </ul>
 -->
-</header>
+</nav>
 <div class="container-fluid {{colorFondo}}">
 <router-outlet></router-outlet>
 </div>
