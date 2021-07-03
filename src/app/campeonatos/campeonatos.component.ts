@@ -29,6 +29,7 @@ export class CampeonatosComponent {
   public cargaAnio(anio: number) {
     this.anioSel = anio;
     this.cargaTorneos(1, true , 13, 'A');
+
   }
   public cargaTorneos(op: number, refresca: boolean, div: number, zona: string) {
     // alert(op);
