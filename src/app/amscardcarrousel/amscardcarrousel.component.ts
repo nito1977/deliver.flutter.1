@@ -12,6 +12,7 @@ export class AmscardcarrouselComponent implements OnInit {
   buscando = false;
   listado;
   urlimgs = 'https://fspatin.com/wp-content/uploads';
+  url = 'https://fspatin.com/';
   private localStorageService;
   currentSession: Noticias = null;
   constructor(private http: ServicioService) { }
@@ -31,7 +32,7 @@ export class AmscardcarrouselComponent implements OnInit {
     $('.carousel').carousel({
       interval: 3000
     })
-    
+
   }
   verNoticias() {
     this.buscando = true;

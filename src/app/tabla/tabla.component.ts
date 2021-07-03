@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla',
@@ -13,12 +13,25 @@ export class TablaComponent implements OnInit {
   @Input() idCampeonato;
   @Input() idDivision;
   @Input() idZona;
+  @Input() idFecha;
   buscando: boolean;
   nomCampeonato;
   divCampeonato;
 
   constructor(private _http: ServicioService, private _route: ActivatedRoute, private router: Router ) {
     // alert(this.llamadoDesde);
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+   }
+
+   this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+         // trick the Router into believing it's last link wasn't previously loaded
+         this.router.navigated = false;
+         // if you need to scroll back to top, here is the right place
+         window.scrollTo(0, 0);
+      }
+  });
    }
 
   ngOnInit() {
@@ -26,10 +39,12 @@ export class TablaComponent implements OnInit {
     this.idCampeonato = this._route.snapshot.params.idcamp;
     this.idDivision = this._route.snapshot.params.iddiv;
     this.idZona = this._route.snapshot.params.idzona;
+    console.log(this.idZona);
     this.cargaTabla(3, this.idCampeonato, this.idDivision, this.idZona);
   }
   public cargaTabla(op: number,  tor: number, div: number, zona: string) {
     // alert(op);
+    //alert(zona);
     this.idZona = zona;
     // this._route.snapshot.params.idzona = zona;
     this.buscando = false;
@@ -42,6 +57,7 @@ export class TablaComponent implements OnInit {
       } else {
         this.nomCampeonato = data[0].Nombre;
         this.divCampeonato = data[0].Cate;
+        this.idFecha = data[0].Fecha;
         // alert (this.nomCampeonato);
       }
     });

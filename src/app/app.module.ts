@@ -46,6 +46,7 @@ import { AmsclubessliderComponent } from './amsclubesslider/amsclubesslider.comp
 import { AmsmapsComponent } from './amsmaps/amsmaps.component';
 import { CuotasformComponent } from './cuotasform/cuotasform.component';
 import { FileuploadService } from './services/fileupload.service';
+import { AmsbotonesutilesComponent } from './amsbotonesutiles/amsbotonesutiles.component';
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import { FileuploadService } from './services/fileupload.service';
     BotonvolverComponent,
     PartidosComponent, BoletinComponent, PartidoslistComponent, PaginaComponent, PartidoComponent, PartidodetalleComponent,
     TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
-    AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent,
+    AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent, AmsbotonesutilesComponent,
     CuotasformComponent
 
   ],

@@ -24,7 +24,7 @@ export class ServicioService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/x-www-form-urlencoded',
-     
+
     })
   };
   constructor(private http: HttpClient) {
@@ -63,8 +63,11 @@ export class ServicioService {
    jugadorxDni(op, dni) {
     return this.http.get<Jugador[]>(this.xurl + '/appfsp.php?opcion=' + op + '&licencia=' + dni);
    }
+   jugadorCuotasxDni(op, dni) {
+    return this.http.get<Jugador[]>(this.xurl + '/appfsp.php?opcion=' + op + '&dni=' + dni);
+   }
    InsertaCuotaPaga(op, cuota: Cuotas): Observable<any> {
-    const headers = { 'content-type': 'application/json'}  
+    const headers = { 'content-type': 'application/json'}
     return this.http.post(this.xurl + '/alta.php',  JSON.stringify(cuota) );
    }
    listadoBoletines() {

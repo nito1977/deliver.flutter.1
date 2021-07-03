@@ -128,7 +128,14 @@
                 aria-labelledby="headingInfDamas"
                 data-parent="#accordion">
                 <div class="card-body p-1 ">
+                  <div class="row  pl-3 pr-3" role="group" aria-label="Basic example">
+                    <button (click)="cargaTorneos(1, false, 14, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
+                    <button (click)="cargaTorneos(1, false, 15, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
+                    <button (click)="cargaTorneos(1, false, 16, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
+                    <button (click)="cargaTorneos(1, false, 17, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
 
+
+                </div>
                   <ul class="list-group p-0" style="width: 100%;">
                     <li *ngFor="let camp of detalleCampInfDamas" class="list-group-item list-group-item-action p-2">
                         <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-dark">

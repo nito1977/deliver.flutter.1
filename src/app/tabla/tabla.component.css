@@ -1,10 +1,12 @@
-th {
-  font-size: 11px!important;
-  padding: 4px!important;
-}
-td {
-  font-size: 11px!important;
-  padding: 4px!important;
+@media (max-width: 767.98px)  {
+  th {
+    font-size: 11px!important;
+    padding: 4px!important;
+  }
+  td {
+    font-size: 11px!important;
+    padding: 4px!important;
+  }
 }
 .table-bordered td, .table-bordered th {
   border: 0px;

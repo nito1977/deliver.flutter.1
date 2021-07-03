@@ -32,10 +32,11 @@ const appRoutes: Routes = [
   { path: 'partidodet/:idPartido', component: PartidodetalleComponent},
   { path: 'tabladet', component: TabladetalleComponent},
   { path: 'boletines/', component: BoletinComponent},
+  { path: 'boletines/', component: BoletinComponent},
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'cuotas', component: CuotasformComponent },
-  { path: '**', component: LoginComponent }
+  { path: '**', component: PaginaComponent }
 ];
 
 @NgModule({

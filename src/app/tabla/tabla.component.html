@@ -58,3 +58,12 @@
         </tr>
     </tbody>
 </table>
+<h5>Resultados fecha: {{this.idFecha}}</h5>
+<app-partidoslist *ngIf="buscando"  
+  [idCamp]= "this.idCampeonato" 
+  [nCamp]="this.nomCampeonato" 
+  [idDiv]="this.idDivision" 
+  [idFec]="this.idFecha" 
+  [idZon]="this.idZona" 
+  [idBol]="3" >
+</app-partidoslist>
