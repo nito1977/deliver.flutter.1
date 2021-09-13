@@ -4,21 +4,21 @@
   <h6 class="text-uppercase p-1 m-0 bg-light">Div: <b>{{divCampeonato}}</b> Zona: <b>{{idZona}}</b></h6>
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group btn-group-sm pr-1 pb-1" role="group" aria-label="First group">
-      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'A');">ZONA A</button>
-      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'B');">ZONA B</button>
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'A', undefined);">ZONA A</button>
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'B', undefined);">ZONA B</button>
    </div>
 
     <div class="btn-group btn-group-sm pb-1" role="group" aria-label="Second group">
-      <button type="button" class="btn btn-success" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '1');">
+      <button type="button" class="btn btn-success" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '1', undefined);">
         Goleadores
       </button>
-      <button type="button" class="btn btn-warning" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '2');">
+      <button type="button" class="btn btn-warning" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '2', undefined);">
         Am
       </button>
-      <button type="button" class="btn btn-info"    (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '3');">
+      <button type="button" class="btn btn-info"    (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '3', undefined);">
         Az
       </button>
-      <button type="button" class="btn btn-danger"  (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '4');">
+      <button type="button" class="btn btn-danger"  (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '4', undefined);">
         Ro
       </button>
     </div>
@@ -59,11 +59,54 @@
     </tbody>
 </table>
 <h5>Resultados fecha: {{this.idFecha}}</h5>
-<app-partidoslist *ngIf="buscando"  
-  [idCamp]= "this.idCampeonato" 
-  [nCamp]="this.nomCampeonato" 
-  [idDiv]="this.idDivision" 
-  [idFec]="this.idFecha" 
-  [idZon]="this.idZona" 
-  [idBol]="3" >
+
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group btn-group-sm pr-1 pb-1" role="group" aria-label="First group">
+      <button
+        *ngFor='let in of counter(idFecha);let i = index; '
+        type="button"
+        class="btn btn-dark"
+        (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'A', i + 1);">Fecha {{i + 1}}</button>
+    </div>
+  </div>
+
+<app-partidoslist *ngIf="buscando"
+  [idCamp]= "this.idCampeonato"
+  [nCamp]="this.nomCampeonato"
+  [idDiv]="this.idDivision"
+  [idFec]="this.idFecha"
+  [idZon]="this.idZona"
+  [idBol]="3"
+  [idIns]= 0 >
+</app-partidoslist>
+
+Cuartos de Final
+<app-partidoslist *ngIf="buscando"
+  [idCamp]= "this.idCampeonato"
+  [nCamp]="this.nomCampeonato"
+  [idDiv]="this.idDivision"
+  [idFec]="this.idFecha"
+  [idZon]="this.idZona"
+  [idBol]="3"
+  [idIns]= 2 >
+</app-partidoslist>
+Semi Final
+<app-partidoslist *ngIf="buscando"
+  [idCamp]= "this.idCampeonato"
+  [nCamp]="this.nomCampeonato"
+  [idDiv]="this.idDivision"
+  [idFec]="this.idFecha"
+  [idZon]="this.idZona"
+  [idBol]="3"
+  [idIns]= 4 >
+</app-partidoslist>
+Final
+<app-partidoslist *ngIf="buscando"
+  [idCamp]= "this.idCampeonato"
+  [nCamp]="this.nomCampeonato"
+  [idDiv]="this.idDivision"
+  [idFec]="this.idFecha"
+  [idZon]="this.idZona"
+  [idBol]="3"
+  [idIns]= 6 >
 </app-partidoslist>

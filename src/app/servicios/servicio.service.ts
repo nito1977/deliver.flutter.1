@@ -42,7 +42,18 @@ export class ServicioService {
    tablaxDivxTor(op, divi, tor, zona) {
     return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona);
    }
+   historialxJug(op, jug) {
+    return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&licencia=' + jug);
+   }
    partidosxFecxCampxZoxInst(op, divi, tor, zona, fecha, inst) {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona + '&fecha=' + fecha + '&inst=' + inst)  ;
+   }
+   partidosxMaxFecha(op, divi, tor, zona) {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona )  ;
+   }
+   partidosxFecxCampxZoxTodasInstancias(op, divi, tor, zona, fecha, inst) {
     // tslint:disable-next-line:max-line-length
     return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona + '&fecha=' + fecha + '&inst=' + inst)  ;
    }

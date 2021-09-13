@@ -42,7 +42,7 @@ export class BoletinComponent implements OnInit {
       this.bolSel = 3;
       this.mesSel = 1;
     }
-    
+
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
    }
@@ -62,6 +62,7 @@ export class BoletinComponent implements OnInit {
       data => {
           this.buscando = false;
           this.detalleBoletines = data;
+          console.log(this.detalleBoletines)
         },
       error => {
         alert('error cargando listado boletines');
@@ -73,11 +74,11 @@ export class BoletinComponent implements OnInit {
         // Do stuff after completion
       });
   }
-  
+
 
   public cargaBoletines(anio: number, idBoletin) {
     this.anioSel = anio;
-    
+
     // this.router.navigateByUrl('/boletines/'+ anio);
     this.cargaTorneos(9, true, anio, idBoletin);
 

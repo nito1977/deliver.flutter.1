@@ -19,6 +19,7 @@ import { PartidodetalleComponent } from './partidodetalle/partidodetalle.compone
 import { TabladetalleComponent } from './tabladetalle/tabladetalle.component';
 import { PartidoeventosComponent } from './partidoeventos/partidoeventos.component';
 import { CuotasformComponent } from './cuotasform/cuotasform.component';
+import { HistorialComponent } from './historial/historial.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -26,12 +27,13 @@ const appRoutes: Routes = [
   { path: 'campeonatos', component: CampeonatosComponent },
   { path: 'noticias', component: AmsnoticiasComponent},
   { path: 'tabla/:idcamp/:iddiv/:idzona', component: TablaComponent},
+  { path: 'tabla/:idcamp/:iddiv/:idzona/:idFecha', component: TablaComponent},
   { path: 'partidos/:idcamp/:iddiv/:idzona/:idFecha/:idInst', component: PartidosComponent, pathMatch: 'full'},
   { path: 'partidosevento/:idcamp/:iddiv/:idevento', component: PartidoeventosComponent, pathMatch: 'full'},
   { path: 'partido/:idPartido', component: PartidoComponent},
+  { path: 'historial/:idJugador', component: HistorialComponent},
   { path: 'partidodet/:idPartido', component: PartidodetalleComponent},
   { path: 'tabladet', component: TabladetalleComponent},
-  { path: 'boletines/', component: BoletinComponent},
   { path: 'boletines/', component: BoletinComponent},
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
   { path: 'login', component: LoginComponent },

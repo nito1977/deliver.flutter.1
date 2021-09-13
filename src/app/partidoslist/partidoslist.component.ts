@@ -24,11 +24,30 @@ export class PartidoslistComponent implements OnInit {
   pierdeloc = '';
   ganavis = '';
   pierdevis = '';
-
+  MaxFec: any
   constructor(public _http: ServicioService, public _route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.cargarPartidos(8, this.idCamp, this.idDiv, this.idZon, this.idFec, this.idIns);
+
+    this.buscando = false;
+    if (this.idIns == undefined) {
+      this._http.partidosxMaxFecha(84, this.idDiv, this.idCamp,  this.idZon).subscribe(data => {
+        this.buscando = true;
+        this.MaxFec = data[0]['Max'];
+        console.log('MaxFecha ->' + this.MaxFec)
+        console.log('Fecha ->' + this.idFec)
+        if (this.idIns == undefined) this.idIns = 0; else console.log('instancia: ' + this.idIns)
+  /*       if (this.idFec == 0 || this.idFec == undefined)
+          {
+            this.idFec = this.MaxFec
+          }
+          console.log('Fecha Cambiada ->' + this.idFec) */
+        this.cargarPartidos(8, this.idCamp, this.idDiv, this.idZon, this.MaxFec, this.idIns);
+      });
+    } else {
+      this.cargarPartidos(8, this.idCamp, this.idDiv, this.idZon, this.idFec, this.idIns);
+    }
+
   }
   public cargarPartidos(op: number,  tor: number, div: number, zona: string, fecha: number, inst: number) {
     // alert(op);
@@ -36,6 +55,7 @@ export class PartidoslistComponent implements OnInit {
     this.detalleTabla = [];
     this._http.partidosxFecxCampxZoxInst(op, div, tor, zona, fecha, inst).subscribe(data => {
       this.detalleTabla = data;
+      //console.log('DAtos - >' + data)
       this.buscando = true;
       if (data.length <= 0) {
         console.log('no encontro nada');

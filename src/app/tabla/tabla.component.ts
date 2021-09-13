@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
@@ -7,19 +7,40 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   templateUrl: './tabla.component.html',
   styleUrls: ['./tabla.component.css']
 })
-export class TablaComponent implements OnInit {
+export class TablaComponent implements AfterViewInit {
   detalleTabla;
   zona = '';
   @Input() idCampeonato;
   @Input() idDivision;
   @Input() idZona;
   @Input() idFecha;
+  @Input() idInst;
   buscando: boolean;
   nomCampeonato;
   divCampeonato;
+  fechas = []
 
-  constructor(private _http: ServicioService, private _route: ActivatedRoute, private router: Router ) {
+  constructor(
+    private _http: ServicioService,
+    private _route: ActivatedRoute,
+    private router: Router ) {
     // alert(this.llamadoDesde);
+    this.idCampeonato = this._route.snapshot.params.idcamp;
+    this.idDivision = this._route.snapshot.params.iddiv;
+    this.idZona = this._route.snapshot.params.idzona;
+    this.idFecha = this._route.snapshot.params.idFecha;
+    this.idInst = this._route.snapshot.params.idInst;
+    //this.fechas = Array(this.idFecha)
+    this.cargaTabla(3, this.idCampeonato, this.idDivision, this.idZona);
+    this._http.partidosxMaxFecha(84, this.idDivision, this.idCampeonato,  this.idZona).subscribe(data => {
+      if (!this.idFecha){
+        this.idFecha = data[0]['Max'];
+      }
+      this.fechas = this.counter(this.idFecha)
+
+    })
+
+
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
    }
@@ -33,14 +54,16 @@ export class TablaComponent implements OnInit {
       }
   });
    }
+  ngAfterViewInit(): void {
+    const _this = this;
+
+  }
 
   ngOnInit() {
 
-    this.idCampeonato = this._route.snapshot.params.idcamp;
-    this.idDivision = this._route.snapshot.params.iddiv;
-    this.idZona = this._route.snapshot.params.idzona;
-    console.log(this.idZona);
-    this.cargaTabla(3, this.idCampeonato, this.idDivision, this.idZona);
+
+    //console.log(this.idZona);
+
   }
   public cargaTabla(op: number,  tor: number, div: number, zona: string) {
     // alert(op);
@@ -57,13 +80,27 @@ export class TablaComponent implements OnInit {
       } else {
         this.nomCampeonato = data[0].Nombre;
         this.divCampeonato = data[0].Cate;
-        this.idFecha = data[0].Fecha;
+        //this.idFecha = data[0].Fecha;
         // alert (this.nomCampeonato);
       }
     });
   }
-  public cargaUrl(op: number, ruta: string,  tor: number, div: number, zona: string) {
-    this.router.navigate(['/' + ruta + '/' + tor + '/' + div + '/' + zona]);
+  public cargaUrl(op: number, ruta: string,  tor: number, div: number, zona: string, fec: number) {
+    if (fec){
+      this.router.navigate(['/' + ruta + '/' + tor + '/' + div + '/' + zona + '/' + fec]);
+    } else {
+
+      this.router.navigate(['/' + ruta + '/' + tor + '/' + div + '/' + zona]);
+    }
     // this.cargaTabla(op, tor, div, zona);
   }
+  counter(i: number) {
+    var y: number = + this.idFecha;
+    return new Array(y);
+  }
+  numFecha(i: number) {
+    var j = i++;
+    return j;
+  }
+
 }

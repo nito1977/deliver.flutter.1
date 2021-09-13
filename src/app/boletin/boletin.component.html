@@ -31,7 +31,7 @@
 
     <div id="collapse{{item.id}}div{{item.divi}}fec{{item.Fecha}}zo{{item.zona}}" class="collapse" [attr.aria-labelledby]="'heading' + item.id + 'div' + item.divi + 'fec' + item.Fecha + 'zo' + item.zona" data-parent="#accordionExample">
       <div class="card-body p-0">
-        <app-partidoslist  [idCamp]= "item.id" [nCamp]="item.nombre" [idDiv]="item.divi" [idFec]="item.Fecha" [idZon]="item.zona" [idBol]="item.boletin" ></app-partidoslist>
+        <app-partidoslist  [idCamp]= "item.id" [nCamp]="item.nombre" [idDiv]="item.divi" [idFec]="item.Fecha" [idZon]="item.zona" [idBol]="item.boletin" [idIns]="item.instancia" ></app-partidoslist>
         <!--<div class="table responsive">
           <table class="table" id="DataTables_Table_1" >
 
