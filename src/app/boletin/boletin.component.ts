@@ -25,6 +25,7 @@ export class BoletinComponent implements OnInit {
   detalleCampInfDamas: Campeonatos[];
   detalleCampDamas: Campeonatos[];
   detalleBoletines: Boletinesmodel[];
+  Encontrado: boolean = false;
   constructor(private http: ServicioService, private _route: ActivatedRoute, private router: Router) {
     this.muestra = 0;
     const a = new Date();
@@ -33,7 +34,7 @@ export class BoletinComponent implements OnInit {
     this.mesSel = this._route.snapshot.params.idMes;
     //this.anioSel = 2020;
     console.log(this.anioSel);
-    if ( this.anioSel != undefined){
+/*     if ( this.anioSel != undefined){
       this.anioSel = this._route.snapshot.params.idAnio;
       this.bolSel = this._route.snapshot.params.idBoletin;
       this.mesSel = this._route.snapshot.params.idMes;
@@ -41,7 +42,7 @@ export class BoletinComponent implements OnInit {
       this.anioSel = a.getFullYear();
       this.bolSel = 3;
       this.mesSel = 1;
-    }
+    } */
 
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
@@ -57,14 +58,16 @@ export class BoletinComponent implements OnInit {
   });
   }
   ngOnInit() {
-    this.cargaBoletines(this.anioSel, this.bolSel);
+    this.Encontrado = false
     this.http.listadoBoletines().subscribe(
       data => {
           this.buscando = false;
           this.detalleBoletines = data;
+
           console.log(this.detalleBoletines)
         },
       error => {
+        this.Encontrado = false
         alert('error cargando listado boletines');
         // Do stuff whith your error
       },
@@ -73,6 +76,11 @@ export class BoletinComponent implements OnInit {
 
         // Do stuff after completion
       });
+    if (this.anioSel != undefined || this.bolSel != undefined){
+      this.cargaBoletines(this.anioSel, this.bolSel);
+      this.Encontrado = false
+
+      }
   }
 
 
@@ -96,10 +104,13 @@ export class BoletinComponent implements OnInit {
       this.http.boletinesxAnioxNumero(op, this.anioSel, idboletin).subscribe(
         data => {
         this.buscando = false;
-            this.detalleCamp = data;
+        this.detalleCamp = data;
+        this.Encontrado = true
       },
       erro => {
-        alert('error cargando boletines');
+        this.buscando = false
+        this.Encontrado = false
+        //alert('error cargando boletines');
         // Do stuff whith your error
       },
       () => {

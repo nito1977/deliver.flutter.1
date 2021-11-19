@@ -5,6 +5,7 @@
   bottom: 0;
 }
 
+
 a.nav-link:active {
   color: white!important;
 }
@@ -12,7 +13,7 @@ a.nav-link:active {
   display: inline-block;
   padding-top: 0.1125rem!important;
   padding-bottom: .1125rem!important;
- 
+
   font-size: 0.95rem;
- 
+
 }

@@ -4,7 +4,9 @@
     <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Boletin {{mesSel}} Año {{anioSel}}
     </button>
+
     <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
+      <a class="dropdown-item " href="#" >Seleccione</a>
       <a *ngFor="let b of detalleBoletines" class="dropdown-item " href="#" routerLink="/boletines/{{b.anio}}/{{b.id}}/{{b.mes}}" >Boletín {{b.mes}} Año {{b.anio
       }}</a>
 
@@ -32,87 +34,21 @@
     <div id="collapse{{item.id}}div{{item.divi}}fec{{item.Fecha}}zo{{item.zona}}" class="collapse" [attr.aria-labelledby]="'heading' + item.id + 'div' + item.divi + 'fec' + item.Fecha + 'zo' + item.zona" data-parent="#accordionExample">
       <div class="card-body p-0">
         <app-partidoslist  [idCamp]= "item.id" [nCamp]="item.nombre" [idDiv]="item.divi" [idFec]="item.Fecha" [idZon]="item.zona" [idBol]="item.boletin" [idIns]="item.instancia" ></app-partidoslist>
-        <!--<div class="table responsive">
-          <table class="table" id="DataTables_Table_1" >
 
-            <thead>
-              <tr>
-                <!--<th>id</th>
-                <th>Fecha</th>
-                <th class="text-center" colspan="2">Loc.</th>
-                <th class="text-center">Res.</th>
-                <th class="text-center" colspan="2">Vis.</th>
-
-                <th>Zo</th>
-                <th>Est</th>
-                <th>Ver</th>
-                <!--<th>Admin</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!--<td>37600</td>
-
-                <td>2020-03-11</td>
-                <td><img class="logoclub" src="/assets/logos/clubes/61.jpg"></td>
-                <td>MDO</td>
-                <td class="text-center bg-info">0 - 0</td>
-                <td>DUE</td>
-                <td><img class="logoclub" src="/assets/logos/clubes/3.jpg"></td>
-                <td>A</td>
-                <th>Com.
-                </th>
-                <td>
-                  <a class="btn btn-warning" value="Detalle"
-                    onclick="window.open('../Ver_detalle_partido.php?partido=37600')">
-                    <i class="fa fa-th-list" aria-hidden="true"></i>
-                  </a>
-                </td>
-                <!--<td>
-                  <a class="btn btn-info"
-                    onclick="window.open('modificar_arbitros.php?partido=37600&amp;fecha=1&amp;cate=&amp;camp=122')">
-                    <i class="fa fa-gavel" aria-hidden="true"></i>
-                  </a>
-                  <a class="btn btn-success"
-                    onclick="window.open('modificar_partido.php?partido=37600&amp;fecha=1&amp;cate=&amp;camp=122')">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <!--<td>37598</td>
-
-                <td>2020-03-11</td>
-                <td><img class="logoclub" src="logos/clubes/4.jpg"></td>
-                <td>OPC</td>
-                <td class="text-center bg-info">0 - 0</td>
-                <td>LDR</td>
-                <td><img class="logoclub" src="logos/clubes/6.jpg"></td>
-                <td>A</td>
-                <th>Com.
-                </th>
-                <td>
-                  <a class="btn btn-warning" value="Detalle"
-                    onclick="window.open('../Ver_detalle_partido.php?partido=37598')">
-                    <i class="fa fa-th-list" aria-hidden="true"></i>
-                  </a>
-                </td>
-                <!--<td>
-                  <a class="btn btn-info"
-                    onclick="window.open('modificar_arbitros.php?partido=37598&amp;fecha=1&amp;cate=&amp;camp=122')">
-                    <i class="fa fa-gavel" aria-hidden="true"></i>
-                  </a>
-                  <a class="btn btn-success"
-                    onclick="window.open('modificar_partido.php?partido=37598&amp;fecha=1&amp;cate=&amp;camp=122')">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>-->
 
       </div>
     </div>
+  </div>
+</div>
+
+<div class="col d-flex justify-content-center p-0 " *ngIf="!Encontrado">
+  <div class="card p-2 ">
+
+    <div class="card-content m-2" style="text-align: center;">
+
+      <i class="fa fa-warning" aria-hidden="true"></i>
+      <h6>Seleccione un boletín</h6>
+    </div>
+
   </div>
 </div>

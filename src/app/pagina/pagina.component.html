@@ -14,6 +14,7 @@
     <!-- menu partidos-->
     <div id="tablasposicion" class="col-12 col-md-6">
       <app-campeonatos></app-campeonatos>
+
 <!--
       <div class="p-0 pb-2" >
         <h4>Noticias</h4>
@@ -29,8 +30,28 @@
     <div class="col-12 col-md-6 p-0">
 
       <app-boletin></app-boletin>
+      <div class="p-2 text-center" >
+        <br>
+        <h4>Historial</h4>
+        <h6>Acá podes consultar tus datos, goles, tarjetas</h6>
+        <button [routerLink]="['/historial']" routerLinkActive="historial" class="btn btn-primary" > Consultá ahora </button>
+
+      </div>
 
     </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 pr-2">
+        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Damas</h3></div>
+        <app-amsgalerias [idGaleria]="86"></app-amsgalerias>
+      </div>
+      <div class="col-12 col-md-6 pl-2">
+        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Varones</h3></div>
+        <app-amsgalerias [idGaleria]="85"></app-amsgalerias>
+      </div>
+    </div>
+
   </div>
   <div class="container">
     <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
@@ -45,6 +66,7 @@
 
 
 </div>
+
 <div class="container">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Contacto</strong> FSP</h3></div>
 </div>

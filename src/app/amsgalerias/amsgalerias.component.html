@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <!--<h2>Noticias</h2>-->
+    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+     <!--  <ol class="carousel-indicators">
+        <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+        <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+      </ol> -->
+      <div class="carousel-inner">
+        <div *ngFor="let noticias of listado;let j=index" [ngClass]="j==0 ?'carousel-item active' : 'carousel-item' ">
+          <img class="d-block w-100" src="{{this.urlimgs}}/{{noticias.foto1}}" alt="{{noticias.foto1}}">
+          <div class="carousel-caption d-block d-md-block">
+            <a href="{{this.url}}{{noticias.flikr}}" target="_blank" class="text-white">
+              <h5 class="p-1 text-white"> {{noticias.titulo | uppercase}}</h5>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bg-secondary p-3 m-2" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bg-secondary p-3 m-2" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+      </a>
+
+    </div>
+</div>
+

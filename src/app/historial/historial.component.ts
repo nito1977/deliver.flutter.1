@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioService } from '../servicios/servicio.service';
 
@@ -10,34 +11,24 @@ import { ServicioService } from '../servicios/servicio.service';
 export class HistorialComponent implements OnInit {
   detalleHistorial:any
   buscando: boolean;
+  encontrado: boolean
   eventoimg: string = '';
   Jugador: string = '';
   contador: any[] = []
+  mForm: FormGroup;
   constructor(
     private _http: ServicioService,
     private _route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
 
-    this.buscando = false
-    this._http.historialxJug(20, 1292).subscribe(data => {
-      this.detalleHistorial = data;
-      this.buscando = true;
 
-      if (data.length <= 0) {
-        alert('no encontro nada');
-      } else {
-        this.Jugador = data[0]['Apellido'] + ', ' + data[0]['NombreJug']
+    this.encontrado = false
+    this.initializeForm()
 
-        this.cuentaEvento()
-        /* this.nomCampeonato = data[0].Nombre;
-        this.divCampeonato = data[0].Cate; */
-        //this.idFecha = data[0].Fecha;
-        // alert (this.nomCampeonato);
-      }
-    });
   }
   determinaEvento(e: number): boolean {
     const thisce = this;
@@ -61,5 +52,54 @@ export class HistorialComponent implements OnInit {
     this.contador = _c
     return true;
   }
+  Limpiar(){
+    this.encontrado = false;
+    this.mForm.get('idLic').setValue('')
+
+  }
+  Buscar(event: any){
+    var idLic: number
+    idLic = this.mForm.get('idLic').value
+    this.buscando = true
+    this._http.historialxJug(20, idLic).subscribe(data => {
+      this.detalleHistorial = data;
+      this.buscando = true;
+      this.encontrado = true
+
+      if (data.length <= 0) {
+        alert('no encontro nada');
+        this.encontrado = false
+        this.buscando = false
+
+      } else {
+        this.Jugador = data[0]['Apellido'] + ', ' + data[0]['NombreJug']
+
+        this.cuentaEvento()
+        this.buscando = false
+        /* this.nomCampeonato = data[0].Nombre;
+        this.divCampeonato = data[0].Cate; */
+        //this.idFecha = data[0].Fecha;
+        // alert (this.nomCampeonato);
+      }
+    });
+  }
+  initializeForm() {
+    // Transport unit cannot resume...
+    new Promise<void>((resolve, reject) => {
+        this.createForm();
+        resolve();
+    })
+        .then(() => {
+            return 'done';
+        })
+        .then(() => {
+            return 'done-setup-form';
+        });
+    }
+  createForm() {
+    this.mForm = this.formBuilder.group({
+      idLic: [''],
+    });
+}
 
 }
