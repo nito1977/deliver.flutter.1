@@ -25,6 +25,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./cuotasform.component.css']
 })
 export class CuotasformComponent implements OnInit {
+  public anioAtual = 2022;
+  public mesElegido = 0;
   public titulo = 'Aviso de Pago de Licencia';
   public user: Usuarios;
   public jugador: Jugador;
@@ -55,19 +57,28 @@ export class CuotasformComponent implements OnInit {
   cuotasFormG: FormGroup;
   cuotasForm: FormGroup;
   URL = "https://fspatin.com/paginas/cuotas/";
-  c1 = '600';
-  c2 = '600';
-  c3 = '600';
-  c4 = '600';
-  c5 = '600';
-  c6 = '600';
-  vc1 = '25/4/2021';
-  vc2 = '15/5/2021';
-  vc3 = '15/6/2021';
-  vc4 = '15/7/2021';
-  vc5 = '15/8/2021';
-  vc6 = '15/9/2021';
+  c1 = '1000';
+  c2 = '1000';
+  c3 = '1000';
+  c4 = '1000';
+  c5 = '1000';
+  c6 = '1000';
+  ct = '6000';
+  ac1 = [];
+  ac2 = [];
+  ac3 = [];
+  ac4 = [];
+  ac5 = [];
+  ac6 = [];
+  ac0 = []; //total
+  vc1 = '25/4/2022';
+  vc2 = '15/5/2022';
+  vc3 = '15/6/2022';
+  vc4 = '15/7/2022';
+  vc5 = '15/8/2022';
+  vc6 = '15/9/2022';
   debug = false;
+  jugadorEncontrado: boolean;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -91,7 +102,7 @@ export class CuotasformComponent implements OnInit {
   ngOnInit(): void {
     this.cuotasFormG = this.formBuilder.group({});
     this.cuotasForm = this.formBuilder.group({});
-    this.cuota.importe = 600;
+    //this.cuota.importe = 1000;
   }
   resetForm(){
     this.cuotasFormG.reset();
@@ -160,8 +171,11 @@ export class CuotasformComponent implements OnInit {
           }
         )};
   }
-  habilitar(bande: boolean){
+  habilitar(bande: boolean, mes, anio, monto, tipoPago){
     this.transferencia = true;
+    this.cuota.cuotames = mes;
+    this.cuota.cuotaanio = anio;
+    this.cuota.importe = monto;
   }
   ngJugadorBuscar() {
     if (this.jugador.documento != ''){
@@ -193,15 +207,65 @@ export class CuotasformComponent implements OnInit {
   verificaCuotas(){
     if (this.jugador.documento != '') {
       this.cuotasVerificadas = null;
+      this.ac0 = [];
+      this.ac1 = [];
+      this.ac2 = [];
+      this.ac3 = [];
+      this.ac4 = [];
+      this.ac5 = [];
+      this.ac6 = [];
+      this.jugadorEncontrado = false;
       this.bloquear = true;
-      this.http.jugadorCuotasxDni(17, this.jugador.documento).subscribe(data => {
+      this.http.jugadorCuotasxDni(17, this.jugador.documento, this.anioAtual).subscribe(data => {
           this.bloquear = false;
+          this.jugadorEncontrado = true;
           console.log(data);
           if (data[0] === undefined) {
             this.estatus = true;
             this.tituloEstatus = 'No ha enviado ningún aviso de pago!';
           } else {
           this.cuotasVerificadas = data;
+          let i = 0;
+          var _this = this;
+          data.forEach(function (value, ) {
+            i++;
+            console.log('cuota ' + value['cuotames']);
+            console.log('ac2: ' + _this.ac2.length);
+            switch (value['cuotames'])
+            {
+              case 1:
+                _this.ac1.push(value);
+                console.log(_this.ac1);
+                break;
+              case 2:
+                _this.ac2.push(value);
+                console.log(_this.ac2);
+                break;
+              case 3:
+                _this.ac3.push(value);
+                console.log(_this.ac3);
+                break;
+              case 4:
+                _this.ac4.push(value);
+                console.log(_this.ac4);
+                break;
+              case 5:
+                _this.ac5.push(value);
+                console.log(_this.ac5);
+                break;
+              case 6:
+                _this.ac6.push(value);
+                console.log(_this.ac6);
+                break;
+              case 0:
+                  _this.ac0.push(value);
+                  console.log(_this.ac0);
+                  break;
+            }
+            //c.push(value);
+            //console.log( value.cuotames);
+          });
+          //console.log(this.cuotasVerificadas[0]);
 
         // this.http.setearNombreUsuario(this.listado[0].nombre);
           //this._router.navigate(['/menu']);
@@ -210,11 +274,13 @@ export class CuotasformComponent implements OnInit {
         error => {
             this.bloquear = false;
             this.estatus = true;
+            this.jugadorEncontrado = false;
             this.tituloEstatus = 'No ha enviado ningún aviso de pago o no hay conexion!';
             console.log(<any>error);
         });
       } else {
         this.estatus = true;
+        this.jugadorEncontrado = false;
         this.tituloEstatus = 'Debe ingresar su D.N.I para buscar';
       }
   }

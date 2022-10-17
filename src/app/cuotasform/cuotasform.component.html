@@ -1,53 +1,331 @@
-<div class="container text-center col-12 col-md-6 col-lg-6">
+<div class="container-fluid text-center col-12 col-md-6 col-lg-6">
+  <form>
+    <div class="form-row">
+      <div class="form-group col-12">
+       <!-- <img class="mb-4" src="../../assets/logochico.png" alt="" width="72" height="72">-->
+        <h5 class=" p-2 m-0"> {{titulo}}</h5>
+      </div>
+    </div>
+    <div class="form-row ">
+      <p>Ingrese DNI con puntos</p>
+    </div>
+    <div class="form-row ">
 
-      <form>
-        <div class="form-row">
-          <div class="form-group col-12">
-           <!-- <img class="mb-4" src="../../assets/logochico.png" alt="" width="72" height="72">-->
-            <h5 class=" p-2 m-0"> {{titulo}}</h5>
-          </div>
+      <div class="form-group col-8">
+
+          <input type="text" #documento="ngModel" [(ngModel)]="jugador.documento"
+            name="documento" class="form-control" autocomplete="off"
+            maxlength="12" minlength="0" placeholder="ingrese D.N.I"
+            type="text" required autofocus/>
+          <p *ngIf="documento.touched && !documento.valid"
+            class="alert alert-danger p-1" role="alert">
+            El dni es obligatorio
+          </p>
         </div>
-        <div class="form-row ">
-          <p>Ingrese DNI con puntos</p>
-        </div>
-        <div class="form-row ">
+        <div class="form-group col-4">
 
-          <div class="form-group col-8">
-
-              <input type="text" #documento="ngModel" [(ngModel)]="jugador.documento"
-                name="documento" class="form-control" autocomplete="off"
-                maxlength="11" minlength="0" placeholder="ingrese D.N.I"
-                type="text" required autofocus/>
-              <p *ngIf="documento.touched && !documento.valid"
-                class="alert alert-danger p-1" role="alert">
-                El dni es obligatorio
-              </p>
-            </div>
-            <div class="form-group col-4">
-
-              <a (click)="ngJugadorBuscar();"  class="btn btn-success">
-                Buscar <i class="fa fa-search" aria-hidden="true"></i>
-              </a>
-
-            </div>
-            <div>
-              <br>
-              <p *ngIf="status" class="alert alert-success">
-                <label>{{mesagge}}</label>
-              </p>
-              <br>
-              <p *ngIf="!status && status != null" class="alert alert-danger">
-                <label>{{mesagge}}</label>
-              </p>
-            </div>
+          <a (click)="ngJugadorBuscar();"  class="btn btn-success">
+            Buscar <i class="fa fa-search" aria-hidden="true"></i>
+          </a>
 
         </div>
-      </form>
+        <div>
+          <br>
+          <p *ngIf="status" class="alert alert-success">
+            <label>{{mesagge}}</label>
+          </p>
+          <br>
+          <p *ngIf="!status && status != null" class="alert alert-danger">
+            <label>{{mesagge}}</label>
+          </p>
+        </div>
+
+    </div>
+  </form>
+</div>
+<div class="container-fluid text-center col-12 col-md-12 col-lg-12 p-4">
+
+
       <div class="container" *ngIf="listado">
         <h6 class="bg-info text-white p-2"><strong>Jugador: </strong>{{listado.Apellido}}, {{listado.Nombre}}
         <strong>Licencia: </strong>{{listado.idnumerocarnet}}</h6>
       </div>
-      <div class="container" *ngIf="cuotasVerificadas">
+      <div class="container" *ngIf="jugadorEncontrado" >
+        <div class="row mb-3">
+          <div class="card-header col-12">
+            Cuota: Pago Total
+
+            <div class="col text-left p-1" *ngIf="ac0.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv0 of ac0">
+              <div class="col text-left" *ngIf="cv0.length === 0">
+                no pagada
+              </div>
+
+              <div class="col text-left" *ngIf="cv0.cuotames == 0">
+
+                <p class="m-1"  *ngIf="cv0.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv0.origen}}
+                </p>
+                <p class="m-1" *ngIf="cv0.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv0.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv0.origen}}
+                </p>
+              </div>
+            </div>
+            <button
+              class="btn btn-secondary  m-1"
+              (click) = "habilitar(true, 0, anioAtual, ct, 'total')"
+            >
+              <i class="fa fa-paper-plane-o text-white"></i> Notificar pago total
+            </button>
+            <a class="btn btn-primary m-1"
+              href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=0&anio={{anioAtual}}&i={{ct}}&tipoPago=Total">
+              <i class="fa fa-money          text-white"></i> Pagar
+            </a>
+
+
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 1</div>
+            <div class="col text-left p-1" *ngIf="ac1.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv1 of ac1">
+              <div class="col text-left" *ngIf="cv1.length === 0">
+                no pagada
+              </div>
+              <div class="col text-left" *ngIf="cv1.cuotames == 1">
+
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 1, anioAtual, c1, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=1&anio={{anioAtual}}&i={{c1}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 2</div>
+              <div class="col text-left p-1" *ngIf="ac2.length === 0">
+                <i class="fa fa-ban fa-2x  text-warning"></i>
+                <span>NO hay registrado ni pagos ni avisos de pago</span>
+              </div>
+            <div class="row"  *ngFor="let cv1 of ac2">
+
+              <div class="col text-left" *ngIf="cv1.cuotames == 2">
+
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 2, anioAtual, c2, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=2&anio={{anioAtual}}&i={{c2}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 3</div>
+            <div class="col text-left p-1" *ngIf="ac3.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv1 of ac3">
+              <div class="col text-left" *ngIf="cv1.cuotames == 3">
+
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 3, anioAtual, c3, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=3&anio={{anioAtual}}&i={{c3}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 4</div>
+            <div class="col text-left p-1" *ngIf="ac4.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv1 of ac4">
+              <div class="col text-left" *ngIf="cv1.cuotames == 4">
+
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 4, anioAtual, c4, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=4&anio={{anioAtual}}&i={{c4}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 5</div>
+            <div class="col text-left p-1" *ngIf="ac5.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv1 of ac5">
+              <div class="col text-left" *ngIf="cv1.cuotames == 5">
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+                </p>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 5, anioAtual, c5, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=5&anio={{anioAtual}}&i={{c5}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="card p-0 col-12 col-xs-12 col-md-12 col-lg-12" style="width: 98%;">
+            <div class="card-header">Cuota: 6</div>
+            <div class="col text-left p-1" *ngIf="ac6.length === 0">
+              <i class="fa fa-ban fa-2x  text-warning"></i>
+               <span>NO hay registrado ni pagos ni avisos de pago</span>
+            </div>
+            <div class="row"  *ngFor="let cv1 of ac6">
+              <div class="col text-left" *ngIf="cv1.cuotames == 6">
+
+                <p class="m-1"  *ngIf="cv1.verificada == '0000-00-00'">
+                  <i class="fa fa-times fa-2x  text-danger"></i>
+                  <strong>  &nbsp; NO VERIFICADA </strong>
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+                <p class="m-1" *ngIf="cv1.verificada != '0000-00-00'">
+                  <i class="fa fa-check fa-2x  text-success"></i>
+                  <strong> Verificada: </strong> {{cv1.verificada}}
+                  <strong> Tipo Pago: </strong> {{cv1.origen}}
+
+                </p>
+
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <button
+                class="btn btn-secondary  m-1"
+                (click) = "habilitar(true, 6, anioAtual, c6, 'parcial')"
+              >
+                <i class="fa fa-paper-plane-o text-white"></i> Notificar transferencia
+              </button>
+              <a class="btn btn-primary m-1"
+                href="http://fspatin.com/paginas/cuotas/LinkPagoFactory.php?dni={{listado.Documento}}&licencia={{listado.idnumerocarnet}}&jugador={{listado.Apellido}},{{listado.Nombre}}&cuota=6&anio={{anioAtual}}&i={{c6}}&tipoPago=Parcial">
+                <i class="fa fa-money          text-white"></i> Pagar
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="container" *ngIf="cuotasVerificadas">
         <h5>Avisos de Pago</h5>
         <div class="row">
           <div class="col-2 col-xs-4 col-md-6" *ngFor="let cv of cuotasVerificadas">
@@ -60,7 +338,7 @@
             </h6>
           </div>
         </div>
-      </div>
+      </div> -->
 
         <app-loader *ngIf=bloquear></app-loader>
 
@@ -73,8 +351,9 @@
                     <label class="input-group-text" for="inputGroupSelect01">Cuota</label>
                   </div>
                   <select class="custom-select"  #cuotames="ngModel" [(ngModel)]="cuota.cuotames"
-                  name="cuotames" >
-                    <option value="1" selected>1</option>
+                  name="cuotames" disabled>
+                    <option value="0">Total</option>
+                    <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -101,7 +380,7 @@
                     <input type="text" #cuotaanio="ngModel" [(ngModel)]="cuota.cuotaanio"
                       name="cuotaanio" class="form-control" autocomplete="off"
                       maxlength="4" minlength="4" numbers-only
-                      type="text" required autofocus/>
+                      type="text" required disabled/>
                     <p *ngIf="cuotaanio.touched && !cuotaanio.valid"
                       class="alert alert-danger p-1" role="alert">
                       El año de cuota es obligatorio
@@ -112,7 +391,7 @@
                   <input type="number" #importe="ngModel" [(ngModel)]="cuota.importe"
                     name="importe" class="form-control" autocomplete="off"
                     maxlength="10" minlength="1" numbers-only
-                     required autofocus/>
+                     required disabled/>
                   <p *ngIf="importe.touched && !importe.valid"
                     class="alert alert-danger p-1" role="alert">
                     El importe de cuota es obligatorio
@@ -209,7 +488,7 @@
         </div>
 
 
-
+<!--
       <div *ngIf=listado class="container">
 
         <h5>Formas de Pago</h5>
@@ -223,6 +502,6 @@
           <img src="./assets/imagenes/transferencia.png" style="height: 75px;">
 
         </button>
-      </div>
+      </div>-->
     <app-loader *ngIf="bloquear"></app-loader>
   </div>

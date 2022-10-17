@@ -42,6 +42,9 @@ export class ServicioService {
    tablaxDivxTor(op, divi, tor, zona) {
     return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona);
    }
+   clasificaEspecialxDivxTorxZona(op, divi, tor, zona) {
+    return this.http.get<any[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona);
+   }
    historialxJug(op, jug) {
     return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&licencia=' + jug);
    }
@@ -74,8 +77,8 @@ export class ServicioService {
    jugadorxDni(op, dni) {
     return this.http.get<Jugador[]>(this.xurl + '/appfsp.php?opcion=' + op + '&licencia=' + dni);
    }
-   jugadorCuotasxDni(op, dni) {
-    return this.http.get<Jugador[]>(this.xurl + '/appfsp.php?opcion=' + op + '&dni=' + dni);
+   jugadorCuotasxDni(op, dni, anio) {
+    return this.http.get<Jugador[]>(this.xurl + '/appfsp.php?opcion=' + op + '&dni=' + dni + '&anio=' + anio);
    }
    InsertaCuotaPaga(op, cuota: Cuotas): Observable<any> {
     const headers = { 'content-type': 'application/json'}

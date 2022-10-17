@@ -26,6 +26,14 @@
     </div>
 
   </div>
+</div>
+<div class="container-fluid" *ngIf="clasifica_especial">
+  <div class="alert alert-primary" role="alert">
+    <h3><i class="fa fa-info fa-3x float-right text-info"></i>{{this.tituloClasificaEspecial}}</h3>
+
+    <div innerHTML="{{this.resumenClasificaEspecial}}"></div>
+  </div>
+</div>
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
     <thead class="thead bg-primary text-white">
@@ -59,7 +67,8 @@
           <td  class="text-center d-none d-lg-table-cell">{{t.GA}}</td>
         </tr>
     </tbody>
-</table>
+  </table>
+</div>
 <h5>Resultados fecha: {{this.idFecha}}</h5>
 
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -68,47 +77,85 @@
         *ngFor='let in of counter(idFecha);let i = index; '
         type="button"
         class="btn btn-dark"
-        (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'A', i + 1);">Fecha {{i + 1}}</button>
+        (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, this.idZona, i + 1);">Fecha {{i + 1}}</button>
     </div>
   </div>
 
-<app-partidoslist *ngIf="buscando"
-  [idCamp]= "this.idCampeonato"
-  [nCamp]="this.nomCampeonato"
-  [idDiv]="this.idDivision"
-  [idFec]="this.idFecha"
-  [idZon]="this.idZona"
-  [idBol]="3"
-  [idIns]= 0 >
-</app-partidoslist>
 
-Cuartos de Final
-<app-partidoslist *ngIf="buscando"
-  [idCamp]= "this.idCampeonato"
-  [nCamp]="this.nomCampeonato"
-  [idDiv]="this.idDivision"
-  [idFec]="this.idFecha"
-  [idZon]="this.idZona"
-  [idBol]="3"
-  [idIns]= 2 >
-</app-partidoslist>
-Semi Final
-<app-partidoslist *ngIf="buscando"
-  [idCamp]= "this.idCampeonato"
-  [nCamp]="this.nomCampeonato"
-  [idDiv]="this.idDivision"
-  [idFec]="this.idFecha"
-  [idZon]="this.idZona"
-  [idBol]="3"
-  [idIns]= 4 >
-</app-partidoslist>
-Final
-<app-partidoslist *ngIf="buscando"
-  [idCamp]= "this.idCampeonato"
-  [nCamp]="this.nomCampeonato"
-  [idDiv]="this.idDivision"
-  [idFec]="this.idFecha"
-  [idZon]="this.idZona"
-  [idBol]="3"
-  [idIns]= 6 >
-</app-partidoslist>
+<div class="container-fluid p-2">
+
+  <b>Fase clasificatoria</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 0 >
+  </app-partidoslist>
+
+  <b>Cuartos de Final</b>
+    <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 2 >
+  </app-partidoslist>
+
+  <b>Semis 5 al 8</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 3 >
+  </app-partidoslist>
+
+  <b>Semifinal del 1 al 4</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 4 >
+  </app-partidoslist>
+
+  <b>Semi Final</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 5 >
+  </app-partidoslist>
+  <b>Final</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 6 >
+  </app-partidoslist>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 7 >
+  </app-partidoslist>
+
+</div>

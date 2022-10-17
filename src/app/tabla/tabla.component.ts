@@ -9,6 +9,9 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 })
 export class TablaComponent implements AfterViewInit {
   detalleTabla;
+  detalleClasificaEspecial;
+  tituloClasificaEspecial;
+  resumenClasificaEspecial;
   zona = '';
   @Input() idCampeonato;
   @Input() idDivision;
@@ -16,6 +19,7 @@ export class TablaComponent implements AfterViewInit {
   @Input() idFecha;
   @Input() idInst;
   buscando: boolean;
+  clasifica_especial = true;
   nomCampeonato;
   divCampeonato;
   fechas = []
@@ -32,6 +36,7 @@ export class TablaComponent implements AfterViewInit {
     this.idInst = this._route.snapshot.params.idInst;
     //this.fechas = Array(this.idFecha)
     this.cargaTabla(3, this.idCampeonato, this.idDivision, this.idZona);
+    this.cargaClasiEspecial(3, this.idCampeonato, this.idDivision, this.idZona);
     this._http.partidosxMaxFecha(84, this.idDivision, this.idCampeonato,  this.idZona).subscribe(data => {
       if (!this.idFecha){
         this.idFecha = data[0]['Max'];
@@ -83,6 +88,20 @@ export class TablaComponent implements AfterViewInit {
         //this.idFecha = data[0].Fecha;
         // alert (this.nomCampeonato);
       }
+    });
+  }
+  public cargaClasiEspecial(op: number,  tor: number, div: number, zona: string) {
+    this.detalleClasificaEspecial = [];
+    this.clasifica_especial = false;
+    var _this = this;
+    this._http.clasificaEspecialxDivxTorxZona(31, div, tor, zona).subscribe(data => {
+      _this.clasifica_especial = data[0].habilitado;
+      this.detalleClasificaEspecial = data;
+      _this.tituloClasificaEspecial = data[0].titulo;
+      _this.resumenClasificaEspecial = data[0].resumen;
+      //console.log(data[0].titulo);
+
+
     });
   }
   public cargaUrl(op: number, ruta: string,  tor: number, div: number, zona: string, fec: number) {

@@ -21,6 +21,7 @@ import { PartidoeventosComponent } from './partidoeventos/partidoeventos.compone
 import { CuotasformComponent } from './cuotasform/cuotasform.component';
 import { HistorialComponent } from './historial/historial.component';
 import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
+import { DescargasComponent } from './descargas/descargas.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -41,6 +42,8 @@ const appRoutes: Routes = [
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'cuotas', component: CuotasformComponent },
+  { path: 'descargas', component: DescargasComponent},
+  { path: 'descargas/:lnk', component: DescargasComponent},
   { path: '**', component: PaginaComponent }
 ];
 
