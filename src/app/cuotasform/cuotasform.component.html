@@ -1,34 +1,40 @@
 <div class="container-fluid text-center col-12 col-md-6 col-lg-6">
   <form>
-    <div class="form-row">
-      <div class="form-group col-12">
-       <!-- <img class="mb-4" src="../../assets/logochico.png" alt="" width="72" height="72">-->
-        <h5 class=" p-2 m-0"> {{titulo}}</h5>
-      </div>
+    <div class="text-center">
+      <h5 class=" p-2 m-0 text-center text-primary"> {{titulo}}</h5>
+      <br>
+      <h6>&nbsp;</h6>
     </div>
-    <div class="form-row ">
-      <p>Ingrese DNI con puntos</p>
-    </div>
+
     <div class="form-row ">
 
-      <div class="form-group col-8">
+      <div class="form-group col-12  border border-success rounded bg-white p-2">
+        <!-- <img class="mb-4" src="../../assets/logochico.png" alt="" width="72" height="72">-->
 
-          <input type="text" #documento="ngModel" [(ngModel)]="jugador.documento"
+         <h4>Ahora debes informar al Whatsapp oficial de la FSP</h4>
+         <a  class="btn btn-success" href="https://wa.me/+5492645851237?text=AvisoPago" target="_blank"><i class="fa fa-whatsapp"></i> Enviá +54 9264 585-1237</a>
+       </div>
+      <!-- <div class="form-group col-7 pl-4">
+        <h4>Para pagar Ingrese DNI con puntos</h4>
+          <div class="row">
+            <div class="col-7">
+              <input type="text" #documento="ngModel" [(ngModel)]="jugador.documento"
             name="documento" class="form-control" autocomplete="off"
             maxlength="12" minlength="0" placeholder="ingrese D.N.I"
             type="text" required autofocus/>
-          <p *ngIf="documento.touched && !documento.valid"
-            class="alert alert-danger p-1" role="alert">
-            El dni es obligatorio
-          </p>
-        </div>
-        <div class="form-group col-4">
+            <p *ngIf="documento.touched && !documento.valid"
+              class="alert alert-danger p-1" role="alert">
+              El dni es obligatorio
+            </p>
+            </div>
+            <div class="col-4">
+              <a (click)="ngJugadorBuscar();"  class="btn btn-success">
+                Buscar <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div> -->
 
-          <a (click)="ngJugadorBuscar();"  class="btn btn-success">
-            Buscar <i class="fa fa-search" aria-hidden="true"></i>
-          </a>
-
-        </div>
         <div>
           <br>
           <p *ngIf="status" class="alert alert-success">

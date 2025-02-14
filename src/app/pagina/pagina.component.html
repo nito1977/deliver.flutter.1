@@ -2,17 +2,27 @@
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Novedades</strong> FSP</h3></div>
 </div>
 -->
-<app-amsnoticias></app-amsnoticias>
-<app-amsbotonesutiles></app-amsbotonesutiles>
-<app-amscardcarrousel></app-amscardcarrousel>
-<!-- <app-amsclubesslider></app-amsclubesslider>-->
+
+  <div class="bgfondo container-fluid h-100 text-center d-flex justify-content-center align-self-center">
+    <div class="row justify-content-center align-self-center">
+      <img class="logofondo" src="./assets/logo.png" alt="FSP">
+      <h2 class="text-white p-2 pt-4">Federación Sanjuanina de Patín</h2>
+    </div>
+  </div>
+
+
+  <app-amscampstats [idDivision]="'primera'"></app-amscampstats>
+  <app-amscampstats [idDivision]="'damas'"></app-amscampstats>
+
 <div class="container">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Estadísticas</strong> FSP</h3></div>
 
   <div class="row p-3">
 
     <!-- menu partidos-->
+
     <div id="tablasposicion" class="col-12 col-md-6">
+
       <app-campeonatos></app-campeonatos>
 
 <!--
@@ -40,33 +50,50 @@
 
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 pr-2">
-        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Damas</h3></div>
-        <app-amsgalerias [idGaleria]="86"></app-amsgalerias>
-      </div>
-      <div class="col-12 col-md-6 pl-2">
-        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Varones</h3></div>
-        <app-amsgalerias [idGaleria]="85"></app-amsgalerias>
-      </div>
-    </div>
 
-  </div>
-  <div class="container">
-    <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
-  </div>
 
-  <app-amsmaps [mapaurl]="paginaMapaClubes"></app-amsmaps>
-
-  <div class="container">
-    <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Ubicación</strong> FSP</h3></div>
-  </div>
-  <app-amsmaps [mapaurl]="paginaMapaUbicacion"></app-amsmaps>
 
 
 </div>
+<div class="container-fluid">
+  <app-amsbotonesutiles></app-amsbotonesutiles>
+</div>
+<div class="container" *ngIf="!isApp">
+  <app-amsnoticias></app-amsnoticias>
+</div>
+<div class="container" *ngIf="!isApp">
+  <div class="row">
+    <div class="col-12 col-md-6 pr-2">
+      <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Damas</h3></div>
+      <app-amsgalerias [idGaleria]="86"></app-amsgalerias>
+    </div>
+    <div class="col-12 col-md-6 pl-2">
+      <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Varones</h3></div>
+      <app-amsgalerias [idGaleria]="85"></app-amsgalerias>
+    </div>
+  </div>
 
+</div>
+<div class="container" *ngIf="!isApp">
+  <app-amscardcarrousel></app-amscardcarrousel>
+</div>
+<!--<h3>descargas</h3>
+<div class="contenedor-iframe" style="height: '{{this.contenedorIframeElement}}';" >
+  <iframe #iframeElement [src]="frameurl()" ></iframe>
+</div> -->
+<!-- <app-amsclubesslider></app-amsclubesslider>-->
+<div class="container">
+  <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
+</div>
+<div class="container-fluid">
+  <app-amsmaps [mapaurl]="paginaMapaClubes"></app-amsmaps>
+</div>
+<div class="container">
+    <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Ubicación</strong> FSP</h3></div>
+</div>
+<div class="container-fluid">
+  <app-amsmaps [mapaurl]="paginaMapaUbicacion"></app-amsmaps>
+</div>
 <div class="container">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Contacto</strong> FSP</h3></div>
 </div>
@@ -76,8 +103,9 @@
       <div class="col">
         <ul class="list-group">
           <li class="list-group-item">Dirección: <strong>Maipú 40 Este San Juan</strong></li>
-          <li class="list-group-item">teléfono: <strong>+54 9 264 672-4853</strong></li>
-          <li class="list-group-item">teléfono: <strong>+54 9 264 562-7867</strong></li>
+          <!-- <li class="list-group-item">teléfono: <strong>+54 9 264 672-4853</strong></li>
+          <li class="list-group-item">teléfono: <strong>+54 9 264 562-7867</strong></li> -->
+          <li class="list-group-item">teléfono: <strong>+54 9 2645 851 237</strong></li>
           <li class="list-group-item">email: <strong>gerencia@fspatin.com</strong></li>
           <li class="list-group-item">email Prensa: <strong>prensa@fspatin.com</strong></li>
         </ul>

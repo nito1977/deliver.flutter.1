@@ -50,7 +50,8 @@ import { AmsbotonesutilesComponent } from './amsbotonesutiles/amsbotonesutiles.c
 import { HistorialComponent } from './historial/historial.component';
 import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
 import { DescargasComponent } from './descargas/descargas.component';
-
+import { AmscampstatsComponent } from './amscampstats/amscampstats.component';
+import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetallecompacto.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { DescargasComponent } from './descargas/descargas.component';
     TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
     AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent, AmsbotonesutilesComponent,
     CuotasformComponent,HistorialComponent, AmsgaleriasComponent,
-    DescargasComponent
+    DescargasComponent, AmscampstatsComponent, TabladetalleCompactoComponent
 
   ],
   imports: [

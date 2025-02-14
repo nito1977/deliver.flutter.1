@@ -1,0 +1,86 @@
+<div class="container-fluid pl-0 pr-1 border-bottom">
+
+  <div class="row pl-2 pr-1">
+      <div class="col-xl-4 col-lg-6 col-12 {{this.idDivision}} shadow">
+        <div class="mr-auto p-0 pt-1 bd-highlight"><h3 class="text-light" ><strong class="text-primary">{{this.tit1}} </strong> {{this.tit2}}</h3></div>
+        <!--p class="text-light">Consultar la sección boletines para más Información</p-->
+        <div *ngFor="let t of detalleTabla" class="card  shadow p-0 mb-1">
+          <div class="media d-flex p-0">
+            <div class="bg-primary pl-1 pr-1 rounded">
+              <h6 class="info text-dark text-center m-0">{{t.fechapartido}}</h6>
+              <h6 class="text-light">{{t.nomCategoria}}</h6>
+            </div>
+            <div  class="media-body text-left pl-1 colcancha">
+                <h6 class="info text-dark m-0">CANCHA</h6>
+                <h6 class="text-info m-0 pt-1">{{t.Nomloc}}</h6>
+            </div>
+            <div class="media-body text-left pl-1 colresults">
+              <div class="info text-dark m-0">
+                <div class="row" >
+                  <div class="col">
+                    <img class="logoclub mr-1" src='./assets/logos/clubes/{{t.l}}.jpg' />
+                    <span class="resultadosInfo">{{t.loc}}</span>
+                  </div>
+                  <div class="col"><strong class="numberscore">{{t.TantosLoc}}</strong></div>
+                </div>
+
+              </div>
+              <div class="text-dark m-0">
+                <div class="row" >
+                  <div class="col">
+                    <img class="logoclub mr-1" src='./assets/logos/clubes/{{t.v}}.jpg' />
+                    <span class="resultadosInfo">{{t.visitante}}</span>
+                  </div>
+                  <div class="col"><strong class="numberscore">{{t.TantosVis}}</strong></div>
+                </div>
+
+              </div>
+
+              <!-- <tr >
+                <td class="mr-0 pr-0">{{nomCampeonato}}</td>
+
+
+                <td class="mr-0 pr-0 pl-0 ml-0"></td>
+                <td class="pl-0 ml-0">
+                  <a type='button' value='Ver' routerLink="/partido/{{t.id}}"
+                    >
+                    <i class="fa fa-angle-right pr-2 pl-2" aria-hidden="true"></i>
+                  </a>
+                </td>
+
+            </tr> -->
+            </div>
+            <div class="media-body btnresults">
+
+              <div  class="media-body text-center pl-1 bg-secondary rounded m-0">
+                <a type='button' value='Ver' routerLink="/partido/{{t.idpartido}}">
+                  <span class="text-white">Ver</span> <i class="fa fa-angle-right pr-2 pl-2 text-white" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row p-2 justify-content-center">
+          <p class="text-light pt-2">Consultar la sección boletines para + Info &nbsp;</p>
+          <!-- <a class="btn btn-primary self-align-right" href="https://fspatin.com/#/descargas/">Ver boletines</a> -->
+        </div>
+
+      </div>
+      <div class="col-xl-4 col-lg-6 col-12 bg-white ">
+        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 class="text-dark" ><strong class="text-primary">Campeonatos</strong> Activos</h3></div>
+        <div class="card border-white rounded">
+          <!-- <app-partidoslist  [idCamp]= "158" [nCamp]="161" [idDiv]="13" [idFec]="10" [idZon]="'A'" [idBol]="0" [idIns]="0" ></app-partidoslist> -->
+          <app-tabladetallecompacto *ngIf="buscandoActivos"  [idCampeonato]="this.idCamp1" [idDivision]="this.idDiv1" ></app-tabladetallecompacto>
+          <!-- <app-tabladetalle *ngIf="buscando" [idCampeonato]="t.Campeonato" [idDivision]="t.categoria" [idZona]="t.Zona"></app-tabladetalle> -->
+        </div>
+          <!-- <app-partidoslist  [idCamp]= "item.id" [nCamp]="item.nombre" [idDiv]="item.divi" [idFec]="item.Fecha" [idZon]="item.zona" [idBol]="item.boletin" [idIns]="item.instancia" ></app-partidoslist> -->
+      </div>
+      <div class="col-xl-4 col-lg-6 col-12 bg-white">
+        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 class="text-light" >&nbsp;<strong class="text-primary">&nbsp;</strong> </h3></div>
+
+        <div class="card border-white rounded">
+          <app-tabladetallecompacto *ngIf="buscandoActivos" [idCampeonato]="this.idCamp2" [idDivision]="this.idDiv2" ></app-tabladetallecompacto>
+        </div>
+      </div>
+
+</div>

@@ -3,11 +3,11 @@ import { ServicioService } from '../servicios/servicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tabladetalle',
-  templateUrl: './tabladetalle.component.html',
-  styleUrls: ['./tabladetalle.component.css']
+  selector: 'app-tabladetallecompacto',
+  templateUrl: './tabladetallecompacto.component.html',
+  styleUrls: ['./tabladetallecompacto.component.css']
 })
-export class TabladetalleComponent implements OnInit {
+export class TabladetalleCompactoComponent implements OnInit {
   detalleTabla;
   zona = '';
   @Input() idCampeonato;
@@ -28,7 +28,7 @@ export class TabladetalleComponent implements OnInit {
     // this._route.snapshot.params.idzona = zona;
     this.buscando = false;
     this.detalleTabla = [];
-    this._http.tablaxDivxTor(op, div, tor, zona, 0).subscribe(data => {
+    this._http.tablaxDivxTor(op, div, tor, zona, 10).subscribe(data => {
       this.detalleTabla = data;
       this.buscando = true;
       if (data.length <= 0) {

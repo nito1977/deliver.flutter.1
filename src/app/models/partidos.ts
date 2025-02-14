@@ -1,4 +1,5 @@
 export class Partidos {
+  Nombre: any;
   constructor(
     public visitante: string,
     public loc: string,
@@ -19,7 +20,8 @@ export class Partidos {
     public Nomloc: string,
     public boletin: number,
     public estado: number,
-    public nomCampeonato: string
+    public nomCampeonato: string,
+    public nomCategoria: string
   ) { }
 
 }

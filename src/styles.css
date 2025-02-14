@@ -2,6 +2,9 @@
 body{
   background: "#ffffff" !important;
 }
+.container-fluid.p-2.bg-dark {
+  background-color: #051327!important;
+}
 .btn-info {
   background-color: #0062cc!important;
   border-color: #17a2b8;
@@ -9,19 +12,31 @@ body{
 .navbar{
   z-index: 1001;
 }
+nav.navbar.navbar-dark.bg-dark {
+  background: #1a3150!important;
+}
 nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.bd-navbar {
-  background: #0a1159!important;
+  background: #1a3150!important;
   z-index: 1000;
   box-shadow: 0px 1px 7px 7px rgb(122 158 169 / 50%);
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.86)!important;
-  
+  background-color: #1a3150;
+
 }
 .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
   color: #fff;
   font-weight: 600;
-  
+  background-color: #1a3150;
+
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.bd-navbar {
+  border-bottom: 0.18rem solid #1a3150 !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #051327!important;
+  font-weight: 500!important;
 }
 .form-signin{
   width: 100%;
@@ -65,7 +80,7 @@ a:hover {
   color: white!important;
 }
 .colorFondoLogin {
-  background: #0a1159!important;
+  background: #1a3150!important;
 }
 .colorInputLogin {
   background: gray!important;

@@ -22,6 +22,7 @@ import { CuotasformComponent } from './cuotasform/cuotasform.component';
 import { HistorialComponent } from './historial/historial.component';
 import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
 import { DescargasComponent } from './descargas/descargas.component';
+import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetallecompacto.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'historial/:idJugador', component: HistorialComponent},
   { path: 'partidodet/:idPartido', component: PartidodetalleComponent},
   { path: 'tabladet', component: TabladetalleComponent},
+  { path: 'tabladetcom', component: TabladetalleCompactoComponent},
   { path: 'boletines/', component: BoletinComponent},
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
   { path: 'login', component: LoginComponent },

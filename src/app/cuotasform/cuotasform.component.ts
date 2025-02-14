@@ -25,7 +25,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./cuotasform.component.css']
 })
 export class CuotasformComponent implements OnInit {
-  public anioAtual = 2022;
+  public anioAtual = 2024;
   public mesElegido = 0;
   public titulo = 'Aviso de Pago de Licencia';
   public user: Usuarios;
@@ -57,13 +57,13 @@ export class CuotasformComponent implements OnInit {
   cuotasFormG: FormGroup;
   cuotasForm: FormGroup;
   URL = "https://fspatin.com/paginas/cuotas/";
-  c1 = '1000';
-  c2 = '1000';
-  c3 = '1000';
-  c4 = '1000';
-  c5 = '1000';
-  c6 = '1000';
-  ct = '6000';
+  c1 = '10000';
+  c2 = '10000';
+  c3 = '10000';
+  c4 = '10000';
+  c5 = '10000';
+  c6 = '10000';
+  ct = '60000';
   ac1 = [];
   ac2 = [];
   ac3 = [];
@@ -71,12 +71,12 @@ export class CuotasformComponent implements OnInit {
   ac5 = [];
   ac6 = [];
   ac0 = []; //total
-  vc1 = '25/4/2022';
-  vc2 = '15/5/2022';
-  vc3 = '15/6/2022';
-  vc4 = '15/7/2022';
-  vc5 = '15/8/2022';
-  vc6 = '15/9/2022';
+  vc1 = '25/4/2024';
+  vc2 = '15/5/2024';
+  vc3 = '15/6/2024';
+  vc4 = '15/7/2024';
+  vc5 = '15/8/2024';
+  vc6 = '15/9/2024';
   debug = false;
   jugadorEncontrado: boolean;
   constructor(

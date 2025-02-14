@@ -3,3 +3,18 @@
     height: 0.5rem;
 
 }
+h3.info.text-dark {
+  font-size: 1.1rem;
+}
+h3.warning.text-dark {
+  font-size: 1.1rem;
+}
+h3.success.text-dark {
+  font-size: 1.1rem;
+}
+h3.danger.text-dark {
+  font-size: 1.1rem;
+}
+.fa-3x {
+  font-size: 2em;
+}

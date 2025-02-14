@@ -30,8 +30,11 @@
 <div class="container-fluid" *ngIf="clasifica_especial">
   <div class="alert alert-primary" role="alert">
     <h3><i class="fa fa-info fa-3x float-right text-info"></i>{{this.tituloClasificaEspecial}}</h3>
-
+    <div>
+      <h5><i class="fa fa-download fa-1x text-warning"></i><a href="http://fspatin.com/#/descargas/resoluciones" target="_blank" > Conocé el Reglamento F.S.P</a></h5>
+    </div>
     <div innerHTML="{{this.resumenClasificaEspecial}}"></div>
+
   </div>
 </div>
 <div class="table-responsive">

@@ -77,7 +77,7 @@ export class TablaComponent implements AfterViewInit {
     // this._route.snapshot.params.idzona = zona;
     this.buscando = false;
     this.detalleTabla = [];
-    this._http.tablaxDivxTor(op, div, tor, zona).subscribe(data => {
+    this._http.tablaxDivxTor(op, div, tor, zona, 0).subscribe(data => {
       this.detalleTabla = data;
       this.buscando = true;
       if (data.length <= 0) {

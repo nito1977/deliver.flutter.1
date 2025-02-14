@@ -39,8 +39,8 @@ export class ServicioService {
     return this.http.get<Campeonatos[]>(this.xurl + '/appfsp.php?opcion=1&div=13&anio=' + this.anio);
    }
 
-   tablaxDivxTor(op, divi, tor, zona) {
-    return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona);
+   tablaxDivxTor(op, divi, tor, zona, lim) {
+    return this.http.get<Tabla[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona + '&limit=' + lim);
    }
    clasificaEspecialxDivxTorxZona(op, divi, tor, zona) {
     return this.http.get<any[]>(this.xurl + '/appfsp.php?opcion=' + op + '&div=' + divi + '&tor=' + tor + '&zona=' + zona);
@@ -63,6 +63,9 @@ export class ServicioService {
    partido(op, partido) {
     // tslint:disable-next-line:max-line-length
     return this.http.get<Partidos[]>(this.xurl + '/appfsp.php?opcion=' + op + '&partido=' + partido)  ;
+   }
+   campeonatosActivosxDiv(op) {
+    return this.http.get<any[]>(this.xurl + '/appfsp.php?opcion=' + op);
    }
    boletinesxAnioxNumero(op, anio, nro) {
     return this.http.get<Campeonatos[]>(this.xurl + '/appfsp.php?opcion=' + op + '&getboletin=' + nro + '&getanio=' + anio);

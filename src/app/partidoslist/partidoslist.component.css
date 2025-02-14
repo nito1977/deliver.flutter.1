@@ -37,3 +37,11 @@ i.fa{
     padding-right: 2px!important;
 }
 }
+
+.table-info{
+  background-color: #007bff!important;
+}
+.table-info, .table-info>td, .table-info>th {
+  background-color: #007bff;
+  color: white;
+}

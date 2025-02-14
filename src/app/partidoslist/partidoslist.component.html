@@ -6,6 +6,7 @@
   Instancia: {{idIns}}
   boletin: {{idBol}}
 <p-->
+
 <app-loader *ngIf="!buscando"></app-loader>
 <div class="table-responsive">
   <table class="table">
@@ -24,7 +25,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let t of detalleTabla">
-            <td class="mr-0 pr-0">{{t.fechapartido}}</td>
+            <td class="mr-0 pr-0">{{t.fechapartido}} {{nomCampeonato}}</td>
             <td class="mr-0 pr-0 pl-0 ml-0"><img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.jpg'/></td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.loc}}</td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">

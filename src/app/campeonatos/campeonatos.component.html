@@ -1,10 +1,13 @@
 
       <nav class="nav nav-pills flex-column flex-sm-row">
-        <div class="btn-group btn-block mb-2" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="btn-group btn-block mb-2 p-4" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-2 p-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Estadísticas Año {{anioSel}}
           </button>
           <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
+            <a class="dropdown-item " (click)="cargaAnio(2024);">2024</a>
+            <a class="dropdown-item " (click)="cargaAnio(2023);">2023</a>
+            <a class="dropdown-item " (click)="cargaAnio(2022);">2022</a>
             <a class="dropdown-item " (click)="cargaAnio(2021);">2021</a>
             <a class="dropdown-item " (click)="cargaAnio(2020);">2020</a>
             <a class="dropdown-item " (click)="cargaAnio(2019);">2019</a>
@@ -22,7 +25,7 @@
         </div>
       </nav>
 
-      <div class="accordion" id="accordion">
+      <div class="accordion m-2" id="accordion">
           <div class="card bg-varones p-0 m-0">
             <div class="card-header m-0 p-1" id="headingVaron">
               <button class="btn btn-link collapsed text-dark"
@@ -138,8 +141,11 @@
                 data-parent="#accordion">
                 <div class="card-body p-1 ">
                   <div class="row  pl-3 pr-3" role="group" aria-label="Basic example">
+                    <button (click)="cargaTorneos(1, false, 22, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Infantil</button>
                     <button (click)="cargaTorneos(1, false, 14, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
+                    <button (click)="cargaTorneos(1, false, 23, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cadete</button>
                     <button (click)="cargaTorneos(1, false, 15, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
+                    <button (click)="cargaTorneos(1, false, 24, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juvenil</button>
                     <button (click)="cargaTorneos(1, false, 16, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
                     <button (click)="cargaTorneos(1, false, 17, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
 
