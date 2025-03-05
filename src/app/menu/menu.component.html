@@ -1,0 +1,55 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">Fixed top</a>
+</nav>
+<nav *ngIf="logueado" class="navbar navbar-expand-md {{tipoNav}} {{colorBarra}} border-bottom shadow">
+    <a class="navbar-brand {{colorLetraBarra}}" routerLink="/">
+      <img src="./assets/{{logo}}" width="30" height="30" class="d-inline-block align-top " alt="">
+      {{title}}
+    </a>
+    <button class="navbar-toggler float-left" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars text-white" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngFor="let sec of detalleMenu">
+                <a class="nav-link colorLetraBarra" [routerLink]="sec.path" routerLinkActive="active">{{sec.nombre}}</a>
+            </li>
+        </ul>
+
+        <!--form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="buscar" placeholder="buscar" aria-label="buscar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">buscar</button>
+        </form-->
+    </div>
+
+  </nav>
+  <app-amsnoticias></app-amsnoticias>
+  <div class="container d-block d-sm-none">
+    <div class="accordion" id="accordion">
+      <div class="card {{colorMenu}} p-0 m-0">
+        <div *ngFor="let sec of detalleMenu" class="card-header p-1" id="heading">
+
+          <button class="btn btn-link collapsed {{colorFuenteMenu}}"
+            type="button" data-toggle="collapse"
+            data-target="#collapseVarones" aria-expanded="true"
+            aria-controls="collapseVarones" [routerLink]="sec.path">
+            <h5 class="">
+              <i id="iconVarones" class="{{sec.foto}} {{colorIconoMenu}} {{colorFondoIconoMenu}} {{paddingFondoIconoMenu}} badge-pill"></i>
+              {{sec.nombre}}
+            </h5>
+          </button>
+        </div>
+        <div id="collapseVarones" class="collapse"
+          aria-labelledby="headingVaron" data-parent="#accordion">
+
+          <div class="card-body">
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

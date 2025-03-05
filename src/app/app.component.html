@@ -1,0 +1,40 @@
+<!-- <nav class="navbar navbar-dark bg-dark">
+
+</nav> -->
+<div class="container-fluid bg-dark text-white text-center">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">FSP</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link active" routerLink="/">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Institución</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/cuotas">Avisos de Pago</a></li>
+              <li class="nav-item dropdown">
+                  <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs. Utiles
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+                  <a class="dropdown-item " routerLink="/descargas/actas/" target="_blank">Actas</a>
+                  <a class="dropdown-item " routerLink="/descargas/resoluciones/" target="_blank">Resoluciones</a>
+                  <a class="dropdown-item " routerLink="/descargas/documentos-utiles/" target="_blank">Docs. Útiles</a>
+                  <a class="dropdown-item " routerLink="/descargas/comunicados/" target="_blank">Comunicados</a>
+                  <a class="dropdown-item " routerLink="/descargas/boletines/" target="_blank">Boletines anteriores</a>
+                  <a class="dropdown-item " routerLink="/descargas/Tablas%20Finales" target="_blank">Tablas Finales</a>
+                  <a class="dropdown-item" href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank">Estatuto</a>
+                </div>
+              </li>
+              <li class="nav-item"><a class="nav-link btn btn-primary" routerLink="/campeonatos">Estadísticas</a></li>
+          </ul>
+      </div>
+  </nav>
+
+
+
+
+</div>
+<div class="container-fluid {{colorFondo}}">
+<router-outlet></router-outlet>
+</div>

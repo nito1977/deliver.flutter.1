@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <!--<h2>Noticias</h2>-->
+  <div class="card mb-3">
+    <img *ngIf="noticia.foto1" [src]="noticia.foto1" class="card-img-top" alt="Imagen de la noticia">
+    <div class="card-body">
+      <h5 class="card-title">{{ noticia.titulo }}</h5>
+      <p class="card-text"><strong>Autor:</strong> {{ noticia.autor }}</p>
+      <p class="card-text"><strong>Categoría:</strong> {{ noticia.categoria_nombre }}</p>
+      <p class="card-text"><strong>Publicado el:</strong> {{ noticia.published | date:'short' }}</p>
+      <p class="card-text">{{ noticia.resumen }}</p>
+      <p class="card-text">{{ noticia.articulo }}</p>
+    </div>
+  </div>
+</div>
+

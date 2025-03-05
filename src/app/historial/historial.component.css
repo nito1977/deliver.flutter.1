@@ -1,0 +1,15 @@
+body,html {
+  height: 100%;
+}
+.container-fluid {
+  height: 450px!important;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.card {
+  /* border-color: #007bff!important; */
+  border-bottom: 0.4rem solid!important;
+  border-bottom-color: #071c77!important;
+}

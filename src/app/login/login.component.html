@@ -1,0 +1,47 @@
+<div class=" text-center">
+  <div class="alert alert-danger" role="alert" *ngIf="estatus">
+    {{tituloEstatus}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+    <form #loguinForm="ngForm" (ngSubmit)="ngSubmit();"
+      class="form-signin colorFondoLogin colorLetraLogin">
+      <img class="mb-4" src="../../assets/logoams.png" alt="" width="72" height="72">
+      <h5 class="colorFondoLogin colorLetraLogin p-2 m-0"> {{titulo}}</h5>
+      <div>
+        <label>Login</label>
+        <input type="text" #nombre="ngModel" [(ngModel)]="user.nombre"
+          name="nombre" class="form-control" autocomplete="off"
+          maxlength="11" minlength="0" numbers-only
+          type="text" required autofocus/>
+        <p *ngIf="nombre.touched && !nombre.valid"
+          class="alert alert-danger p-1" role="alert">
+          El login es obligatorio
+        </p>
+      </div>
+      <div>
+        <label>Contraseña</label>
+        <input type="password" #clave="ngModel"
+          [(ngModel)]="user.clave" name="clave"
+          class="form-control" required/>
+        <p *ngIf="clave.touched && !clave.valid"
+          class="alert alert-danger p-1" role="alert">
+          El password es obligatorio
+        </p>
+      </div>
+      <br>
+      <input type="submit" value="Acceder" class="btn btn-success"
+        [disabled]="!loguinForm.form.valid" />
+      <br>
+      <p *ngIf="status" class="alert alert-success">
+        <label>{{mesagge}}</label>
+      </p>
+      <br>
+      <p *ngIf="!status && status != null" class="alert alert-danger">
+        <label>{{mesagge}}</label>
+      </p>
+    </form>
+  <app-loader *ngIf="bloquear"></app-loader>
+</div>

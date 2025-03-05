@@ -1,0 +1,164 @@
+<app-loader *ngIf="!buscando"></app-loader>
+<div class="table responsive-sm">
+  <h5 class="text-uppercase p-1 m-0 bg-light">{{nomCampeonato}}</h5>
+  <h6 class="text-uppercase p-1 m-0 bg-light">Div: <b>{{divCampeonato}}</b> Zona: <b>{{idZona}}</b></h6>
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group btn-group-sm pr-1 pb-1" role="group" aria-label="First group">
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'A', undefined);">ZONA A</button>
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'B', undefined);">ZONA B</button>
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'C', undefined);">ZONA C</button>
+      <button type="button" class="btn btn-dark" (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, 'D', undefined);">ZONA D</button>
+   </div>
+
+    <div class="btn-group btn-group-sm pb-1" role="group" aria-label="Second group">
+      <button type="button" class="btn btn-success" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '1', undefined);">
+        Goleadores
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '2', undefined);">
+        Am
+      </button>
+      <button type="button" class="btn btn-info"    (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '3', undefined);">
+        Az
+      </button>
+      <button type="button" class="btn btn-danger"  (click)="cargaUrl(12, 'partidosevento', this.idCampeonato, this.idDivision, '4', undefined);">
+        Ro
+      </button>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid" *ngIf="clasifica_especial">
+  <div class="alert alert-primary" role="alert">
+    <h3><i class="fa fa-info fa-3x float-right text-info"></i>{{this.tituloClasificaEspecial}}</h3>
+    <div>
+      <h5><i class="fa fa-download fa-1x text-warning"></i><a href="http://fspatin.com/#/descargas/resoluciones" target="_blank" > Conocé el Reglamento F.S.P</a></h5>
+    </div>
+    <div innerHTML="{{this.resumenClasificaEspecial}}"></div>
+
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="thead bg-primary text-white">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Club</th>
+        <th scope="col" class="text-center">Pts</th>
+        <th scope="col" class="text-center">PJ</th>
+        <th scope="col" class="text-center">PG</th>
+        <th scope="col" class="text-center">PP</th>
+        <th scope="col" class="text-center">PE</th>
+        <th scope="col" class="text-center d-none d-lg-table-cell">GF</th>
+        <th scope="col" class="text-center d-none d-lg-table-cell">GC</th>
+        <th scope="col" class="text-center d-none d-lg-table-cell">DG</th>
+        <th scope="col" class="text-center d-none d-lg-table-cell">GA</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let t of detalleTabla">
+          <td><img class="logoclub" src="./assets/logos/clubes/{{t.idclub}}.jpg" /></td>
+          <th scope="row" class="text-left">{{t.Nombreclub}}</th>
+          <td  class="text-center text-info font-weight-bolder">{{t.Puntos}}</td>
+          <td  class="text-center">{{t.PJ}}</td>
+          <td  class="text-center">{{t.PG}}</td>
+          <td  class="text-center">{{t.PP}}</td>
+          <td  class="text-center">{{t.PE}}</td>
+          <td  class="text-center d-none d-lg-table-cell">{{t.GF}}</td>
+          <td  class="text-center d-none d-lg-table-cell">{{t.GC}}</td>
+          <td  class="text-center d-none d-lg-table-cell">{{t.DG}}</td>
+          <td  class="text-center d-none d-lg-table-cell">{{t.GA}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<h5>Resultados fecha: {{this.idFecha}}</h5>
+
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group btn-group-sm pr-1 pb-1" role="group" aria-label="First group">
+      <button
+        *ngFor='let in of counter(idFecha);let i = index; '
+        type="button"
+        class="btn btn-dark"
+        (click)="cargaUrl(3, 'tabla', this.idCampeonato, this.idDivision, this.idZona, i + 1);">Fecha {{i + 1}}</button>
+    </div>
+  </div>
+
+
+<div class="container-fluid p-2">
+
+  <b>Fase clasificatoria</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 0 >
+  </app-partidoslist>
+
+  <b>Cuartos de Final</b>
+    <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 2 >
+  </app-partidoslist>
+
+  <b>Semis 5 al 8</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 3 >
+  </app-partidoslist>
+
+  <b>Semifinal del 1 al 4</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 4 >
+  </app-partidoslist>
+
+  <b>Semi Final</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 5 >
+  </app-partidoslist>
+  <b>Final</b>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 6 >
+  </app-partidoslist>
+  <app-partidoslist *ngIf="buscando"
+    [idCamp]= "this.idCampeonato"
+    [nCamp]="this.nomCampeonato"
+    [idDiv]="this.idDivision"
+    [idFec]="this.idFecha"
+    [idZon]="this.idZona"
+    [idBol]="3"
+    [idIns]= 7 >
+  </app-partidoslist>
+
+</div>

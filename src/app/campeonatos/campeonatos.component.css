@@ -1,0 +1,61 @@
+.fa {
+  font-size: 50px;
+}
+
+/*.bg-varones {
+
+}
+
+.bg-damas {
+  /*background-color: rgb(73, 10, 61) !important;*/
+
+/*}
+
+.bg-infvarones {
+  /*background-color: rgb(253, 159, 45) !important;*/
+
+/*}*/
+
+/*.bg-infdamas {
+  /*background-color: rgb(189, 21, 80) !important;*/
+
+/*}*/
+
+#iconDamas {
+  font-size: 26px;
+  color: #ff0097;
+
+
+  font-weight: 100px;
+}
+
+#iconVarones {
+  font-size: 26px;
+  color: midnightblue;
+
+
+  font-weight: 100px;
+}
+
+#iconInfDamas {
+  font-size: 30px;
+  color: mediumorchid;
+
+
+  font-weight: 100px
+}
+
+#iconInfVarones {
+  font-size: 30px;
+  color: rgb(248, 95, 6);
+
+
+  font-weight: 100px
+}
+#iconQr{
+  font-size: 26px;
+
+}
+.btn-link:hover {
+  text-decoration: none!important;
+}

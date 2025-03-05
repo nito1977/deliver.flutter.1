@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+.body{
+  background: linear-gradient(to right, #0f1423, #134057)!important;
+}
+.container-fluid.p-2.bg-dark {
+  background-color: #051327!important;
+}
+.btn-info {
+  background-color: #0062cc!important;
+  border-color: #17a2b8;
+}
+.navbar{
+  z-index: 1001;
+}
+nav.navbar.navbar-dark.bg-dark {
+  background: #1a3150!important;
+}
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.bd-navbar {
+  background: #1a3150!important;
+  z-index: 1000;
+  box-shadow: 0px 1px 7px 7px rgb(122 158 169 / 50%);
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.86)!important;
+  background-color: #1a3150;
+
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+  color: #fff;
+  font-weight: 600;
+  background-color: #1a3150;
+
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.bd-navbar {
+  border-bottom: 0.18rem solid #1a3150 !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #051327!important;
+  font-weight: 500!important;
+}
+.form-signin{
+  width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+a:hover {
+  text-decoration: none!important;
+}
+.container-fluid {
+  padding: 0px!important;
+}
+.btn-link:hover {
+  text-decoration: none!important;
+}
+
+.colorFuenteMenu {
+  color: #292929!important;
+}
+.colorIconoMenu {
+  color: white!important;
+}
+.colorFondoIconoMenu {
+  background: #1c1592;
+}
+.paddingFondoIconoMenu {
+  padding: 12px!important;
+}
+.colorMenu {
+  background: white!important;
+}
+.colorBarra {
+  background: #1c1592;
+}
+.colorLetraBarra {
+  color: white!important;
+}
+/* login */
+.colorLetraLogin {
+  color: white!important;
+}
+.colorFondoLogin {
+  background: #1a3150!important;
+}
+.colorInputLogin {
+  background: gray!important;
+}
+.colorLabelsLogin {
+  color: green!important;
+}
+
+.fa-4 {
+  font-size: 100px!important;
+  text-align: center;
+  padding: 16px;
+}
+.logoclub{
+  width: 18px;
+    padding-top: 0px;
+}
+
+/* animaciones css*/
+
+.animate-top {
+  position: relative;
+  animation: animatetop 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -50px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+.animate-left {
+  position: relative;
+  animation: animateleft 0.4s
+}
+
+@keyframes animateleft {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
+}
+
+.animate-right {
+  position: relative;
+  animation: animateright 0.4s
+}
+
+@keyframes animateright {
+  from {
+    right: -300px;
+    opacity: 0
+  }
+  to {
+    right: 0;
+    opacity: 1
+  }
+}
+
+.animate-bottom {
+  position: relative;
+  animation: animatebottom 0.8s
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -300px;
+    opacity: 0
+  }
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+.animate-zoom {
+  animation: animatezoom 0.7s
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
+}
+
+.animate-input {
+  transition: width 0.4s ease-in-out
+}
+
+.animate-input:focus {
+  width: 100% !important
+}
+
+.animate-fade {
+  animation: fading 10s infinite;
+}
+div#tablasposicion {
+  padding-right: 10px!important;
+    padding-left: 0px;
+}
+@media only screen and (max-width: 600px)
+{
+  div#tablasposicion {
+
+      padding: 0px!important;
+  }
+}
+
+
