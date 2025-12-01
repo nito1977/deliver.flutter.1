@@ -1,0 +1,171 @@
+
+  <header class="bg-white text-dark text-center">
+    <div class="container">
+      <div class="row p-3 align-items-center">
+        <div class="col-12 col-lg-0 col-xl-0 d-none">
+            <img src="./assets/svg/{{this.idGaleria}}.png" alt="Logo FSP" class="img-fluid" style="max-width: 72px;">
+        </div>
+        <div class="col-0 col-lg-0 col-xl-4 ml-0 d-none d-sm-block slide-in">
+            <img src="./assets/logos/clubes/{{this.idGaleria}}.png" alt="Logo FSP" class="img-fluid" style="max-width: 240px;">
+        </div>
+        <div class="col-12 col-lg-6 col-xl-7 mr-0">
+            <h5 class="text-primary text-left">Club</h5>
+            <h1 class="text-left">{{this.titulo}}</h1>
+            <h5 class="text-secondary text-left">Dirección: {{this.direccion}}</h5>
+            <h6 class="text-secondary text-left">Fundación: {{this.fundacion}}</h6>
+            <!-- <p class="lead">Cuna del Hockey en San Juan</p> -->
+            <div class="text-left fade-in pl-2">
+              <a href="https://www.google.com/maps/search/?api=1&query={{this.direccion}}" target="_blank" class="btn btn-light rounded-pill bg-dark text-white hover-effect">Ver Mapa</a>
+              <a href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank" class="btn btn-light rounded-pill bg-primary text-white hover-effect">Estatuto</a>
+              <div class="row p-2 align-items-left justify-content-left">
+                <!-- <p [innerHTML]="getSanitizedResumen(this.descripcion)">
+                </p> -->
+
+              </div>
+              <!-- <div class="row p-2 align-items-left justify-content-left">
+                <a href="https://www.facebook.com/fspatin" target="_blank" ><i class="fa fa-2x fa-facebook-square text-dark p-1 hover-effect"></i></a>
+                <a href="https://twitter.com/fsp_sanjuan" target="_blank"><i class="fa fa-2x fa-twitter-square text-dark p-1 hover-effect"></i></a>
+                <a href="https://instagram.com/federacionpatin" target="_blank"><i class="fa fa-2x fa-instagram text-dark p-1 hover-effect"></i></a>
+                <a href="https://www.youtube.com/c/FederaciónSanjuaninadePatín" target="_blank"><i class="fa fa-2x fa-youtube-square text-dark p-1 hover-effect"></i></a>
+              </div> -->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </header>
+
+<app-amsclubesslider></app-amsclubesslider>
+  <div class="container text-center p-0 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong></h3></div>
+
+  </div>
+  <div class="container ">
+    <app-amscardcarrousel [idGaleria]="this.idGaleria"></app-amscardcarrousel>
+  </div>
+
+  <div class="container">
+    <app-amsbanners [idGaleria]="14" [idVideo]="14"></app-amsbanners>
+  </div>
+  <!-- <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Artístico</h3></div>
+  </div>
+  <div class="container-fluid">
+    <app-amsgalerias [idGaleria]="7"></app-amsgalerias>
+  </div> -->
+
+  <!-- <div class="container-fluid ">
+    <app-amsbotonesutiles></app-amsbotonesutiles>
+  </div> -->
+  <div class="container text-center p-2 " *ngIf="this.idGaleria === '6'">
+    <div class="mr-auto p-3 bd-highlight">
+      <h3><strong class="text-primary"><i id="iconVarones" class="fa fa-user"></i> Estadísticas</strong> Hockey Patín Varones</h3>
+    </div>
+  </div>
+
+  <app-amscampstats [idDivision]="'primera'" class="" *ngIf="this.idGaleria === '6'"></app-amscampstats>
+  <br>
+  <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Nuestros </strong> Auspiciantes</h3></div>
+  </div>
+  <div class="container-fluid">
+    <app-amsbanners [idGaleria]="13" [idVideo]="13"></app-amsbanners>
+  </div>
+  <div class="container text-center p-2 " *ngIf="this.idGaleria === '6'">
+    <div class="mr-auto p-3 bd-highlight">
+      <h3>
+        <strong class="text-primary"><i id="iconDamas" class="fa fa-user"></i> Estadísticas</strong> Hockey Patín Damas
+      </h3>
+
+    </div>
+  </div>
+  <app-amscampstats [idDivision]="'damas'" class="" *ngIf="this.idGaleria === '6'"></app-amscampstats>
+
+<div class="container " *ngIf="this.idGaleria === '6'">
+
+
+  <div class="row p-3">
+
+    <!-- menu partidos-->
+
+    <div id="tablasposicion" class="col-12 col-md-6">
+
+      <app-campeonatos></app-campeonatos>
+
+    </div>
+    <div class="col-12 col-md-6 p-0">
+
+      <app-boletin></app-boletin>
+      <div class="p-2 text-center" >
+        <br>
+        <h4>Historial</h4>
+        <h6>Acá podes consultar tus datos, goles, tarjetas</h6>
+        <button [routerLink]="['/historial']" routerLinkActive="historial" class="btn btn-primary" > Consultá ahora </button>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<div class="container" *ngIf="!isApp">
+  <app-amsnoticias></app-amsnoticias>
+
+</div>
+
+
+
+<!--<h3>descargas</h3>
+<div class="contenedor-iframe" style="height: '{{this.contenedorIframeElement}}';" >
+  <iframe #iframeElement [src]="frameurl()" ></iframe>
+</div> -->
+<!-- <app-amsclubesslider></app-amsclubesslider>-->
+<div class="container-fluid">
+  <app-amsbanners [idGaleria]="15" [idVideo]="15"></app-amsbanners>
+</div>
+
+<!-- <div class="container ">
+  <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
+</div>
+<div class="container-fluid ">
+  <app-amsmaps [mapaurl]="paginaMapaClubes"></app-amsmaps>
+</div>
+<div class="container  ">
+    <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Ubicación</strong> FSP</h3></div>
+</div>
+<div class="container-fluid ">
+  <app-amsmaps [mapaurl]="paginaMapaUbicacion"></app-amsmaps>
+</div> -->
+<div class="container ">
+  <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Contacto</strong> FSP</h3></div>
+</div>
+<div class="container-fluid bg-light ">
+  <div class="container p-2">
+    <div class="row">
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item">Dirección: <strong>Maipú 40 Este San Juan</strong></li>
+          <!-- <li class="list-group-item">teléfono: <strong>+54 9 264 672-4853</strong></li>
+          <li class="list-group-item">teléfono: <strong>+54 9 264 562-7867</strong></li> -->
+          <li class="list-group-item">teléfono: <strong>+54 9 2645 851 237</strong></li>
+          <li class="list-group-item">email: <strong>gerencia@fspatin.com</strong></li>
+          <li class="list-group-item">email Prensa: <strong>prensa@fspatin.com</strong></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa fa-facebook-square text-primary"></i> Facebook: <a href="https://www.facebook.com/fspatin">@fspatin</a></li>
+          <li class="list-group-item"><i class="fa fa-twitter-square text-info"></i> Twitter: <a href="https://twitter.com/fsp_sanjuan">@fsp_sanjuan</a></li>
+          <li class="list-group-item"><i class="fa fa-instagram text-danger"></i> instagram: <a href="https://instagram.com/federacionpatin">@federacionpatin</a></li>
+          <li class="list-group-item"><i class="fa fa-youtube-square text-danger"></i> Youtube: <a href="https://www.youtube.com/c/FederaciónSanjuaninadePatín">Federación Sanjuanina de Patín</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

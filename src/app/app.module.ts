@@ -52,6 +52,11 @@ import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
 import { DescargasComponent } from './descargas/descargas.component';
 import { AmscampstatsComponent } from './amscampstats/amscampstats.component';
 import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetallecompacto.component';
+import { AmsnoticiaComponent } from './amsnoticia/amsnoticia.component';
+import { AmsvideoComponent } from './amsvideo/amsvideo.component';
+import { AmsbannersComponent } from './amsbanners/amsbanners.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { ClubComponent } from './club/club.component';
 
 @NgModule({
   declarations: [
@@ -65,13 +70,15 @@ import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetal
     LoaderchicoComponent,
     TablaComponent,
     MenuComponent,
-    AmsnoticiasComponent,
     BotonvolverComponent,
     PartidosComponent, BoletinComponent, PartidoslistComponent, PaginaComponent, PartidoComponent, PartidodetalleComponent,
     TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
     AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent, AmsbotonesutilesComponent,
-    CuotasformComponent,HistorialComponent, AmsgaleriasComponent,
-    DescargasComponent, AmscampstatsComponent, TabladetalleCompactoComponent
+    CuotasformComponent,HistorialComponent, AmsgaleriasComponent,AmsnoticiaComponent, AmsnoticiasComponent, AmsvideoComponent,
+    AmsbannersComponent,
+    DescargasComponent, AmscampstatsComponent, TabladetalleCompactoComponent,
+    CategoriaComponent,
+    ClubComponent
 
   ],
   imports: [

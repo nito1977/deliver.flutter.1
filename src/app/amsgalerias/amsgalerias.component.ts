@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { Noticias } from '../models/noticias';
+import { DomSanitizer } from '@angular/platform-browser';
 declare var $ : any;
 
 @Component({
@@ -13,11 +14,19 @@ export class AmsgaleriasComponent implements OnInit {
   buscando = false;
   submitted = false;
   listado;
-  urlimgs = 'https://fspatin.com/wp-content/uploads';
-  url = 'https://fspatin.com/';
+  urlimgs = 'https://fspatin.com/web/wp-content/uploads';
+  url = 'https://fspatin.com/web/';
   private localStorageService;
   currentSession: Noticias = null;
-  constructor(private http: ServicioService) { }
+  constructor(private http: ServicioService, private sanitizer: DomSanitizer) { }
+
+  getSanitizedResumen(resumen: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(resumen);
+  }
+  getFirstParagraph(resumen: string): string {
+    const firstParagraph = resumen.match(/<p>(.*?)<\/p>/);
+    return firstParagraph ? firstParagraph[1] : resumen; // Devuelve el primer párrafo o el resumen completo si no hay párrafo.
+  }
 
   ngOnInit() {
     //console.log(this.idGaleria)

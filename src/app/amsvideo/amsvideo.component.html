@@ -1,0 +1,25 @@
+<div class="container pb-4" *ngIf="listado && listado.length > 0">
+    <div class="row bg-dark m-0" >
+        <i class="fa fa-youtube fa-2x text-danger pl-2 pt-2 pb-1 m-0 ml-2"></i>
+        <h4 class="text-white pl-2 pt-3 pb-1 m-0 ml-2" [innerHTML]="getSanitizedResumen(this.titulo)"></h4>
+    </div>
+
+    <div class="embed-responsive embed-responsive-16by9" *ngIf="listado && listado.length > 0">
+
+        <iframe
+            class="embed-responsive-item"
+            [src]="this.videoUrl"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="row bg-light m-0 text-center justify-content-center" >
+        <div class="col">
+          <a class="text-dark pl-2 pt-3 pb-1 m-0 ml-2" href="https://www.youtube.com/@fsptv-c1s" target="_blank">
+            <h3 class="text-dark pl-2 pt-3 pb-1 m-0 ml-2">Ingresá a FSP TV para ver todos los videos</h3>
+          </a>
+          <a class="text-dark pl-2 pt-3 pb-1 m-0 ml-2" href="https://www.youtube.com/@fsptv-c1s" target="_blank">
+            <img src="./assets/svg/fsptv.png"  style="max-height: 65px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
+          </a>
+        </div>
+    </div>
+</div>

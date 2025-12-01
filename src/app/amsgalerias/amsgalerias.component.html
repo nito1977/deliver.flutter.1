@@ -10,9 +10,12 @@
         <div *ngFor="let noticias of listado;let j=index" [ngClass]="j==0 ?'carousel-item active' : 'carousel-item' ">
           <img class="d-block w-100" src="{{this.urlimgs}}/{{noticias.foto1}}" alt="{{noticias.foto1}}">
           <div class="carousel-caption d-block d-md-block">
-            <a href="{{this.url}}{{noticias.flikr}}" target="_blank" class="text-white">
+            <a [routerLink]="['/noticia',noticias.id]" target="_blank" class="text-white">
               <h5 class="p-1 text-white"> {{noticias.titulo | uppercase}}</h5>
             </a>
+            <!-- <a href="{{this.url}}{{noticias.flikr}}" target="_blank" class="text-white">
+              <h5 class="p-1 text-white"> {{noticias.titulo | uppercase}}</h5>
+            </a> -->
           </div>
 
         </div>

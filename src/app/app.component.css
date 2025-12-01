@@ -1,3 +1,4 @@
+
 .container {
   top:0;
   left: 0;
@@ -9,11 +10,60 @@
 a.nav-link:active {
   color: white!important;
 }
-.navbar-brand {
-  display: inline-block;
-  padding-top: 0.1125rem!important;
-  padding-bottom: .1125rem!important;
+body {
+  background: linear-gradient(to bottom, #000046, #1CB5E0)!important;
+}
 
-  font-size: 0.95rem;
+h1 {
+  font-weight: bold;
+}
 
+p {
+  margin-bottom: 2rem;
+}
+
+/* Animación de desvanecimiento */
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Animación de desplazamiento */
+.slide-in {
+  animation: slideIn 0.9s ease-in forwards;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Animación de escala */
+.scale-up {
+  animation: scaleUp 0.5s ease-in forwards;
+}
+
+@keyframes scaleUp {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
 }

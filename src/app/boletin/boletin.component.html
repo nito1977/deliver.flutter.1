@@ -1,18 +1,22 @@
   <app-loader *ngIf="buscando"></app-loader>
-<nav class="nav nav-pills flex-column flex-sm-row padd-r-2">
-  <div class="btn-group btn-block mb-2" role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-2 p-1 mt-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Boletin {{mesSel}} Año {{anioSel}}
-    </button>
+<div class="row flex-column flex-sm-row justify-content-center">
+    <div class="col-6 p-2"> <!-- Cambia col a col-6 para ocupar el 50% -->
+        <nav class="nav nav-pills padd-r-2" aria-label="Boletines">
+            <div class="btn-group btn-block mb-2" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-2 p-1 mt-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Boletin {{mesSel}} Año {{anioSel}}
+                </button>
 
-    <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
-      <a class="dropdown-item " href="#" >Seleccione</a>
-      <a *ngFor="let b of detalleBoletines" class="dropdown-item " href="#" routerLink="/boletines/{{b.anio}}/{{b.id}}/{{b.mes}}" >Boletín {{b.mes}} Año {{b.anio
-      }}</a>
-
+                <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
+                    <a class="dropdown-item" href="#">Seleccione</a>
+                    <a *ngFor="let b of detalleBoletines" class="dropdown-item" href="#" routerLink="/boletines/{{b.anio}}/{{b.id}}/{{b.mes}}">
+                        Boletín {{b.mes}} Año {{b.anio}}
+                    </a>
+                </div>
+            </div>
+        </nav>
     </div>
-  </div>
-</nav>
+</div>
 <div class="accordion padd-r-2" id="accordionExample">
   <div class="card"  *ngFor="let item of detalleCamp">
     <div class="card-header p-2" id="{{item.id}}">
@@ -41,14 +45,19 @@
   </div>
 </div>
 
-<div class="col d-flex justify-content-center p-0 " *ngIf="!Encontrado">
-  <div class="card p-2 ">
+<div class="container">
+  <div class="row">
+    <div class="col justify-content-center p-0 " *ngIf="!Encontrado">
+      <div class="card p-2 bg-primary">
 
-    <div class="card-content m-2" style="text-align: center;">
+        <div class="card-content m-2 " style="text-align: center;">
 
-      <i class="fa fa-warning" aria-hidden="true"></i>
-      <h6>Seleccione un boletín</h6>
+          <i class="fa fa-warning" aria-hidden="true"></i>
+          <h6>Seleccione un boletín</h6>
+        </div>
+
+      </div>
     </div>
-
   </div>
+
 </div>

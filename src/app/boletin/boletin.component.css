@@ -26,3 +26,17 @@ tablasposicion {
   padding-right: 0px!important;
 }
 
+.btn-group {
+    display: flex;
+    justify-content: center; /* Centra el botón dentro del grupo */
+}
+
+.dropdown-menu {
+    left: 50%; /* Alinea el menú del dropdown */
+    transform: translateX(-50%); /* Centra el menú del dropdown */
+}
+
+/* Este estilo es opcional si quieres ajustar aún más */
+.dropdown-menu {
+    width: auto; /* Asegura que el ancho del menú sea automático */
+}

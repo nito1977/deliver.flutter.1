@@ -18,8 +18,11 @@ export class PartidoComponent implements OnInit {
   constructor(public _http: ServicioService, public _route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.idPartido = this._route.snapshot.params.idPartido;
-    this.cargarPartidos(81, this.idPartido);
+    this._route.params.subscribe(params => {
+       this.idPartido = this._route.snapshot.params.idPartido;
+      this.cargarPartidos(81, this.idPartido);
+    });
+
   }
   public cargarPartidos(op: number,  partido: number) {
 

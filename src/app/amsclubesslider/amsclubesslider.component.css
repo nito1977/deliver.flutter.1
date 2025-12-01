@@ -1,0 +1,132 @@
+/* Estilos generales del banner de hockey */
+span.club-name {
+    font-size: 11px;
+    color: black;
+}
+.club-name {
+    text-transform: uppercase;
+}
+.banner-hockey {
+  text-align: center;
+  padding: 20px;
+  background-color: #c0dcf9;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el título del banner */
+.banner-hockey h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+/* Contenedor de los logos (Flexbox para distribución) */
+.logos-container {
+
+  gap: 26px;
+  max-width: 1500px;
+  padding: 8px;
+}
+
+/* Estilos base para cada enlace de logo (contenedor del escudo) */
+.logos-container a {
+  display: block;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding: 6px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  min-width: 132px !important;
+}
+
+/* Efecto al pasar el ratón sobre un logo */
+.logos-container a:hover {
+  border-color: #007bff;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Estilos para las imágenes de los logos dentro de los enlaces */
+.logos-container img {
+  max-width: 70px;
+  height: auto;
+  display: block;
+}
+
+/* ================================ */
+/* Media Queries para Responsividad */
+/* ================================ */
+
+/* Para pantallas de hasta 1400px (ajustado para que sigan cabiendo muchos) */
+@media (max-width: 1400px) {
+  .logos-container {
+    max-width: 1200px;
+    gap: 10px;
+  }
+  .logos-container img {
+    max-width: 65px;
+  }
+}
+
+/* Para pantallas de hasta 1200px (ej. laptops pequeñas, tablets en horizontal) */
+@media (max-width: 1200px) {
+  .logos-container {
+    max-width: 900px;
+    gap: 10px;
+  }
+  .logos-container img {
+    max-width: 60px;
+  }
+}
+
+
+/* Para pantallas de hasta 992px (ej. laptops pequeñas, tablets en horizontal) */
+@media (max-width: 992px) {
+  .logos-container {
+    gap: 8px;
+    max-width: 750px;
+  }
+  .logos-container img {
+    max-width: 55px;
+  }
+}
+
+/* Para pantallas de hasta 768px (ej. tablets en vertical, móviles grandes) */
+@media (max-width: 768px) {
+  .logos-container {
+    gap: 8px;
+    max-width: 550px;
+  }
+  .logos-container img {
+    max-width: 50px;
+  }
+  .banner-hockey h2 {
+    font-size: 1.6em;
+  }
+  .logos-container a {
+    padding: 4px;
+  }
+}
+
+/* Para pantallas de hasta 480px (ej. móviles pequeños) */
+@media (max-width: 480px) {
+  .logos-container {
+    gap: 6px;
+    max-width: 100%;
+    padding: 5px;
+  }
+  .logos-container img {
+    max-width: 45px;
+  }
+  .banner-hockey h2 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+  .logos-container a {
+    padding: 3px;
+  }
+}

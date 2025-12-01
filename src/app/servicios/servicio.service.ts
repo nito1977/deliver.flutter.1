@@ -12,6 +12,7 @@ import { Cuotas } from '../models/cuotas';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Category } from '../models/categorias';
 @Injectable({
   providedIn: 'root'
 })
@@ -87,9 +88,12 @@ export class ServicioService {
     const headers = { 'content-type': 'application/json'}
     return this.http.post(this.xurl + '/alta.php',  JSON.stringify(cuota) );
    }
-   listadoBoletines() {
+   listadoBoletines(anioSel:number) {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Boletinesmodel[]>(this.xurl + '/appfsp.php?opcion=11');
+
+      return this.http.get<Boletinesmodel[]>(this.xurl + '/appfsp.php?opcion=11&anio=' + anioSel);
+
+
    }
    listadoEventos(op, divi, tor, tipoe) {
     // tslint:disable-next-line:max-line-length
@@ -98,6 +102,22 @@ export class ServicioService {
    public getNoticias(op, cate) {
     const params = 'opcion=' + op + '&cate=' + cate;
     return this.http.get<Noticias[]>(this.xurl + '/appfsp.php?' + params);
+  }
+  public getNoticia(op, cate) {
+    const params = 'opcion=' + op + '&cate=' + cate;
+    return this.http.get<Noticias[]>(this.xurl + '/appfsp.php?' + params);
+  }
+  public getCategoria(op, cate) {
+    const params = 'opcion=' + op + '&cate=' + cate;
+    return this.http.get<Category[]>(this.xurl + '/appfsp.php?' + params);
+  }
+  public getClubes(op, cate) {
+    const params = 'opcion=' + op + '&cate=' + cate;
+    return this.http.get<Category[]>(this.xurl + '/appfsp.php?' + params);
+  }
+  public getClub(op, cate) {
+    const params = 'opcion=' + op + '&idclub=' + cate;
+    return this.http.get<Category[]>(this.xurl + '/appfsp.php?' + params);
   }
    // appfsp.php?opcion=10&torne=122&dive=13&zonae=A&fechae=1&boletine=1&admin=1243999123234939
 }

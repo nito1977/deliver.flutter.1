@@ -1,0 +1,24 @@
+<div class="container-fluid p-4">
+  <div class="card mb-3">
+
+    <div class="row p-4">
+      <div class="col-12"><h5 class="card-title">{{ listado.titulo }}</h5></div>
+      <div class="col-md-4 pt-4">
+        <img *ngIf="listado.foto1" [src]="listado.foto1" class="img-fluid" alt="Imagen de la listado">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+
+
+          <!-- <p class="card-text" [innerHTML]="getSanitizedResumen(getFirstParagraph(listado.resumen))"></p> -->
+          <p class="card-text" [innerHTML]="getSanitizedResumen(listado.articulo)"></p>
+          <!-- <p class="card-text"><strong>Autor:</strong> {{ listado.autor }}</p> -->
+          <p class="card-text"><strong>Categoría:</strong> {{ listado.categoria_nombre }}</p>
+          <p class="card-text"><strong>Publicado el:</strong> {{ listado.published | date:'short' }}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

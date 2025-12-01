@@ -5,7 +5,7 @@ h5.bg-primary.text-white.shadow.p-1.mt-2.rounded {
   background-color: #b30c35 !important;
 }
 .col-xl-4.col-lg-6.col-12.primera.shadow {
-  background: #051327 !important;
+  background: white !important;
 }
 .col-xl-4.col-lg-6.col-12.damas.shadow {
   background-color: #b30c35 !important;
@@ -23,5 +23,17 @@ span.resultadosInfo{
   font: caption;
 }
 .colcancha{
-  max-width: 108px!important;
+  max-width: 116px!important;
+}
+
+.bg-primary.pl-1.pr-1.rounded {
+  /*max-width: 100px !important;*/
+}
+h6.text-light.textoInfo {
+  font-size: 11px;
+}
+
+.card-header {
+  padding: 0rem 0.25rem!important;
+
 }

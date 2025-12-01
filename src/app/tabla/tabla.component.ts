@@ -95,14 +95,21 @@ export class TablaComponent implements AfterViewInit {
     this.clasifica_especial = false;
     var _this = this;
     this._http.clasificaEspecialxDivxTorxZona(31, div, tor, zona).subscribe(data => {
-      _this.clasifica_especial = data[0].habilitado;
-      this.detalleClasificaEspecial = data;
-      _this.tituloClasificaEspecial = data[0].titulo;
-      _this.resumenClasificaEspecial = data[0].resumen;
-      //console.log(data[0].titulo);
-
-
-    });
+      if (data.length > 0) {
+          // Si hay datos, se procesan
+          this.clasifica_especial = data[0].habilitado;
+          this.detalleClasificaEspecial = data;
+          this.tituloClasificaEspecial = data[0].titulo;
+          this.resumenClasificaEspecial = data[0].resumen;
+      } else {
+          // Si no hay datos, puedes manejarlo de la siguiente manera
+          console.warn('No se encontraron datos.'); // O mostrar un mensaje al usuario
+          this.clasifica_especial = null; // O el valor que consideres apropiado
+          this.detalleClasificaEspecial = []; // Inicializa como un array vacío o el valor correcto
+          this.tituloClasificaEspecial = '';
+          this.resumenClasificaEspecial = '';
+      }
+  });
   }
   public cargaUrl(op: number, ruta: string,  tor: number, div: number, zona: string, fec: number) {
     if (fec){

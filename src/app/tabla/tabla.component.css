@@ -18,3 +18,8 @@
 .table td, .table th {
   border-top: none;
 }
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center!important;
+}

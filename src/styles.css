@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-  background: "#ffffff" !important;
+.body{
+  background: linear-gradient(to right, #0f1423, #134057)!important;
 }
 .container-fluid.p-2.bg-dark {
   background-color: #051327!important;
@@ -95,7 +95,7 @@ a:hover {
   padding: 16px;
 }
 .logoclub{
-  width: 18px;
+  width: 24px!important;
     padding-top: 0px;
 }
 

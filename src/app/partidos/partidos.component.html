@@ -13,9 +13,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let t of detalleTabla">
-            <td><img src='./assets/logos/clubes/{{t.l}}.jpg'/> {{t.loc}}</td>
+            <td><img src='./assets/logos/clubes/{{t.l}}.png'/> {{t.loc}}</td>
             <td class='info'><strong>{{t.TantosLoc}} - {{t.TantosVis}}</strong></td>
-            <td>{{t.visitante}}<img src='./assets/logos/clubes/{{t.v}}.jpg'/></td>
+            <td>{{t.visitante}}<img src='./assets/logos/clubes/{{t.v}}.png'/></td>
             <td>{{t.zona}}</td>
             <td>
               <input *ngIf="determinaGanador(t.id, t.TantosLoc, t.TantosVis);" type='button' class='{{ganador}}' value='Ver'>

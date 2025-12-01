@@ -26,7 +26,7 @@
     <tbody>
         <tr *ngFor="let t of detalleTabla">
             <td class="mr-0 pr-0">{{t.fechapartido}} {{nomCampeonato}}</td>
-            <td class="mr-0 pr-0 pl-0 ml-0"><img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.jpg'/></td>
+            <td class="mr-0 pr-0 pl-0 ml-0"><img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.png'/></td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.loc}}</td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">
               <span *ngIf="determinaGanador('loc', t.id, t.TantosLoc, t.TantosVis);" class='{{ganaloc}}'>
@@ -37,7 +37,7 @@
               </span>
             </td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.visitante}}</td>
-            <td><img class="logoclub pl-0 mr-0" src='./assets/logos/clubes/{{t.v}}.jpg'/></td>
+            <td><img class="logoclub pl-0 mr-0" src='./assets/logos/clubes/{{t.v}}.png'/></td>
             <td class="text-center mr-0 pr-0 pl-0 ml-0">{{t.zona}}</td>
             <td class="mr-0 pr-0 pl-0 ml-0">{{t.estado}}</td>
             <td class="pl-0 ml-0">

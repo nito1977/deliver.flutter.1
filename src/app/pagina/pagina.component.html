@@ -2,42 +2,41 @@
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Novedades</strong> FSP</h3></div>
 </div>
 -->
-
-  <div class="bgfondo container-fluid h-100 text-center d-flex justify-content-center align-self-center">
-    <div class="row justify-content-center align-self-center">
-      <img class="logofondo" src="./assets/logo.png" alt="FSP">
-      <h2 class="text-white p-2 pt-4">Federación Sanjuanina de Patín</h2>
+<header class="bg-white text-dark text-center">
+  <div class="row p-5 align-items-center">
+    <div class="col-12 col-lg-0 col-xl-0 d-none">
+        <img src="./assets/logoazul.png" alt="Logo FSP" class="img-fluid" style="max-width: 72px;">
+    </div>
+    <div class="col-12 col-lg-6 col-xl-7 ml-2">
+      <h1 class="">Federación Sanjuanina de Patín</h1>
+      <p class="lead">Cuna del Hockey en San Juan</p>
+      <div class="text-center fade-in">
+        <a [routerLink]="['/noticia',64]" class="btn btn-light rounded-pill bg-dark text-white hover-effect">Autoridades</a>
+        <a href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank" class="btn btn-light rounded-pill bg-primary text-white hover-effect">Estatuto</a>
+        <div class="row p-2 align-items-center justify-content-center">
+          <a href="https://www.facebook.com/fspatin" target="_blank" ><i class="fa fa-2x fa-facebook-square text-dark p-1 hover-effect"></i></a>
+          <a href="https://twitter.com/fsp_sanjuan" target="_blank"><i class="fa fa-2x fa-twitter-square text-dark p-1 hover-effect"></i></a>
+          <a href="https://instagram.com/federacionpatin" target="_blank"><i class="fa fa-2x fa-instagram text-dark p-1 hover-effect"></i></a>
+          <a href="https://www.youtube.com/c/FederaciónSanjuaninadePatín" target="_blank"><i class="fa fa-2x fa-youtube-square text-dark p-1 hover-effect"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-0 col-lg-0 col-xl-4 d-none d-sm-block slide-in">
+        <img src="./assets/logoazul.png" alt="Logo FSP" class="img-fluid" style="max-width: 200px;">
     </div>
   </div>
-
-
-  <app-amscampstats [idDivision]="'primera'"></app-amscampstats>
-  <app-amscampstats [idDivision]="'damas'"></app-amscampstats>
-
-<div class="container">
-  <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Estadísticas</strong> FSP</h3></div>
-
+</header>
+<div class="container-fluid bg-dark text-white">
   <div class="row p-3">
-
     <!-- menu partidos-->
+     <div class="container">
+      <div id="tablasposicion" class="col-12 col-md-12">
 
-    <div id="tablasposicion" class="col-12 col-md-6">
+        <app-campeonatos></app-campeonatos>
 
-      <app-campeonatos></app-campeonatos>
-
-<!--
-      <div class="p-0 pb-2" >
-        <h4>Noticias</h4>
-        <app-botonlink></app-botonlink>
-        <a href="https://www.facebook.com/capatinoficial/?__tn__=%2Cd%2CP-R&eid=ARDggE30qQCLqDobMtAgfRjyAr09Yf5lhBo9GEPRVvnRFsEbNQlkz68fWrRg_aIOJE5OcRmZdWpPENFQ" target="_blank">
-          <img
-            alt="Estadísticas Nito Romero" class="img-fluid" src="./assets/noticias/78aniosfsp.jpeg"
-            >
-        </a>
       </div>
-      -->
     </div>
-    <div class="col-12 col-md-6 p-0">
+    <div class="col-12 col-md-12 p-0">
 
       <app-boletin></app-boletin>
       <div class="p-2 text-center" >
@@ -50,54 +49,124 @@
 
     </div>
   </div>
-
-
-
-
 </div>
-<div class="container-fluid">
-  <app-amsbotonesutiles></app-amsbotonesutiles>
-</div>
-<div class="container" *ngIf="!isApp">
-  <app-amsnoticias></app-amsnoticias>
-</div>
-<div class="container" *ngIf="!isApp">
-  <div class="row">
-    <div class="col-12 col-md-6 pr-2">
-      <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Damas</h3></div>
-      <app-amsgalerias [idGaleria]="86"></app-amsgalerias>
-    </div>
-    <div class="col-12 col-md-6 pl-2">
-      <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Galería</strong> Varones</h3></div>
-      <app-amsgalerias [idGaleria]="85"></app-amsgalerias>
+<div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight">
+      <h3><strong class="text-primary"><i id="iconVarones" class="fa fa-user"></i> Estadísticas</strong> Hockey Patín Varones</h3>
     </div>
   </div>
 
-</div>
+  <app-amscampstats [idDivision]="'primera'" class=""></app-amscampstats>
+  <br>
+  <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Nuestros </strong> Auspiciantes</h3></div>
+  </div>
+  <div class="container-fluid">
+    <app-amsbanners [idGaleria]="13" [idVideo]="13"></app-amsbanners>
+  </div>
+  <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight">
+      <h3>
+        <strong class="text-primary"><i id="iconDamas" class="fa fa-user"></i> Estadísticas</strong> Hockey Patín Damas
+      </h3>
+
+    </div>
+  </div>
+  <app-amscampstats [idDivision]="'damas'" class=""></app-amscampstats>
+  <br>
+
+    <app-amsvideo [idGaleria]="12"></app-amsvideo>
+    <app-amsvideo [idGaleria]="16"></app-amsvideo>
+    <app-amsvideo [idGaleria]="17"></app-amsvideo>
+
+  <div class="bgfondo container-fluid text-center pt-4">
+
+      <!-- <img class="logofondo" src="./assets/logo.png" alt="FSP">
+      <h2 class="text-white p-2 pt-4">Federación Sanjuanina de Patín</h2> -->
+    <div class="container" id="institucion">
+      <div class="row">
+
+          <div class="col-12 col-lg-6 col-xl-4 hover-effect">
+            <a [routerLink]="['/categoria',7]" >
+              <img src="./assets/svg/7.png"  style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
+              <h3 class="text-white lead">P. Artístico</h3>
+            </a>
+          </div>
+
+
+          <div class="col-12 col-lg-6 col-xl-4 hover-effect">
+            <a [routerLink]="['/categoria',6]" >
+              <img src="./assets/svg/6.png"  style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
+              <h3 class="text-white lead">H. Patín</h3>
+            </a>
+          </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 hover-effect">
+          <a [routerLink]="['/categoria',8]" >
+            <img src="./assets/svg/8.png" style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
+            <h3 class="text-white lead">P. Carrera</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Hockey Patín</h3></div>
+  </div>
+  <div class="container ">
+    <app-amscardcarrousel [idGaleria]="6"></app-amscardcarrousel>
+  </div>
+
+  <div class="container">
+    <app-amsbanners [idGaleria]="14" [idVideo]="14"></app-amsbanners>
+  </div>
+  <div class="container text-center p-2 ">
+    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Artístico</h3></div>
+  </div>
+  <div class="container-fluid">
+    <app-amsgalerias [idGaleria]="7"></app-amsgalerias>
+  </div>
+
+  <div class="container-fluid ">
+    <app-amsbotonesutiles></app-amsbotonesutiles>
+  </div>
+
+
+
+
 <div class="container" *ngIf="!isApp">
-  <app-amscardcarrousel></app-amscardcarrousel>
+  <app-amsnoticias></app-amsnoticias>
+
 </div>
+
+
+
 <!--<h3>descargas</h3>
 <div class="contenedor-iframe" style="height: '{{this.contenedorIframeElement}}';" >
   <iframe #iframeElement [src]="frameurl()" ></iframe>
 </div> -->
-<!-- <app-amsclubesslider></app-amsclubesslider>-->
-<div class="container">
+
+<div class="container-fluid">
+  <app-amsbanners [idGaleria]="15" [idVideo]="15"></app-amsbanners>
+</div>
+
+ <div class="container ">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Donde</strong> Practicar</h3></div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid ">
   <app-amsmaps [mapaurl]="paginaMapaClubes"></app-amsmaps>
 </div>
-<div class="container">
+<div class="container  ">
     <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Ubicación</strong> FSP</h3></div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid ">
   <app-amsmaps [mapaurl]="paginaMapaUbicacion"></app-amsmaps>
 </div>
-<div class="container">
+<div class="container ">
   <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 ><strong class="text-primary">Contacto</strong> FSP</h3></div>
 </div>
-<div class="container-fluid bg-primary">
+<div class="container-fluid bg-light ">
   <div class="container p-2">
     <div class="row">
       <div class="col">

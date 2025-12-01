@@ -51,6 +51,8 @@
     "gradle": "^1.2.3",
     "jquery": "^3.5.1",
     "js-sha1": "^0.6.0",
+    "lottie-web": "^5.12.2",
+    "ngx-lottie": "^6.0.0",
     "phonegap-plugin-barcodescanner": "^8.0.0",
     "popper.js": "^1.16.0",
     "rxjs": "^6.5.5",

@@ -1,47 +1,54 @@
 <app-loader *ngIf="!buscando"></app-loader>
 <div class="container-fluid p-1">
-  <div class="row pl-1">
-    <div class="col-9 col-md-9">
-      <h6 class="mb-0">{{t.nomCampeonato}}</h6>
+
+  <div class="container p-1">
+    <div class="row p-2 bg-dark text-white">
+          <div class="col-9 col-md-9">
+            <h5 class="mb-0">{{t.nomCampeonato}}</h5>
+          </div>
+          <div class="col-3 col-md-3">
+            <h5 class="align-text-top text-white"><strong class="text-info">Estado: </strong> {{t.estado}}</h5>
+          </div>
+          <div class="col-6 col-md-12">
+            <h6 class="text-muted pt-0"><strong>Fecha: </strong>{{t.fechapartido}}</h6>
+          </div>
+          <hr>
     </div>
-    <div class="col-3 col-md-3">
-      <small class="align-text-top text-info">{{t.estado}}</small>
+    <div class="row bg-primary text-white rounded p-1">
+      <div class="col align-items-center text-center">
+        <img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.png'/>
+        <h5 class="d-block d-sm-block d-md-none">{{t.loc}}</h5>
+        <h6 class="d-none d-md-block d-lg-block">{{t.Nomloc}}</h6>
+      </div>
+      <div class="col d-flex align-items-center">
+        <h3 class="pt-1">{{t.TantosLoc}}</h3>
+      </div>
+      <div class="col d-flex align-items-center">
+        <h4 class="align-middle"> - </h4>
+      </div>
+      <div class="col d-flex align-items-center">
+        <h3 class="pt-1">{{t.TantosVis}}</h3>
+      </div>
+      <div class="col align-items-center text-center">
+        <img class="logoclub pl-0 mr-0 " src='./assets/logos/clubes/{{t.v}}.png'/>
+        <h5 class="d-block d-sm-block d-md-none">{{t.visitante}}</h5>
+        <h6 class="d-none d-md-block d-lg-block">{{t.Nomvisitante}}</h6>
+      </div>
     </div>
-    <div class="col-6 col-md-12">
-      <small class="text-muted pt-0">{{t.fechapartido}}</small>
+
+    <div class="row">
+      <div class="col">
+
+        <app-partidodetalle></app-partidodetalle>
+      </div>
     </div>
     <hr>
-</div>
-<div class="container-fluid p-1">
-  <div class="row">
-    <div class="col">
-      <img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.jpg'/>
-      <h5 class="d-block d-sm-block d-md-none">{{t.loc}}</h5>
-      <h6 class="d-none d-md-block d-lg-block">{{t.Nomloc}}</h6>
-    </div>
-    <div class="col">
-      <h3 class="pt-1">{{t.TantosLoc}}</h3>
-    </div>
-    <div class="col">
-      <h4 class="align-middle"> - </h4>
-    </div>
-    <div class="col">
-      <h3 class="pt-1">{{t.TantosVis}}</h3>
-    </div>
-    <div class="col">
-      <img class="logoclub pl-0 mr-0 " src='./assets/logos/clubes/{{t.v}}.jpg'/>
-      <h5 class="d-block d-sm-block d-md-none">{{t.visitante}}</h5>
-      <h6 class="d-none d-md-block d-lg-block">{{t.Nomvis}}</h6>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-partidodetalle></app-partidodetalle>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-tabladetalle *ngIf="buscando" [idCampeonato]="t.Campeonato" [idDivision]="t.categoria" [idZona]="t.Zona"></app-tabladetalle>
+    <div class="row">
+      <div class="col">
+        <h6 class="p-1">Tabla de Posiciones</h6>
+        <hr>
+        <app-tabladetalle *ngIf="buscando" [idCampeonato]="t.Campeonato" [idDivision]="t.categoria" [idZona]="t.Zona"></app-tabladetalle>
+      </div>
     </div>
   </div>
 </div>

@@ -29,7 +29,7 @@ export class BoletinComponent implements OnInit {
   constructor(private http: ServicioService, private _route: ActivatedRoute, private router: Router) {
     this.muestra = 0;
     const a = new Date();
-    this.anioSel = this._route.snapshot.params.idAnio;
+    this.anioSel = this._route.snapshot.params.idAnio ? this._route.snapshot.params.idAnio : a.getFullYear();
     this.bolSel = this._route.snapshot.params.idBoletin;
     this.mesSel = this._route.snapshot.params.idMes;
     //this.anioSel = 2020;
@@ -59,7 +59,9 @@ export class BoletinComponent implements OnInit {
   }
   ngOnInit() {
     this.Encontrado = false
-    this.http.listadoBoletines().subscribe(
+    const a = new Date();
+    this.anioSel = this._route.snapshot.params.idAnio ? this._route.snapshot.params.idAnio : a.getFullYear();
+    this.http.listadoBoletines(this.anioSel).subscribe(
       data => {
           this.buscando = false;
           this.detalleBoletines = data;

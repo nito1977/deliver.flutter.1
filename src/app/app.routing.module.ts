@@ -23,13 +23,24 @@ import { HistorialComponent } from './historial/historial.component';
 import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
 import { DescargasComponent } from './descargas/descargas.component';
 import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetallecompacto.component';
+import { AmsnoticiaComponent } from './amsnoticia/amsnoticia.component';
+import { AmsvideoComponent } from './amsvideo/amsvideo.component';
+import { AmsbannersComponent } from './amsbanners/amsbanners.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { ClubComponent } from './club/club.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
   { path: 'menu', component: MenuComponent},
   { path: 'campeonatos', component: CampeonatosComponent },
   { path: 'noticias', component: AmsnoticiasComponent},
-  { path: 'galeria', component: AmsgaleriasComponent},
+  { path: 'noticia/:idGaleria', component: AmsnoticiaComponent},
+  { path: 'categoria', component: CategoriaComponent},
+  { path: 'categoria/:idGaleria', component: CategoriaComponent},
+  { path: 'club/:idGaleria', component: ClubComponent, pathMatch: 'full'},
+  { path: 'banner/:idGaleria', component: AmsbannersComponent},
+  { path: 'video/:idVideo', component: AmsvideoComponent},
+  { path: 'galeria/:idGaleria', component: AmsgaleriasComponent},
   { path: 'tabla/:idcamp/:iddiv/:idzona', component: TablaComponent},
   { path: 'tabla/:idcamp/:iddiv/:idzona/:idFecha', component: TablaComponent},
   { path: 'partidos/:idcamp/:iddiv/:idzona/:idFecha/:idInst', component: PartidosComponent, pathMatch: 'full'},
@@ -53,7 +64,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true, onSameUrlNavigation: 'reload'} // <-- debugging purposes only
+      { useHash: true, anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' } // <-- debugging purposes only
     )
   ],
   exports: [
