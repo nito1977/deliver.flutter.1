@@ -64,7 +64,8 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true, anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' } // <-- debugging purposes only
+      { useHash: true, anchorScrolling: 'enabled', onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' } // <-- debugging purposes only
+ // <-- debugging purposes only
     )
   ],
   exports: [

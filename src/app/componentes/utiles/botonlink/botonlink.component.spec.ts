@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BotonlinkComponent } from './botonlink.component';
 
@@ -6,7 +6,7 @@ describe('BotonlinkComponent', () => {
   let component: BotonlinkComponent;
   let fixture: ComponentFixture<BotonlinkComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BotonlinkComponent ]
     })
