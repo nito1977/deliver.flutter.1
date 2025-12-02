@@ -48,7 +48,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Se usará cuando usted indique que el pedido sea llevado a su ubicación actual." />
     </plugin>
-
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <engine name="browser" spec="^5.0.3" />
 </widget>
