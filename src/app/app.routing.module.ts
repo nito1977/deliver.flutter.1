@@ -31,32 +31,32 @@ import { ClubComponent } from './club/club.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
-  { path: 'menu', component: MenuComponent},
+  { path: 'menu', component: MenuComponent },
   { path: 'campeonatos', component: CampeonatosComponent },
-  { path: 'noticias', component: AmsnoticiasComponent},
-  { path: 'noticia/:idGaleria', component: AmsnoticiaComponent},
-  { path: 'categoria', component: CategoriaComponent},
-  { path: 'categoria/:idGaleria', component: CategoriaComponent},
-  { path: 'club/:idGaleria', component: ClubComponent, pathMatch: 'full'},
-  { path: 'banner/:idGaleria', component: AmsbannersComponent},
-  { path: 'video/:idVideo', component: AmsvideoComponent},
-  { path: 'galeria/:idGaleria', component: AmsgaleriasComponent},
-  { path: 'tabla/:idcamp/:iddiv/:idzona', component: TablaComponent},
-  { path: 'tabla/:idcamp/:iddiv/:idzona/:idFecha', component: TablaComponent},
-  { path: 'partidos/:idcamp/:iddiv/:idzona/:idFecha/:idInst', component: PartidosComponent, pathMatch: 'full'},
-  { path: 'partidosevento/:idcamp/:iddiv/:idevento', component: PartidoeventosComponent, pathMatch: 'full'},
-  { path: 'partido/:idPartido', component: PartidoComponent},
-  { path: 'historial', component: HistorialComponent},
-  { path: 'historial/:idJugador', component: HistorialComponent},
-  { path: 'partidodet/:idPartido', component: PartidodetalleComponent},
-  { path: 'tabladet', component: TabladetalleComponent},
-  { path: 'tabladetcom', component: TabladetalleCompactoComponent},
-  { path: 'boletines/', component: BoletinComponent},
-  { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent,  pathMatch: 'full'},
+  { path: 'noticias', component: AmsnoticiasComponent },
+  { path: 'noticia/:idGaleria', component: AmsnoticiaComponent },
+  { path: 'categoria', component: CategoriaComponent },
+  { path: 'categoria/:idGaleria', component: CategoriaComponent },
+  { path: 'club/:idGaleria', component: ClubComponent, pathMatch: 'full' },
+  { path: 'banner/:idGaleria', component: AmsbannersComponent },
+  { path: 'video/:idVideo', component: AmsvideoComponent },
+  { path: 'galeria/:idGaleria', component: AmsgaleriasComponent },
+  { path: 'tabla/:idcamp/:iddiv/:idzona', component: TablaComponent },
+  { path: 'tabla/:idcamp/:iddiv/:idzona/:idFecha', component: TablaComponent },
+  { path: 'partidos/:idcamp/:iddiv/:idzona/:idFecha/:idInst', component: PartidosComponent, pathMatch: 'full' },
+  { path: 'partidosevento/:idcamp/:iddiv/:idevento', component: PartidoeventosComponent, pathMatch: 'full' },
+  { path: 'partido/:idPartido', component: PartidoComponent },
+  { path: 'historial', component: HistorialComponent },
+  { path: 'historial/:idJugador', component: HistorialComponent },
+  { path: 'partidodet/:idPartido', component: PartidodetalleComponent },
+  { path: 'tabladet', component: TabladetalleComponent },
+  { path: 'tabladetcom', component: TabladetalleCompactoComponent },
+  { path: 'boletines/', component: BoletinComponent },
+  { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'cuotas', component: CuotasformComponent },
-  { path: 'descargas', component: DescargasComponent},
-  { path: 'descargas/:lnk', component: DescargasComponent},
+  { path: 'descargas', component: DescargasComponent },
+  { path: 'descargas/:lnk', component: DescargasComponent },
   { path: '**', component: PaginaComponent }
 ];
 
@@ -64,14 +64,14 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true, anchorScrolling: 'enabled', onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' } // <-- debugging purposes only
- // <-- debugging purposes only
+      { useHash: true, anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' } // <-- debugging purposes only
+      // <-- debugging purposes only
     )
   ],
   exports: [
     RouterModule
   ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
 
 

@@ -1,22 +1,28 @@
-<div class="container-fluid p-4">
-  <div class="card mb-3">
-
-    <div class="row p-4">
-      <div class="col-12"><h5 class="card-title">{{ listado.titulo }}</h5></div>
-      <div class="col-md-4 pt-4">
-        <img *ngIf="listado.foto1" [src]="listado.foto1" class="img-fluid" alt="Imagen de la listado">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-
-
-          <!-- <p class="card-text" [innerHTML]="getSanitizedResumen(getFirstParagraph(listado.resumen))"></p> -->
-          <p class="card-text" [innerHTML]="getSanitizedResumen(listado.articulo)"></p>
-          <!-- <p class="card-text"><strong>Autor:</strong> {{ listado.autor }}</p> -->
-          <p class="card-text"><strong>Categoría:</strong> {{ listado.categoria_nombre }}</p>
-          <p class="card-text"><strong>Publicado el:</strong> {{ listado.published | date:'short' }}</p>
-
+<div class="container article-container p-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <!-- Article Header -->
+      <div class="article-header mb-4 text-center">
+        <h1 class="article-title mb-3">{{ listado.titulo }}</h1>
+        <div class="article-meta text-muted">
+          <span class="mr-3"><i class="fa fa-folder-open mr-1"></i> {{ listado.categoria_nombre }}</span>
+          <span><i class="fa fa-calendar mr-1"></i> {{ listado.published | date:'mediumDate' }}</span>
         </div>
+      </div>
+
+      <!-- Featured Image -->
+      <div class="article-image mb-5" *ngIf="listado.foto1">
+        <img [src]="listado.foto1" class="img-fluid rounded shadow-sm w-100" alt="{{ listado.titulo }}">
+      </div>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        <div [innerHTML]="getSanitizedResumen(listado.articulo)"></div>
+      </div>
+      
+      <!-- Back Button (Optional) -->
+      <div class="text-center mt-5">
+        <a routerLink="/home" class="btn btn-outline-primary"><i class="fa fa-arrow-left mr-2"></i>Volver</a>
       </div>
     </div>
   </div>

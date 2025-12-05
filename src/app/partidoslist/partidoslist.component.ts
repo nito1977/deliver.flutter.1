@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { detectChanges } from '@angular/core/src/render3';
@@ -31,17 +31,17 @@ export class PartidoslistComponent implements OnInit {
 
     this.buscando = false;
     if (this.idIns == undefined) {
-      this._http.partidosxMaxFecha(84, this.idDiv, this.idCamp,  this.idZon).subscribe(data => {
+      this._http.partidosxMaxFecha(84, this.idDiv, this.idCamp, this.idZon).subscribe(data => {
         this.buscando = true;
         this.MaxFec = data[0]['Max'];
-        console.log('MaxFecha ->' + this.MaxFec)
-        console.log('Fecha ->' + this.idFec)
+        //console.log('MaxFecha ->' + this.MaxFec)
+        //console.log('Fecha ->' + this.idFec)
         if (this.idIns == undefined) this.idIns = 0; else console.log('instancia: ' + this.idIns)
-  /*       if (this.idFec == 0 || this.idFec == undefined)
-          {
-            this.idFec = this.MaxFec
-          }
-          console.log('Fecha Cambiada ->' + this.idFec) */
+        /*       if (this.idFec == 0 || this.idFec == undefined)
+                {
+                  this.idFec = this.MaxFec
+                }
+                console.log('Fecha Cambiada ->' + this.idFec) */
         this.cargarPartidos(8, this.idCamp, this.idDiv, this.idZon, this.MaxFec, this.idIns);
       });
     } else {
@@ -49,7 +49,7 @@ export class PartidoslistComponent implements OnInit {
     }
 
   }
-  public cargarPartidos(op: number,  tor: number, div: number, zona: string, fecha: number, inst: number) {
+  public cargarPartidos(op: number, tor: number, div: number, zona: string, fecha: number, inst: number) {
     // alert(op);
     this.buscando = false;
     this.detalleTabla = [];
@@ -67,16 +67,16 @@ export class PartidoslistComponent implements OnInit {
   }
   determinaGanador(equipo: string, idc: number, tl: number, tv: number): boolean {
     if (equipo === 'loc') {
-    if (tl === tv) { this.ganaloc = 'bg-white pr-1 pl-1'; this.ganavis = 'bg-white pr-1 pl-1'; }
-    if (tl > tv) { this.ganaloc = 'bg-success pr-1 pl-1'; } else { this.ganaloc = 'bg-white pr-1 pl-1'; }
-  } else {
-    if (tl < tv) {
-      this.ganavis = 'bg-warning pr-1 pl-1';
+      if (tl === tv) { this.ganaloc = 'bg-white pr-1 pl-1'; this.ganavis = 'bg-white pr-1 pl-1'; }
+      if (tl > tv) { this.ganaloc = 'bg-success pr-1 pl-1'; } else { this.ganaloc = 'bg-white pr-1 pl-1'; }
     } else {
-      this.ganavis = 'bg-white pr-1 pl-1';
-    }
+      if (tl < tv) {
+        this.ganavis = 'bg-warning pr-1 pl-1';
+      } else {
+        this.ganavis = 'bg-white pr-1 pl-1';
+      }
 
+    }
+    return true;
   }
-  return true;
- }
 }

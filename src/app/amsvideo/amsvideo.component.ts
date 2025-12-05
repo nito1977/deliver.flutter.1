@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { Noticias } from '../models/noticias';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-declare var $ : any;
+declare var $: any;
 
 @Component({
   selector: 'app-amsvideo',
@@ -24,7 +24,7 @@ export class AmsvideoComponent implements OnInit {
   constructor(private http: ServicioService, private sanitizer: DomSanitizer) { }
 
   getSanitizedResumen(resumen: string) {
-    if (resumen != null){
+    if (resumen != null) {
       return this.sanitizer.bypassSecurityTrustHtml(resumen);
     } else {
       return '';
@@ -62,21 +62,26 @@ export class AmsvideoComponent implements OnInit {
     if (this.listado.length > 0) {
       let videoTitulo = this.listado[0].titulo;
 
-        this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoTitulo);
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoTitulo);
     } else {
       this.videoUrl = null;
 
     }
-   // Obtener solo el primer video
+    // Obtener solo el primer video
   }
   verNoticias(idGaleria) {
     this.buscando = true;
     this.http.getNoticias(118, idGaleria).subscribe(data => {
-        this.buscando = false;
-        this.listado = data;
-        this.titulo = data[0]["resumen"] != null ? data[0]["resumen"].toString() : '';
+      this.buscando = false;
+      this.listado = data;
+      if (data && data.length > 0) {
+        this.titulo = data[0]["resumen"] != null ? data[0]["resumen"].toString() : '-';
         this.video = this.getVideo(); // Asignar el primer video a la variable
-      });
+      } else {
+        this.titulo = '-';
+        this.video = null;
+      }
+    });
 
   }
 }

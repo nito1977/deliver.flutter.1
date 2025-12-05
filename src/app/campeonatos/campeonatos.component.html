@@ -1,191 +1,254 @@
-
-      <nav class="nav nav-pills flex-column flex-sm-row">
-        <div class="btn-group btn-block mb-2 p-4" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle rounded-2 p-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Estadísticas Año {{anioSel}}
+<div class="container-fluid">
+  <div class="mr-auto px-2 bd-highlight"><h3 ><strong class="text-primary">Estadísticas</strong> FSP</h3></div>
+</div>
+      
+      
+<div class="row p-2">
+  <!-- Left Column: Accordion -->
+  <div class="col-md-3 card">
+    <button id="btnGroupDrop1" type="button" class="btn btn-white dropdown-toggle rounded-2 p-2 m-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Seleccione Año {{anioSel}}
+    </button>
+    <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
+      <a class="dropdown-item " (click)="cargaAnio(2025);">2025</a>
+      <a class="dropdown-item " (click)="cargaAnio(2024);">2024</a>
+      <a class="dropdown-item " (click)="cargaAnio(2023);">2023</a>
+      <a class="dropdown-item " (click)="cargaAnio(2022);">2022</a>
+      <a class="dropdown-item " (click)="cargaAnio(2021);">2021</a>
+      <a class="dropdown-item " (click)="cargaAnio(2020);">2020</a>
+      <a class="dropdown-item " (click)="cargaAnio(2019);">2019</a>
+      <a class="dropdown-item"  (click)="cargaAnio(2018);">2018</a>
+      <a class="dropdown-item " (click)="cargaAnio(2017);">2017</a>
+      <a class="dropdown-item"  (click)="cargaAnio(2016);">2016</a>
+      <a class="dropdown-item " (click)="cargaAnio(2015);">2015</a>
+      <a class="dropdown-item " (click)="cargaAnio(2014);">2014</a>
+      <a class="dropdown-item " (click)="cargaAnio(2013);">2013</a>
+      <a class="dropdown-item"  (click)="cargaAnio(2012);">2012</a>
+      <a class="dropdown-item " (click)="cargaAnio(2011);">2011</a>
+      <a class="dropdown-item"  (click)="cargaAnio(2010);">2010</a>
+      <a class="dropdown-item"  (click)="cargaAnio(2009);">2009</a>
+    </div>
+    <div id="accordion">
+      
+      <!-- Varones Mayores -->
+      <div class="card bg-varones mb-2">
+        <div class="card-header p-2" id="headingVaron">
+          <button class="btn collapsed text-dark btn-block accordion-header-btn"
+            type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseVarones" aria-expanded="true"
+            aria-controls="collapseVarones" (click)="limpiaLista()">
+            <div class="d-flex align-items-center">
+              <i id="iconVarones" class="fa fa-user mr-2"></i>
+              <h5 class="mb-0">Varones Mayores</h5>
+            </div>
           </button>
-          <div class="dropdown-menu btn btn-block" aria-labelledby="btnGroupAnio">
-            <a class="dropdown-item " (click)="cargaAnio(2025);">2025</a>
-            <a class="dropdown-item " (click)="cargaAnio(2024);">2024</a>
-            <a class="dropdown-item " (click)="cargaAnio(2023);">2023</a>
-            <a class="dropdown-item " (click)="cargaAnio(2022);">2022</a>
-            <a class="dropdown-item " (click)="cargaAnio(2021);">2021</a>
-            <a class="dropdown-item " (click)="cargaAnio(2020);">2020</a>
-            <a class="dropdown-item " (click)="cargaAnio(2019);">2019</a>
-            <a class="dropdown-item"  (click)="cargaAnio(2018);">2018</a>
-            <a class="dropdown-item " (click)="cargaAnio(2017);">2017</a>
-            <a class="dropdown-item"  (click)="cargaAnio(2016);">2016</a>
-            <a class="dropdown-item " (click)="cargaAnio(2015);">2015</a>
-            <a class="dropdown-item " (click)="cargaAnio(2014);">2014</a>
-            <a class="dropdown-item " (click)="cargaAnio(2013);">2013</a>
-            <a class="dropdown-item"  (click)="cargaAnio(2012);">2012</a>
-            <a class="dropdown-item " (click)="cargaAnio(2011);">2011</a>
-            <a class="dropdown-item"  (click)="cargaAnio(2010);">2010</a>
-            <a class="dropdown-item"  (click)="cargaAnio(2009);">2009</a>
-          </div>
         </div>
-      </nav>
-      <div class="row">
-        <div class="col">
-          <div class="card bg-varones">
-            <div class="card-header p-2" id="headingVaron">
-              <button class="btn btn-link collapsed text-dark"
-                type="button" data-toggle="collapse"
-                data-target="#collapseVarones" aria-expanded="true"
-                aria-controls="collapseVarones" (click)="cargaTorneos(1, false , 13, 'A');">
-                <i id="iconVarones" class="fa fa-user"></i>
-                <h5>Varones Mayores</h5>
-              </button>
-            </div>
-            <div id="collapseVarones" class="collapse"
-              aria-labelledby="headingVaron" data-parent="#accordion">
+        <div id="collapseVarones" class="collapse"
+          aria-labelledby="headingVaron" data-bs-parent="#accordion">
 
-              <div class="card-body p-1 ">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button (click)="cargaTorneos(1, false, 13, 'A');" type="button" class="btn btn-primary">Primera</button>
-                    <button (click)="cargaTorneos(1, false, 12, 'A');" type="button" class="btn btn-secondary">Segunda</button>
-                </div>
-                <ul class="list-group p-0" style="width: 100%;">
-
-                  <li *ngFor="let camp of detalleCamp" class="list-group-item list-group-item-action p-2">
-                    <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-dark">
-                      <h6>{{camp.campeonato}}</h6>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+          <div class="card-body p-1 ">
+            <div class="btn-group w-100" role="group" aria-label="Basic example">
+                <button (click)="cargaTorneos(1, false, 13, 'A', 0);" type="button" class="btn btn-primary w-50">Primera</button>
+                <button (click)="cargaTorneos(1, false, 12, 'A', 0);" type="button" class="btn btn-secondary w-50">Segunda</button>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card bg-damas">
-            <div class="card-header p-2" id="headingDamas">
-              <button class="btn btn-link collapsed text-dark"
-                type="button" data-toggle="collapse"
-                data-target="#collapseDamas" aria-expanded="false"
-                aria-controls="collapseDamas" (click)="cargaTorneos(1, false, 17, 'A');">
-                <i id="iconDamas" class="fa fa-user"></i>
-                <h5>Damas Mayores</h5>
-              </button>
-            </div>
-            <div id="collapseDamas" class="collapse"
-              aria-labelledby="headingDamas" data-parent="#accordion">
-              <div class="card-body p-1 ">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button (click)="cargaTorneos(1, false, 18, 'A');" type="button" class="btn btn-secondary">Primera</button>
-                    <button (click)="cargaTorneos(1, false, 21, 'A');" type="button" class="btn btn-secondary">Segunda</button>
-                </div>
-                <ul class="list-group p-0" style="width: 100%;">
-                  <li *ngFor="let camp of detalleCampDamas" class="list-group-item list-group-item-action p-2">
-                      <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-dark">
-                        <h6>{{camp.campeonato}}</h6>
-                      </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card bg-infvarones">
-            <div class="card-header p-2" id="headingInfVaron">
-              <button class="btn btn-link collapsed text-dark"
-                type="button" data-toggle="collapse"
-                data-target="#collapseInfVaron" aria-expanded="false"
-                aria-controls="collapseInfVaron"
-                (click)="cargaTorneos(1, false, 6, 'A');">
-                <i id="iconInfVarones" class="fa fa-male"></i>
-                <h5>Inferior Varones</h5>
-              </button>
-            </div>
-            <div id="collapseInfVaron" class="collapse"
-              aria-labelledby="headingInfVaron" data-parent="#accordion">
-              <div class="card-body p-1 ">
-                  <div class="row  pl-3 pr-3" role="group" aria-label="Basic example">
-                      <button (click)="cargaTorneos(1, false, 4, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Inf.</button>
-                      <button (click)="cargaTorneos(1, false, 5, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
-                      <button (click)="cargaTorneos(1, false, 6, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cad.</button>
-                      <button (click)="cargaTorneos(1, false, 7, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
-                      <button (click)="cargaTorneos(1, false, 8, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juv.</button>
-                      <button (click)="cargaTorneos(1, false, 9, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
-                      <button (click)="cargaTorneos(1, false, 10, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Jun.</button>
-                      <button (click)="cargaTorneos(1, false, 11, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
-                  </div>
-                <ul class="list-group p-0" style="width: 100%;">
-                  <li *ngFor="let camp of detalleCampInfVarones" class="list-group-item list-group-item-action p-2">
-                      <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-dark">
-                        <h6>{{camp.campeonato}}</h6>
-                      </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card bg-infdamas">
-            <div class="card-header p-2" id="headingInfDamas">
-
-              <button class="btn btn-link collapsed text-dark"
-                type="button" data-toggle="collapse"
-                data-target="#collapseInfDamas"
-                aria-expanded="false" aria-controls="collapseInfDamas"
-                (click)="cargaTorneos(1, false, 14, 'A');">
-                <i id="iconInfDamas" class="fa fa-female"></i>
-                <h5>Inferior Damas</h5>
-              </button>
-
-            </div>
-            <div id="collapseInfDamas" class="collapse"
-              aria-labelledby="headingInfDamas"
-              data-parent="#accordion">
-              <div class="card-body p-1 ">
-                <div class="row  pl-3 pr-3" role="group" aria-label="Basic example">
-                  <button (click)="cargaTorneos(1, false, 22, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Infantil</button>
-                  <button (click)="cargaTorneos(1, false, 14, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
-                  <button (click)="cargaTorneos(1, false, 23, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cadete</button>
-                  <button (click)="cargaTorneos(1, false, 15, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
-                  <button (click)="cargaTorneos(1, false, 24, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juvenil</button>
-                  <button (click)="cargaTorneos(1, false, 16, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
-                  <button (click)="cargaTorneos(1, false, 17, 'A');" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
-
-
-              </div>
-                <ul class="list-group p-0" style="width: 100%;">
-                  <li *ngFor="let camp of detalleCampInfDamas" class="list-group-item list-group-item-action p-2">
-                      <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-dark">
-                        <h6>{{camp.campeonato}}</h6>
-                      </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
 
+      <!-- Damas Mayores -->
+      <div class="card bg-damas mb-2">
+        <div class="card-header p-2" id="headingDamas">
+          <button class="btn collapsed text-dark btn-block accordion-header-btn"
+            type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseDamas" aria-expanded="false"
+            aria-controls="collapseDamas" (click)="limpiaLista()">
+            <div class="d-flex align-items-center">
+              <i id="iconDamas" class="fa fa-user mr-2"></i>
+              <h5 class="mb-0">&nbsp;Damas Mayores</h5>
+            </div>
+          </button>
+        </div>
+        <div id="collapseDamas" class="collapse"
+          aria-labelledby="headingDamas" data-bs-parent="#accordion">
+          <div class="card-body p-1 ">
+            <div class="btn-group w-100" role="group" aria-label="Basic example">
+                <button (click)="cargaTorneos(1, false, 18, 'A',0);" type="button" class="btn btn-secondary w-50">Primera</button>
+                <button (click)="cargaTorneos(1, false, 21, 'A',0);" type="button" class="btn btn-secondary w-50">Segunda</button>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Inferior Varones -->
+      <div class="card bg-infvarones mb-2">
+        <div class="card-header p-2" id="headingInfVaron">
+          <button class="btn collapsed text-dark btn-block accordion-header-btn"
+            type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseInfVaron" aria-expanded="false"
+            aria-controls="collapseInfVaron"
+            (click)="limpiaLista()">
+            <div class="d-flex align-items-center">
+              <i id="iconInfVarones" class="fa fa-male mr-2"></i>
+              <h5 class="mb-0">&nbsp;Inferior Varones</h5>
+            </div>
+          </button>
+        </div>
+        <div id="collapseInfVaron" class="collapse"
+          aria-labelledby="headingInfVaron" data-bs-parent="#accordion">
+          <div class="card-body p-1 ">
+              <div class="pl-3 pr-3" role="group" aria-label="Basic example">
+                  <button (click)="cargaTorneos(1, false, 4, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Inf.</button>
+                  <button (click)="cargaTorneos(1, false, 5, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
+                  <button (click)="cargaTorneos(1, false, 6, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cad.</button>
+                  <button (click)="cargaTorneos(1, false, 7, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
+                  <button (click)="cargaTorneos(1, false, 8, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juv.</button>
+                  <button (click)="cargaTorneos(1, false, 9, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
+                  <button (click)="cargaTorneos(1, false, 10, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Jun.</button>
+                  <button (click)="cargaTorneos(1, false, 11, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
+              </div>
+              <div *ngIf="buscando" class="text-center p-2"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Inferior Damas -->
+      <div class="card bg-infdamas mb-2">
+        <div class="card-header p-2" id="headingInfDamas">
+          <button class="btn collapsed text-dark btn-block accordion-header-btn"
+            type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseInfDamas"
+            aria-expanded="false" aria-controls="collapseInfDamas"
+            (click)="limpiaLista()">
+            <div class="d-flex align-items-center">
+              <i id="iconInfDamas" class="fa fa-female mr-2"></i>
+              <h5 class="mb-0">&nbsp;Inferior Damas</h5>
+            </div>
+          </button>
+
+        </div>
+        <div id="collapseInfDamas" class="collapse"
+          aria-labelledby="headingInfDamas"
+          data-bs-parent="#accordion">
+          <div class="card-body p-1 ">
+            <div class="pl-3 pr-3" role="group" aria-label="Basic example">
+              <button (click)="cargaTorneos(1, false, 22, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Infantil</button>
+              <button (click)="cargaTorneos(1, false, 14, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
+              <button (click)="cargaTorneos(1, false, 23, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cadete</button>
+              <button (click)="cargaTorneos(1, false, 15, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
+              <button (click)="cargaTorneos(1, false, 24, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juvenil</button>
+              <button (click)="cargaTorneos(1, false, 16, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
+              <button (click)="cargaTorneos(1, false, 17, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
 
 
-
-
-            <!--
-            <div class="card bg-qr">
-                <div class="card-header m-0 p-1" id="headingInfQr">
-
-                  <button class="btn btn-link collapsed text-dark"
-                    type="button" data-toggle="collapse"
-                    data-target="#collapseInfQr"
-                    aria-expanded="false" aria-controls="collapseInfQr"
-                    (click)="cargaTorneos(1, false, 14, 'A');">
-                    <h5>
-                      <i id="iconQr" class="fa fa-qrcode"></i>
-                      Escanea un carnet
-                    </h5>
-                  </button>
+            </div>
+          
+            
+          </div>
+        </div>
+        
+      </div>
+      <div class="card bg-primary text-white shadow border-0 py-2">
+              <div class="card-body text-center p-4">
+                <i class="fa fa-history fa-3x mb-3 text-white-50"></i>
+                <h4 class="card-title font-weight-bold">Historial</h4>
+                <p class="card-text">Consultá tus datos, goles y tarjetas al instante.</p>
+                <button [routerLink]="['/historial']" routerLinkActive="historial" class="btn btn-light btn-lg rounded-pill px-4 shadow-sm text-primary font-weight-bold">
+                  <i class="fa fa-search mr-2"></i> Consultá ahora
+                </button>
               </div>
             </div>
-            -->
 
+    </div>
+  </div>
 
+  <!-- Right Column: Stats -->
+  <div class="col-md-9" id="stats">
+    <div *ngIf="buscando" class="text-center p-2"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+        
+        <!-- Primera -->
+        <div class="row">
+          <div *ngFor="let camp of detalleCamp" class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 shadow-sm border-0 campeonato-card">
+              <div class="card-body p-3">
+                <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-decoration-none">
+                  <div class="d-flex align-items-center">
+                    <i class="fa fa-trophy text-primary mr-2"></i>
+                    <h6 class="mb-0 text-dark font-weight-bold">{{camp.campeonato}}</h6>
+                  </div>
+                  <div class="mt-2">
+                    <small class="text-muted">Ver tabla <i class="fa fa-arrow-right"></i></small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- noticias-->
+        <!-- Damas -->
+        <div class="row">
+          <div *ngFor="let camp of detalleCampDamas" class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 shadow-sm border-0 campeonato-card">
+              <div class="card-body p-3">
+                <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-decoration-none">
+                  <div class="d-flex align-items-center">
+                    <i class="fa fa-trophy text-primary mr-2"></i>
+                    <h6 class="mb-0 text-dark font-weight-bold">{{camp.campeonato}}</h6>
+                  </div>
+                  <div class="mt-2">
+                    <small class="text-muted">Ver tabla <i class="fa fa-arrow-right"></i></small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inferior Varones -->
+        <div class="row">
+          <div *ngFor="let camp of detalleCampInfVarones" class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 shadow-sm border-0 campeonato-card">
+              <div class="card-body p-3">
+                <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-decoration-none">
+                  <div class="d-flex align-items-center">
+                    <i class="fa fa-trophy text-primary mr-2"></i>
+                    <h6 class="mb-0 text-dark font-weight-bold">{{camp.campeonato}}</h6>
+                  </div>
+                  <div class="mt-2">
+                    <small class="text-muted">Ver tabla <i class="fa fa-arrow-right"></i></small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inferior Damas -->
+        <div class="row">
+          <div *ngFor="let camp of detalleCampInfDamas" class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 shadow-sm border-0 campeonato-card">
+              <div class="card-body p-3">
+                <a [routerLink]="['/tabla', camp.id, this.muestra, 'A']" class="text-decoration-none">
+                  <div class="d-flex align-items-center">
+                    <i class="fa fa-trophy text-primary mr-2"></i>
+                    <h6 class="mb-0 text-dark font-weight-bold">{{camp.campeonato}}</h6>
+                  </div>
+                  <div class="mt-2">
+                    <small class="text-muted">Ver tabla <i class="fa fa-arrow-right"></i></small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    <!-- <app-tabladetallecompacto *ngIf="selectedDivision"  [idCampeonato]="selectedCampeonato" [idDivision]="selectedDivision" ></app-tabladetallecompacto> -->
+    <app-amscampstats *ngIf="selectedDivision" [idDivision]="selectedDivision"></app-amscampstats>
+    <div *ngIf="!selectedDivision" class="alert alert-info text-center">
+      Seleccioná una categoría (Primera o Damas) para ver las estadísticas.
+    </div>
+  </div>
+</div>

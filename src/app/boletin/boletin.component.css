@@ -1,42 +1,57 @@
 .btn-link {
-  color: black!important;
+  color: black !important;
 }
-@media (min-width: 767.98px)  {
+
+@media (min-width: 767.98px) {
   th {
-    font-size: 11px!important;
-    padding: 4px!important;
+    font-size: 11px !important;
+    padding: 4px !important;
   }
+
   td {
-    font-size: 11px!important;
-    padding: 4px!important;
+    font-size: 11px !important;
+    padding: 4px !important;
   }
 }
 
-.table-bordered td, .table-bordered th {
+.table-bordered td,
+.table-bordered th {
   border: 0px;
   border-top: 1px solid #dee2e6;
 }
+
 .table thead th {
   border-bottom: none;
 }
-.table td, .table th {
+
+.table td,
+.table th {
   border-top: none;
 }
+
 tablasposicion {
-  padding-right: 0px!important;
+  padding-right: 0px !important;
 }
 
 .btn-group {
-    display: flex;
-    justify-content: center; /* Centra el botón dentro del grupo */
+  display: flex;
+  justify-content: center;
+  /* Centra el botón dentro del grupo */
 }
 
 .dropdown-menu {
-    left: 50%; /* Alinea el menú del dropdown */
-    transform: translateX(-50%); /* Centra el menú del dropdown */
+  left: 50%;
+  /* Alinea el menú del dropdown */
+  transform: translateX(-50%);
+  /* Centra el menú del dropdown */
 }
 
 /* Este estilo es opcional si quieres ajustar aún más */
 .dropdown-menu {
-    width: auto; /* Asegura que el ancho del menú sea automático */
+  width: auto;
+  /* Asegura que el ancho del menú sea automático */
+}
+
+.dropdown-menu.btn.btn-block {
+  background: white !important;
 }

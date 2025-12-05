@@ -1,5 +1,5 @@
 .fa {
-  font-size: 50px;
+  font-size: 32px;
 }
 
 /*.bg-varones {
@@ -24,43 +24,93 @@
 #iconDamas {
   font-size: 26px;
   color: #ff0097;
-
-
   font-weight: 100px;
 }
 
 #iconVarones {
   font-size: 26px;
   color: midnightblue;
-
-
   font-weight: 100px;
 }
 
 #iconInfDamas {
   font-size: 30px;
   color: mediumorchid;
-
-
   font-weight: 100px
 }
 
 #iconInfVarones {
   font-size: 30px;
   color: rgb(248, 95, 6);
-
-
   font-weight: 100px
 }
-#iconQr{
+
+#iconQr {
   font-size: 26px;
-
 }
+
 .btn-link:hover {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
-.card-header {
 
-    align-items: center;
-    text-align: center!important;
+.card-header {
+  align-items: center;
+  text-align: center !important;
+}
+
+.dropdown-menu.btn.btn-block.show {
+  background: white;
+}
+
+.dropdown-menu.btn.btn-block {
+  background: white !important;
+}
+
+/* Modern Card Styles */
+.campeonato-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.campeonato-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.campeonato-card .card-body {
+  border-radius: 8px;
+}
+
+.campeonato-card:hover .fa-arrow-right {
+  transform: translateX(4px);
+  transition: transform 0.3s ease;
+}
+
+.campeonato-card .fa-trophy {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+/* Accordion Header Button Alignment */
+.accordion-header-btn {
+  text-align: left !important;
+}
+
+.accordion-header-btn .d-flex {
+  width: 100%;
+}
+
+.accordion-header-btn h5 {
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.accordion-header-btn i {
+  min-width: 30px;
+  text-align: center;
 }

@@ -1,39 +1,198 @@
 h5.bg-primary.text-white.shadow.p-1.mt-2.rounded {
   background-color: #b30c35 !important;
 }
+
 .media-body.text-center.pl-1.bg-secondary.rounded.m-0 {
   background-color: #b30c35 !important;
 }
+
 .col-xl-4.col-lg-6.col-12.primera.shadow {
   background: white !important;
 }
+
 .col-xl-4.col-lg-6.col-12.damas.shadow {
   background-color: #b30c35 !important;
 }
+
 h6.text-info.m-0 {
   font-size: 0.70rem;
 }
+
 .media-body.btnresults {
-  max-width: 66px!important;
-  margin-top: 12px!important;
+  max-width: 66px !important;
+  margin-top: 12px !important;
 }
 
-span.resultadosInfo{
-  text-align: center!important;
+span.resultadosInfo {
+  text-align: center !important;
   font: caption;
 }
-.colcancha{
-  max-width: 116px!important;
+
+.colcancha {
+  max-width: 116px !important;
 }
 
 .bg-primary.pl-1.pr-1.rounded {
   /*max-width: 100px !important;*/
 }
+
 h6.text-light.textoInfo {
   font-size: 11px;
 }
 
 .card-header {
-  padding: 0rem 0.25rem!important;
+  padding: 0rem 0.25rem !important;
 
+}
+
+/* Modern Sports Media Style - Match Cards - COMPACT VERSION */
+.match-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.match-card:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.match-card-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #007bff;
+}
+
+.match-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-day {
+  font-size: 12px;
+  font-weight: 700;
+  color: #212529;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.date-category {
+  font-size: 10px;
+  color: #007bff;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.match-venue {
+  font-size: 11px;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+}
+
+.match-venue i {
+  color: #007bff;
+  font-size: 11px;
+}
+
+.match-card-body {
+  padding: 12px 12px;
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.team-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+}
+
+.team-score {
+  font-size: 22px;
+  font-weight: 700;
+  color: #212529;
+  min-width: 35px;
+  text-align: center;
+}
+
+.match-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #dee2e6 50%, transparent 100%);
+  margin: 4px 0;
+}
+
+.match-card-footer {
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-top: 1px solid #e9ecef;
+}
+
+.match-details-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.match-details-btn:hover {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.match-details-btn i {
+  transition: transform 0.2s ease;
+  font-size: 11px;
+}
+
+.match-details-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .team-name {
+    font-size: 12px;
+  }
+
+  .team-score {
+    font-size: 20px;
+  }
+
+  .team-logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .match-card-body {
+    padding: 10px 12px;
+  }
 }

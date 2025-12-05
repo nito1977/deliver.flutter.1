@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuarios } from '../../models/usuarios';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { GLOBAL } from '../global';
 import * as sha1 from 'js-sha1';
@@ -17,23 +16,23 @@ export class UserService {
   public identity;
   public tocken;
 
-  constructor( private http: HttpClient) {
-    this._apiUrl = GLOBAL.sitio + GLOBAL.urlLoguin ;
+  constructor(private http: HttpClient) {
+    this._apiUrl = GLOBAL.sitio + GLOBAL.urlLoguin;
   }
 
   LogIn_user(user: Usuarios): Observable<any> {
-      const json = JSON.stringify(user);
-      const params = 'json=' + json;
-      const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    const json = JSON.stringify(user);
+    const params = 'json=' + json;
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-      return this.http.post(this._apiUrl + '/apppostams.php?', json, {headers: headers});
+    return this.http.post(this._apiUrl + '/apppostams.php?', json, { headers: headers });
     /*return this.http.post<Usuarios>(this._apiUrl + '/apppostams.php?', user, httpOptions).pipe(
       tap((usuarios: Usuarios) => this.log('usuario  w/ nombre=${usuario.nombre}')),
     catchError(this.handleError<Usuarios>('addCluster'))*/
-}
-private log(message: string) {
-  console.log(message);
-}
+  }
+  private log(message: string) {
+    //console.log(message);
+  }
 
   getIdentity() {
     // console.log(localStorage.getItem('identity'));

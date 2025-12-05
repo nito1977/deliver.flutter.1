@@ -37,14 +37,14 @@ export class ServiciosamsService {
   cargaSecciones(op, nivel) {
     return this.http.get<Seccion[]>(this.xurl + '/appams.php?opcion=' + op + '&nivel=' + nivel);
 
-   }
-   buscaOs(op, busca, orden, tipoOrden, ini, fin) {
+  }
+  buscaOs(op, busca, orden, tipoOrden, ini, fin) {
     const params = 'opcion=' + op + '&busca=' + busca + '&orden=' + orden + '&tipoOrden=' + tipoOrden + '&ini=' + ini + '&fin=' + fin;
     return this.http.get<Os[]>(this.xurl + '/appams.php?' + params);
-   }
+  }
 
 
-   // de usuarios
+  // de usuarios
   public setearNombreUsuario(nombre: string) {
     switch (nombre.length) {
       case 1:
@@ -67,7 +67,7 @@ export class ServiciosamsService {
         break;
       default:
         GLOBAL.idUsuario = '';
-      }
+    }
   }
   public isLogged(): boolean {
     if (this.devolverIdUsuario() === '') {
@@ -76,21 +76,21 @@ export class ServiciosamsService {
       return true;
     }
   }
-   public devolverIdUsuario() {
+  public devolverIdUsuario() {
     return GLOBAL.idUsuario;
   }
   public devolverUrlDescarga() {
     return GLOBAL.urlPublica;
   }
   public LoginGet(op, usuario: Usuarios) {
-    const params = 'opcion=' + op + '&nombre=' + usuario.nombre + '&clave=' + sha1(usuario.clave);
+    const params = 'opcion=' + op + '&nombre=' + usuario.nombre + '&clave=' + sha1.sha1(usuario.clave.toString());
     // console.log(params);
     return this.http.get<Noticias[]>(this.usuUrl + '/appams.php?' + params);
   }
 
   // de noticias
-  public getNoticias(op) {
-    const params = 'opcion=' + op;
+  public getNoticias(op, cate: number) {
+    const params = 'opcion=' + op + '&cate=' + cate;
     return this.http.get<Noticias[]>(this.xurl + '/appfsp.php?' + params);
   }
 

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row bg-light text-center justify-content-center" >
+        <div class="col">
+          <a class="text-dark pl-2 pt-3 pb-1 m-0 ml-2" href="https://www.youtube.com/&#64;fsptv-c1s" target="_blank">
+            <h4 class="text-dark pl-2 pt-3 pb-1 m-0 ml-2">
+                <img src="./assets/svg/fsptv.png"  style="max-height: 36px;" alt="Logo FSP" class="img-fluid p-1 mb-1">    
+                Ingresá a FSP TV para ver todos los videos
+            </h4>
+          </a>
+          
+        </div>
+    </div>
+</div>    
+<div class="gallery-container">
+    
+    <div class="main-video-section" *ngIf="currentVideo">
+        <div class="video-wrapper">
+            <iframe [src]="safeUrl" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <h2 class="main-video-title">{{ currentVideo.title }}</h2>
+    </div>
+
+    <div class="video-list-section">
+        <h3 class="list-title">Más Videos</h3>
+        <div class="video-list">
+            <div class="video-item" *ngFor="let video of videos" [class.active]="currentVideo?.id === video.id"
+                (click)="selectVideo(video)">
+                <div class="thumbnail-wrapper">
+                    <img [src]="video.thumbnail" [alt]="video.title">
+                    <div class="play-overlay">
+                        <i class="fa fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-title">{{ video.title }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

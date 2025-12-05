@@ -4,7 +4,7 @@ import { ServicioService } from '../servicios/servicio.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PartidoslistComponent } from '../partidoslist/partidoslist.component';
 import { Boletinesmodel } from '../models/boletinesmodel';
-import { runInThisContext } from 'vm';
+
 
 @Component({
   selector: 'app-boletin',
@@ -33,29 +33,29 @@ export class BoletinComponent implements OnInit {
     this.bolSel = this._route.snapshot.params.idBoletin;
     this.mesSel = this._route.snapshot.params.idMes;
     //this.anioSel = 2020;
-    console.log(this.anioSel);
-/*     if ( this.anioSel != undefined){
-      this.anioSel = this._route.snapshot.params.idAnio;
-      this.bolSel = this._route.snapshot.params.idBoletin;
-      this.mesSel = this._route.snapshot.params.idMes;
-    } else {
-      this.anioSel = a.getFullYear();
-      this.bolSel = 3;
-      this.mesSel = 1;
-    } */
+    //console.log(this.anioSel);
+    /*     if ( this.anioSel != undefined){
+          this.anioSel = this._route.snapshot.params.idAnio;
+          this.bolSel = this._route.snapshot.params.idBoletin;
+          this.mesSel = this._route.snapshot.params.idMes;
+        } else {
+          this.anioSel = a.getFullYear();
+          this.bolSel = 3;
+          this.mesSel = 1;
+        } */
 
-    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
-   }
+    }
 
-   this.router.events.subscribe((evt) => {
+    this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
-         // trick the Router into believing it's last link wasn't previously loaded
-         this.router.navigated = false;
-         // if you need to scroll back to top, here is the right place
-         window.scrollTo(0, 0);
+        // trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+        // if you need to scroll back to top, here is the right place
+        window.scrollTo(0, 0);
       }
-  });
+    });
   }
   ngOnInit() {
     this.Encontrado = false
@@ -63,11 +63,11 @@ export class BoletinComponent implements OnInit {
     this.anioSel = this._route.snapshot.params.idAnio ? this._route.snapshot.params.idAnio : a.getFullYear();
     this.http.listadoBoletines(this.anioSel).subscribe(
       data => {
-          this.buscando = false;
-          this.detalleBoletines = data;
+        this.buscando = false;
+        this.detalleBoletines = data;
 
-          console.log(this.detalleBoletines)
-        },
+        console.log(this.detalleBoletines)
+      },
       error => {
         this.Encontrado = false
         alert('error cargando listado boletines');
@@ -78,11 +78,11 @@ export class BoletinComponent implements OnInit {
 
         // Do stuff after completion
       });
-    if (this.anioSel != undefined || this.bolSel != undefined){
+    if (this.anioSel != undefined || this.bolSel != undefined) {
       this.cargaBoletines(this.anioSel, this.bolSel);
       this.Encontrado = false
 
-      }
+    }
   }
 
 
@@ -95,16 +95,16 @@ export class BoletinComponent implements OnInit {
   }
   public irBoletines(anio: number, idBoletin) {
     this.anioSel = anio;
-    this.router.navigateByUrl('/boletines/'+ anio + '/' + idBoletin);
+    this.router.navigateByUrl('/boletines/' + anio + '/' + idBoletin);
     //this.cargaTorneos(9, true, anio, idBoletin);
 
   }
   public cargaTorneos(op: number, refresca: boolean, anio: number, idboletin: number) {
 
-      this.buscando = true;
-      this.detalleCamp = [];
-      this.http.boletinesxAnioxNumero(op, this.anioSel, idboletin).subscribe(
-        data => {
+    this.buscando = true;
+    this.detalleCamp = [];
+    this.http.boletinesxAnioxNumero(op, this.anioSel, idboletin).subscribe(
+      data => {
         this.buscando = false;
         this.detalleCamp = data;
         this.Encontrado = true
@@ -125,7 +125,7 @@ export class BoletinComponent implements OnInit {
     if (this.muestraDetalle !== idaVer) {
       this.muestraDetalle = idaVer;
     }
-  //  this.listp.ngOnChange();
+    //  this.listp.ngOnChange();
     /* const myurl =  url + '/' + tor + '/' + divi + '/' + zona + '/' + bole + '/' + bole;
     this.router.navigateByUrl(myurl).then(e => {
       if (e) {
@@ -134,7 +134,7 @@ export class BoletinComponent implements OnInit {
         console.log('Navigation has failed!');
       }
     }); */
-}
+  }
 
 
 }

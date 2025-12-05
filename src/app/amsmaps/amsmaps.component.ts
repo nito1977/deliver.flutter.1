@@ -1,6 +1,6 @@
-import { variable } from '@angular/compiler/src/output/output_ast';
+
 import { Component, Input, OnInit, Sanitizer } from '@angular/core';
-import {DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-amsmaps',
@@ -11,14 +11,14 @@ export class AmsmapsComponent implements OnInit {
   @Input()
   mapaurl;
 
-  constructor(private dom:DomSanitizer) { 
+  constructor(private dom: DomSanitizer) {
     //variable : String;
-    this.mapaurl = this.dom.bypassSecurityTrustResourceUrl(this.mapaurl); 
+    this.mapaurl = this.dom.bypassSecurityTrustResourceUrl(this.mapaurl);
   }
 
   ngOnInit(): void {
   }
-  getUrlMapa(){
+  getUrlMapa() {
     return this.mapaurl;
   }
 

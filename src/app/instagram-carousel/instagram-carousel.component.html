@@ -1,0 +1,27 @@
+<div class="stories-wrapper">
+    <button class="nav-btn prev" (click)="scrollLeft()">
+        <i class="fa fa-chevron-left"></i>
+    </button>
+
+    <div class="stories-container" #scrollContainer>
+        <div class="story-card" *ngFor="let post of listado">
+            <a [routerLink]="['/noticia',post.id]" target="_blank" class="text-white">
+            <img [src]="urlimgs + '/' + post.foto1" alt="{{ post.titulo }}">
+            </a>
+            <div class="overlay">
+                <!-- <div class="source-badge">AMS</div> -->
+                <h5 class="story-title">{{ post.titulo }}</h5>
+            </div>
+            <div class="play-icon">
+                <i class="fa fa-play"></i>
+            </div>
+        </div>
+        <div *ngIf="!listado || listado.length === 0" class="no-posts">
+            No hay noticias para mostrar
+        </div>
+    </div>
+
+    <button class="nav-btn next" (click)="scrollRight()">
+        <i class="fa fa-chevron-right"></i>
+    </button>
+</div>

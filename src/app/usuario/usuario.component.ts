@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Button } from 'protractor';
+
 
 @Component({
   selector: 'app-usuario',

@@ -44,9 +44,11 @@
     "cordova-plugin-splashscreen": "^6.0.2",
     "cordova-plugin-statusbar": "^4.0.0",
     "core-js": "^3.38.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.7.1",
     "js-sha1": "^0.7.0",
     "ngx-pagination": "^6.0.3",
+    "popper.js": "^1.16.1",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.10"

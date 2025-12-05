@@ -1,7 +1,7 @@
-<div class="container-fluid pl-4 pr-4 border-bottom">
-  <div class="row pl-2 pr-1">
+<div class="container-fluid p-1">
+  <div class="row pl-2 pr-1 pt-0">
       <div class="col-xl-6 col-lg-6 col-12 {{this.idDivision}}">
-        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 class="text-dark" ><strong class="text-primary">Campeonatos</strong> Activos</h3></div>
+        <div class="mr-auto pl-0 pt-0 bd-highlight"><h3 class="text-dark" ><strong class="text-primary">Campeonatos</strong> Activos</h3></div>
         <div class="card border-white rounded">
           <!-- <app-partidoslist  [idCamp]= "158" [nCamp]="161" [idDiv]="13" [idFec]="10" [idZon]="'A'" [idBol]="0" [idIns]="0" ></app-partidoslist> -->
           <app-tabladetallecompacto *ngIf="buscandoActivos"  [idCampeonato]="this.idCamp1" [idDivision]="this.idDiv1" ></app-tabladetallecompacto>
@@ -17,67 +17,65 @@
           </div>
 
 
-
       </div>
-      <div class="col-xl-6 col-lg-6 col-12 bg-white ">
-        <div class="mr-auto pl-0 pt-3 bd-highlight"><h3 class="text-dark" ><strong class="text-primary">Agenda</strong> deportiva</h3></div>
-        <div *ngFor="let t of detalleTabla" class=" p-0 mb-1 border-bottom">
-          <div class="accordion m-0" id="accordion">
-            <div class="card p-0 m-0">
-              <div class="card-header bg-white" id="headingOne">
-                <div class="row d-flex align-items-center altura-div">
-                  <div class="col-xl-3 col-lg-3 col-6 bg-white ">
-                    <div class=" bg-primary pl-1 rounded">
-                      <h6 class="info text-dark text-center m-0">{{t.fechapartido}}</h6>
-                      <h6 class="text-center text-light text-info m-0 pt-1">{{t.nomCategoria}}</h6>
-                    </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-6 bg-white ">
-                    <div  class="text-left pl-1 colcancha">
-                      <h6 class="info text-dark m-0">CANCHA</h6>
-                      <h6 class="text-info m-0 pt-1">{{t.Nomloc}}</h6>
-                    </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-6 col-12 bg-white ">
-                    <div class="row text-left pl-1 colresults">
-                      <div class="col info text-dark m-0">
-                        <div class="row" >
-                          <div class="col text-center">
-                            <img class="logoclub mr-1 " src='./assets/logos/clubes/{{t.l}}.png' />
-                            <span class="resultadosInfo text-center">{{t.loc}}</span>
-                          </div>
-                          <div class="col">
-                            <h3 class="pt-1"><strong class="numberscore">{{t.TantosLoc}}</strong></h3>
-                          </div>
-                        </div>
-
-                      </div>
-                      <div class="col text-dark m-0">
-                        <div class="row" >
-                          <div class="col text-center">
-                            <img class="logoclub mr-1" src='./assets/logos/clubes/{{t.v}}.png' />
-                            <span class="resultadosInfo">{{t.visitante}}</span>
-                          </div>
-                          <div class="col"><h3 class="pt-1"><strong class="numberscore">{{t.TantosVis}}</strong></h3></div>
-                        </div>
-
-                      </div>
-
-
-                    <div class="media-body btnresults">
-                      <div  class="media-body text-center pl-1 bg-secondary rounded m-0">
-                        <a type='button' value='Ver' routerLink="/partido/{{t.idpartido}}">
-                          <span class="text-white">Ver</span> <i class="fa fa-angle-right pr-2 pl-2 text-white" aria-hidden="true"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+      <div class="col-xl-6 col-lg-6 col-12 bg-white " id="agendadeportiva">
+        <div class="mr-auto pl-0 pt-0 bd-highlight"><h3 class="text-dark" ><strong class="text-primary">Agenda</strong> deportiva</h3></div>
+        
+        <!-- Match Cards Grid -->
+        <div class="row">
+          <div *ngFor="let t of displayedMatches" class="col-md-6 mb-3">
+            <div class="match-card">
+              <div class="match-card-header">
+                <div class="match-date">
+                  <span class="date-day">{{t.fechapartido}}</span>
+                  <span class="date-category">{{t.nomCategoria}}</span>
                 </div>
-
+                <div class="match-venue">
+                  <i class="fa fa-map-marker mr-1"></i>
+                  <span>{{t.Nomloc}}</span>
+                </div>
+              </div>
+              
+              <div class="match-card-body">
+                <div class="team-row">
+                  <div class="team-info">
+                    <img class="team-logo" src='./assets/logos/clubes/{{t.l}}.png' alt="{{t.loc}}" />
+                    <span class="team-name">{{t.loc}}</span>
+                  </div>
+                  <div class="team-score">{{t.TantosLoc}}</div>
+                </div>
+                
+                <div class="match-divider"></div>
+                
+                <div class="team-row">
+                  <div class="team-info">
+                    <img class="team-logo" src='./assets/logos/clubes/{{t.v}}.png' alt="{{t.visitante}}" />
+                    <span class="team-name">{{t.visitante}}</span>
+                  </div>
+                  <div class="team-score">{{t.TantosVis}}</div>
+                </div>
+              </div>
+              
+              <div class="match-card-footer">
+                <a class="match-details-btn" routerLink="/partido/{{t.idpartido}}">
+                  <span>Ver detalles</span>
+                  <i class="fa fa-chevron-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- Show More/Less Button -->
+        <div *ngIf="detalleTabla && detalleTabla.length > initialMatchCount" class="text-center mt-3 mb-3">
+          <button class="btn btn-outline-primary btn-sm" (click)="toggleShowMatches()">
+            <span *ngIf="!showAllMatches">
+              <i class="fa fa-chevron-down mr-2"></i>Ver más partidos ({{detalleTabla.length - initialMatchCount}} más)
+            </span>
+            <span *ngIf="showAllMatches">
+              <i class="fa fa-chevron-up mr-2"></i>Ver menos
+            </span>
+          </button>
         </div>
 
       </div>

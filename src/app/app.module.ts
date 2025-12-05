@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // import { Route, RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpModule, BrowserXhr } from '@angular/http';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app.routing.module';
@@ -57,6 +57,8 @@ import { AmsvideoComponent } from './amsvideo/amsvideo.component';
 import { AmsbannersComponent } from './amsbanners/amsbanners.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ClubComponent } from './club/club.component';
+import { InstagramCarouselComponent } from './instagram-carousel/instagram-carousel.component';
+import { AmsgaleriaComponent } from './amsgaleria/amsgaleria.component';
 
 @NgModule({
   declarations: [
@@ -74,11 +76,13 @@ import { ClubComponent } from './club/club.component';
     PartidosComponent, BoletinComponent, PartidoslistComponent, PaginaComponent, PartidoComponent, PartidodetalleComponent,
     TabladetalleComponent, PartidoeventosComponent, BotonlinkComponent,
     AmscardcarrouselComponent, AmsclubessliderComponent, AmsmapsComponent, AmsbotonesutilesComponent,
-    CuotasformComponent,HistorialComponent, AmsgaleriasComponent,AmsnoticiaComponent, AmsnoticiasComponent, AmsvideoComponent,
+    CuotasformComponent, HistorialComponent, AmsgaleriasComponent, AmsnoticiaComponent, AmsnoticiasComponent, AmsvideoComponent,
     AmsbannersComponent,
     DescargasComponent, AmscampstatsComponent, TabladetalleCompactoComponent,
     CategoriaComponent,
-    ClubComponent
+    ClubComponent,
+    InstagramCarouselComponent,
+    AmsgaleriaComponent
 
   ],
   imports: [
@@ -86,11 +90,11 @@ import { ClubComponent } from './club/club.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule
-     ],
-  exports: [ HttpClientModule ],
+  ],
+  exports: [HttpClientModule],
   providers: [ServicioService, UserService, PushService, CanActivateViaAuthGuard, FileuploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
- }
+}

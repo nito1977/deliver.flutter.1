@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { Campeonatos } from '../campeonatos';
 import { ActivatedRoute } from '@angular/router';
@@ -21,6 +21,9 @@ export class CampeonatosComponent {
   muestra = 0;
   anioSel: number;
   divSel: number;
+  selectedDivision: string | null = 'primera';
+  selectedCampeonato: number;
+
   constructor(private http: ServicioService, private _route: ActivatedRoute) {
     this.muestra = 0;
     const a = new Date();
@@ -28,11 +31,23 @@ export class CampeonatosComponent {
   }
   public cargaAnio(anio: number) {
     this.anioSel = anio;
-    this.cargaTorneos(1, true , 13, 'A');
+    this.cargaTorneos(1, true, 13, 'A', 1);
 
   }
-  public cargaTorneos(op: number, refresca: boolean, div: number, zona: string) {
+  public cargaTorneos(op: number, refresca: boolean, div: number, zona: string, camp: number) {
     // alert(op);
+    // if (div === 13 || div === 12) {
+    //   this.selectedDivision = 'primera';
+    // } else if (div === 18 || div === 21) {
+    //   this.selectedDivision = 'damas';
+    // } else if (div === 4 || div === 5 || div === 6 || div === 7 || div === 8 || div === 9 || div === 10 || div === 11) {
+    //   this.selectedDivision = 'inferior';
+    // } else {
+    //   this.selectedDivision = null;
+    // }
+    this.selectedDivision = div.toString();
+    this.selectedCampeonato = camp;
+    console.log(this.selectedDivision);
     if ((this.muestra !== div) || (refresca = true)) {
       this.muestra = div;
       this.buscando = true;
@@ -76,5 +91,11 @@ export class CampeonatosComponent {
 
       });
     }
+  }
+  public limpiaLista() {
+    this.detalleCamp = [];
+    this.detalleCampDamas = [];
+    this.detalleCampInfVarones = [];
+    this.detalleCampInfDamas = [];
   }
 }

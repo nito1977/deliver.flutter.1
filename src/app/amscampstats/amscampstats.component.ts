@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ServicioService } from '../servicios/servicio.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './amscampstats.component.html',
   styleUrls: ['./amscampstats.component.css']
 })
-export class AmscampstatsComponent implements OnInit {
+export class AmscampstatsComponent implements OnInit, OnChanges {
   @Input() idDivision;
   buscando: boolean;
   buscandoActivos: boolean;
@@ -22,11 +22,35 @@ export class AmscampstatsComponent implements OnInit {
   opDiv: number;
   tit1: string;
   tit2: string;
+  showAllMatches: boolean = false;
+  initialMatchCount: number = 6; // Show 6 matches initially (3 rows x 2 columns)
+
   constructor(public _http: ServicioService, public _route: ActivatedRoute) { }
 
+  toggleShowMatches() {
+    this.showAllMatches = !this.showAllMatches;
+  }
+
+  get displayedMatches() {
+    if (this.showAllMatches || !this.detalleTabla) {
+      return this.detalleTabla;
+    }
+    return this.detalleTabla.slice(0, this.initialMatchCount);
+  }
+
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['idDivision'] && !changes['idDivision'].firstChange) {
+      this.loadData();
+    }
+  }
+
+  loadData() {
     var _this = this;
-    console.log(_this.idDivision);
+    //console.log(_this.idDivision);
     if (this.idDivision == 'primera') {
       this.idDiv1 = 13;
       this.idDiv2 = 13;
@@ -35,7 +59,7 @@ export class AmscampstatsComponent implements OnInit {
       this.tit1 = "Mayores";
       this.tit2 = "Varones";
     }
-    if (this.idDivision == 'damas'){
+    if (this.idDivision == 'damas') {
       this.idDiv1 = 18;
       this.idDiv2 = 17;
       this.op = 22;
@@ -44,11 +68,9 @@ export class AmscampstatsComponent implements OnInit {
       this.tit2 = "Damas";
     }
     this.buscaCampeonatosActivos(this.op, this.opDiv);
-
   }
 
-  public buscaCampeonatosActivos( op: number, opDiv: number)
-  {
+  public buscaCampeonatosActivos(op: number, opDiv: number) {
     var _this = this;
     this.buscandoActivos = false;
     this.detalleActivos = [];
@@ -64,14 +86,14 @@ export class AmscampstatsComponent implements OnInit {
         var c2 = data[1]["id"];
         _this.idCamp1 = c1;
         _this.idCamp2 = c2;
-        this.cargarPartidos(opDiv,0,0,'',0,0);
+        this.cargarPartidos(opDiv, 0, 0, '', 0, 0);
         this.nomCampeonato = data[0].Nombre;
         // alert (this.nomCampeonato);
       }
     });
 
   }
-  public cargarPartidos(op: number,  tor: number, div: number, zona: string, fecha: number, inst: number) {
+  public cargarPartidos(op: number, tor: number, div: number, zona: string, fecha: number, inst: number) {
     // alert(op);
     this.buscando = false;
     this.detalleTabla = [];
