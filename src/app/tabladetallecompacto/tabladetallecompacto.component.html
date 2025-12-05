@@ -1,13 +1,21 @@
 <app-loader *ngIf="!buscando"></app-loader>
-<div class="table responsive-sm">
-  <h5 class="bg-secondary text-white shadow p-1 mb-0">{{nomCampeonato}} Div: <b>{{idDivision}}</b> Zona: <b>{{idZona}}</b></h5>
-  <!-- <h6 class="text-uppercase p-1 m-0 bg-light"></h6> -->
+<div class="table-container">
+  <div class="table-header">
+    <h5 class="table-title">
+      <i class="fa fa-trophy mr-2"></i>
+      {{nomCampeonato}}
+    </h5>
+    <div class="table-meta">
+      <span class="badge badge-primary">Div: {{idDivision}}</span>
+      <span class="badge badge-secondary ml-2">Zona: {{idZona}}</span>
+    </div>
+  </div>
 
-  <div class="table-responsive ">
-    <table class="table table-bordered table-hover">
-      <thead class="thead bg-primary">
+  <div class="table-responsive">
+    <table class="table table-standings">
+      <thead>
         <tr>
-          <th scope="col"> &nbsp;Club</th>
+          <th scope="col" class="team-col">Club</th>
           <th scope="col" class="text-center">Pts</th>
           <th scope="col" class="text-center">PJ</th>
           <th scope="col" class="text-center">PG</th>
@@ -20,26 +28,28 @@
         </tr>
       </thead>
       <tbody>
-
-          <tr *ngFor="let t of detalleTabla">
-            <th scope="row" class="text-left">&nbsp;{{t.Nombreclub}}</th>
-            <td  class="text-center">{{t.Puntos}}</td>
-            <td  class="text-center">{{t.PJ}}</td>
-            <td  class="text-center">{{t.PG}}</td>
-            <td  class="text-center">{{t.PP}}</td>
-            <td  class="text-center">{{t.PE}}</td>
-            <td  class="text-center d-none d-lg-table-cell">{{t.GF}}</td>
-            <td  class="text-center d-none d-lg-table-cell">{{t.GC}}</td>
-            <td  class="text-center d-none d-lg-table-cell">{{t.DG}}</td>
-            <td  class="text-center d-none d-lg-table-cell">{{t.GA}}</td>
-          </tr>
+        <tr *ngFor="let t of detalleTabla; let i = index" [class.top-position]="i < 3">
+          <td class="team-name">
+            <span class="position-number">{{i + 1}}</span>
+            {{t.Nombreclub}}
+          </td>
+          <td class="text-center points">{{t.Puntos}}</td>
+          <td class="text-center">{{t.PJ}}</td>
+          <td class="text-center">{{t.PG}}</td>
+          <td class="text-center">{{t.PP}}</td>
+          <td class="text-center">{{t.PE}}</td>
+          <td class="text-center d-none d-lg-table-cell">{{t.GF}}</td>
+          <td class="text-center d-none d-lg-table-cell">{{t.GC}}</td>
+          <td class="text-center d-none d-lg-table-cell">{{t.DG}}</td>
+          <td class="text-center d-none d-lg-table-cell">{{t.GA}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group align-items-center" role="group" aria-label="First group">
-      <button type="button" class="btn btn-primary" (click)="cargaUrl(3, this.idCampeonato, this.idDivision, 'A');">Mas Información</button>
-     <!-- <button type="button" class="btn btn-secondary" (click)="cargaUrl(3, this.idCampeonato, this.idDivision, 'B');">ZONA B</button> -->
-    </div>
+  
+  <div class="table-footer">
+    <button type="button" class="btn btn-primary btn-sm" (click)="cargaUrl(3, this.idCampeonato, this.idDivision, 'A');">
+      <i class="fa fa-info-circle mr-2"></i>Más Información
+    </button>
   </div>
 </div>

@@ -66,21 +66,61 @@
   background: white !important;
 }
 
-/* Modern Card Styles */
+/* Modern Card Styles - Enhanced */
 .campeonato-card {
   transition: all 0.3s ease;
   border-radius: 8px;
   background: white;
   cursor: pointer;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.campeonato-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #007bff 0%, #0056b3 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.campeonato-card:hover::before {
+  opacity: 1;
 }
 
 .campeonato-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2) !important;
+  border-color: #007bff;
 }
 
 .campeonato-card .card-body {
   border-radius: 8px;
+  padding: 16px !important;
+}
+
+.campeonato-card h6 {
+  font-size: 14px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.campeonato-card:hover h6 {
+  color: #007bff !important;
+}
+
+.campeonato-card .fa-trophy {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.campeonato-card:hover .fa-trophy {
+  transform: scale(1.1);
 }
 
 .campeonato-card:hover .fa-arrow-right {
@@ -88,8 +128,21 @@
   transition: transform 0.3s ease;
 }
 
-.campeonato-card .fa-trophy {
-  font-size: 20px;
+.campeonato-card small {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Add subtle background pattern */
+.campeonato-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 h5 {
