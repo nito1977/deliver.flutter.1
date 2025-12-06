@@ -12,31 +12,35 @@
   height: 100%;
   border: none;
 }
-.bgfondo{
+
+.bgfondo {
   width: -webkit-fill-available;
   max-height: 180px;
   min-height: 180px;
   background-image: url('/assets/imagenes/fondoFsp.png');
 }
+
 /* control image height */
-.logofondo{
+.logofondo {
   max-width: 80px;
   min-width: 80px;
 }
-@media (min-width: 200px) and (max-width: 767.98px)
-{
-  .bgfondo{
+
+@media (min-width: 200px) and (max-width: 767.98px) {
+  .bgfondo {
     width: -webkit-fill-available;
     max-height: 460px;
     min-height: 460px;
     background-image: url('/assets/imagenes/fondoFsp.png');
   }
-  .logofondo{
+
+  .logofondo {
     max-width: 40px;
     min-width: 40px;
   }
-  h2{
-    font-size: 10px!important;
+
+  h2 {
+    font-size: 10px !important;
   }
 }
 
@@ -60,10 +64,11 @@ card {
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
+
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -74,12 +79,13 @@ card {
 
 @keyframes slideIn {
   from {
-      transform: translateX(-100%);
-      opacity: 0;
+    transform: translateX(-100%);
+    opacity: 0;
   }
+
   to {
-      transform: translateX(0);
-      opacity: 1;
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -90,12 +96,13 @@ card {
 
 @keyframes scaleUp {
   from {
-      transform: scale(0);
-      opacity: 0;
+    transform: scale(0);
+    opacity: 0;
   }
+
   to {
-      transform: scale(1);
-      opacity: 1;
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -111,13 +118,144 @@ card {
   transform: translateY(0);
 }
 
-i#iconVarones{
+i#iconVarones {
   font-size: 40px;
-  color: rgb(9, 9, 170)!important;
+  color: rgb(9, 9, 170) !important;
   font-weight: 100px;
 }
+
 i#iconDamas {
   font-size: 40px;
   color: #ff0097;
   font-weight: 100px;
+}
+
+/* Modern Video Header Styles */
+.video-header {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark overlay for readability */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.header-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.header-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.header-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.header-socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.header-socials i {
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.header-socials i:hover {
+  transform: translateY(-3px);
+  color: #007bff;
+  /* Primary color on hover */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-header {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .header-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .header-logo {
+    max-width: 100px;
+  }
 }

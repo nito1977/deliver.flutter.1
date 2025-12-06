@@ -1,40 +1,54 @@
-<!-- <nav class="navbar navbar-dark bg-dark">
 
-</nav> -->
-<div class="container-fluid bg-dark text-white text-center">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">FSP</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm custom-navbar">
+  <div class="container">
+      <a class="navbar-brand d-flex align-items-center" routerLink="/">
+        <img src="./assets/logoazul.png" width="35" class="d-inline-block align-top mr-2" alt="FSP Logo">
+        <span class="brand-text px-2">FSP</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link active" routerLink="/">Inicio</a></li>
-              <li class="nav-item"><a class="nav-link" href="#institucion">Institución</a></li>
-              <li class="nav-item"><a class="nav-link" routerLink="/cuotas">Avisos de Pago</a></li>
+          <ul class="navbar-nav ml-auto align-items-center">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  <i class="fa fa-home mr-1"></i> Inicio
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#institucion">
+                  <i class="fa fa-university mr-1"></i> Institución
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/cuotas" routerLinkActive="active">
+                  <i class="fa fa-credit-card mr-1"></i> Pagos
+                </a>
+              </li>
               <li class="nav-item dropdown">
-                  <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Docs. Utiles
+                  <a class="nav-link dropdown-toggle" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-folder-open mr-1"></i> Docs. Útiles
                   </a>
-                  <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
-                  <a class="dropdown-item " routerLink="/descargas/actas/" target="_blank">Actas</a>
-                  <a class="dropdown-item " routerLink="/descargas/resoluciones/" target="_blank">Resoluciones</a>
-                  <a class="dropdown-item " routerLink="/descargas/documentos-utiles/" target="_blank">Docs. Útiles</a>
-                  <a class="dropdown-item " routerLink="/descargas/comunicados/" target="_blank">Comunicados</a>
-                  <a class="dropdown-item " routerLink="/descargas/boletines/" target="_blank">Boletines anteriores</a>
-                  <a class="dropdown-item " routerLink="/descargas/Tablas%20Finales" target="_blank">Tablas Finales</a>
-                  <a class="dropdown-item" href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank">Estatuto</a>
+                  <div class="dropdown-menu dropdown-menu-right shadow border-0" aria-labelledby="bd-versions">
+                    <a class="dropdown-item" routerLink="/descargas/actas/" target="_blank"><i class="fa fa-file-text-o mr-2 text-primary"></i> Actas</a>
+                    <a class="dropdown-item" routerLink="/descargas/resoluciones/" target="_blank"><i class="fa fa-gavel mr-2 text-primary"></i> Resoluciones</a>
+                    <a class="dropdown-item" routerLink="/descargas/documentos-utiles/" target="_blank"><i class="fa fa-files-o mr-2 text-primary"></i> Docs. Útiles</a>
+                    <a class="dropdown-item" routerLink="/descargas/comunicados/" target="_blank"><i class="fa fa-bullhorn mr-2 text-primary"></i> Comunicados</a>
+                    <a class="dropdown-item" routerLink="/descargas/boletines/" target="_blank"><i class="fa fa-newspaper-o mr-2 text-primary"></i> Boletines anteriores</a>
+                    <a class="dropdown-item" routerLink="/descargas/Tablas%20Finales" target="_blank"><i class="fa fa-table mr-2 text-primary"></i> Tablas Finales</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank"><i class="fa fa-book mr-2 text-primary"></i> Estatuto</a>
                 </div>
               </li>
-              <li class="nav-item"><a class="nav-link btn btn-primary" routerLink="/campeonatos">Estadísticas</a></li>
+              <li class="nav-item ml-lg-2">
+                <a class="nav-link btn btn-primary px-3 rounded-pill btn-stats text-white" id="botonstats1" routerLink="/campeonatos">
+                  <i class="fa fa-bar-chart mr-1"></i> Estadísticas
+                </a>
+              </li>
           </ul>
       </div>
-  </nav>
-
-
-
-
-</div>
+  </div>
+</nav>
 <div class="container-fluid {{colorFondo}}">
 <router-outlet></router-outlet>
 </div>

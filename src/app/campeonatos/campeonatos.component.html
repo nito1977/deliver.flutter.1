@@ -73,8 +73,8 @@
           aria-labelledby="headingDamas" data-bs-parent="#accordion">
           <div class="card-body p-1 ">
             <div class="btn-group w-100" role="group" aria-label="Basic example">
-                <button (click)="cargaTorneos(1, false, 18, 'A',0);" type="button" class="btn btn-secondary w-50">Primera</button>
-                <button (click)="cargaTorneos(1, false, 21, 'A',0);" type="button" class="btn btn-secondary w-50">Segunda</button>
+                <button (click)="cargaTorneos(1, false, 18, 'A',0);" type="button" class="btn btn-secondary w-50" id="btnmuestraCampeonato">Primera</button>
+                <button (click)="cargaTorneos(1, false, 21, 'A',0);" type="button" class="btn btn-secondary w-50" id="btnmuestraCampeonato">Segunda</button>
             </div>
             
             
@@ -100,14 +100,14 @@
           aria-labelledby="headingInfVaron" data-bs-parent="#accordion">
           <div class="card-body p-1 ">
               <div class="pl-3 pr-3" role="group" aria-label="Basic example">
-                  <button (click)="cargaTorneos(1, false, 4, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Inf.</button>
-                  <button (click)="cargaTorneos(1, false, 5, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
-                  <button (click)="cargaTorneos(1, false, 6, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cad.</button>
-                  <button (click)="cargaTorneos(1, false, 7, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
-                  <button (click)="cargaTorneos(1, false, 8, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juv.</button>
-                  <button (click)="cargaTorneos(1, false, 9, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
-                  <button (click)="cargaTorneos(1, false, 10, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Jun.</button>
-                  <button (click)="cargaTorneos(1, false, 11, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
+                  <button (click)="cargaTorneos(1, false, 4, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Inf.</button>
+                  <button (click)="cargaTorneos(1, false, 5, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Infantil</button>
+                  <button (click)="cargaTorneos(1, false, 6, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Cad.</button>
+                  <button (click)="cargaTorneos(1, false, 7, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Cadete</button>
+                  <button (click)="cargaTorneos(1, false, 8, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Juv.</button>
+                  <button (click)="cargaTorneos(1, false, 9, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Juvenil</button>
+                  <button (click)="cargaTorneos(1, false, 10, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Jun.</button>
+                  <button (click)="cargaTorneos(1, false, 11, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Junior</button>
               </div>
               <div *ngIf="buscando" class="text-center p-2"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
             
@@ -135,13 +135,13 @@
           data-bs-parent="#accordion">
           <div class="card-body p-1 ">
             <div class="pl-3 pr-3" role="group" aria-label="Basic example">
-              <button (click)="cargaTorneos(1, false, 22, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Infantil</button>
-              <button (click)="cargaTorneos(1, false, 14, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Infantil</button>
-              <button (click)="cargaTorneos(1, false, 23, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Cadete</button>
-              <button (click)="cargaTorneos(1, false, 15, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Cadete</button>
-              <button (click)="cargaTorneos(1, false, 24, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Pre Juvenil</button>
-              <button (click)="cargaTorneos(1, false, 16, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Juvenil</button>
-              <button (click)="cargaTorneos(1, false, 17, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1">Junior</button>
+              <button (click)="cargaTorneos(1, false, 22, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Infantil</button>
+              <button (click)="cargaTorneos(1, false, 14, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Infantil</button>
+              <button (click)="cargaTorneos(1, false, 23, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Cadete</button>
+              <button (click)="cargaTorneos(1, false, 15, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Cadete</button>
+              <button (click)="cargaTorneos(1, false, 24, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Pre Juvenil</button>
+              <button (click)="cargaTorneos(1, false, 16, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Juvenil</button>
+              <button (click)="cargaTorneos(1, false, 17, 'A', 0);" type="button" class="btn btn-secondary btn-sm p-1 m-1" id="btnmuestraCampeonato">Junior</button>
 
 
             </div>

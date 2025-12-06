@@ -89,6 +89,22 @@ export class CampeonatosComponent {
             this.detalleCampDamas = data; break;
         }
 
+        // Scroll to stats section on mobile devices
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            const statsElement = document.getElementById('stats');
+            if (statsElement) {
+              const navbarHeight = 60; // Approximate navbar height
+              const elementPosition = statsElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }, 100);
+        }
       });
     }
   }
