@@ -84,3 +84,11 @@ a {
 
   text-decoration: none !important;
 }
+
+@media (min-width: 1200px) {
+
+  .h3,
+  h3 {
+    font-size: 1.35rem;
+  }
+}
