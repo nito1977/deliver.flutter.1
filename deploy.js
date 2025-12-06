@@ -10,15 +10,17 @@ const config = {
     localRoot: __dirname + "/www/",
     remoteRoot: "/",
     // include: ["*", "**/*"],      // this would upload everything except dot files
-    include: ["*", "**/*", ".htaccess"],
+    include: ["*", "**/*", ".htaccess", "assets/**/*", "assets/video/video.mp4"],
     // e.g. exclude sourcemaps, and ALL files in node_modules (including dot files)
     exclude: ["dist/**/*.map", "node_modules/**", "node_modules/**/.*", ".git/**"],
     // delete ALL existing files at destination before uploading, if true
     deleteRemote: false,
     // Passive mode is forced (EPSV command is not sent)
-    forcePasv: true,
+    forcePasv: false,
     // use sftp or ftp
-    sftp: false
+    sftp: false,
+    // Timeout in milliseconds (default: 30000)
+    timeout: 120000
 };
 
 ftpDeploy
