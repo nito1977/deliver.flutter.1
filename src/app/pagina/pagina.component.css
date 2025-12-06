@@ -15,8 +15,7 @@
 
 .bgfondo {
   width: -webkit-fill-available;
-  max-height: 180px;
-  min-height: 180px;
+
   background-image: url('/assets/imagenes/fondoFsp.png');
 }
 
@@ -250,6 +249,201 @@ i#iconDamas {
   .header-title {
     font-size: 2rem;
   }
+}
+
+/* Animación de desvanecimiento */
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación de desplazamiento */
+.slide-in {
+  animation: slideIn 0.5s ease-in forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animación de escala */
+.scale-up {
+  animation: scaleUp 0.5s ease-in forwards;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animación de entrada al hacer scroll */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-animation.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+i#iconVarones {
+  font-size: 40px;
+  color: rgb(9, 9, 170) !important;
+  font-weight: 100px;
+}
+
+i#iconDamas {
+  font-size: 40px;
+  color: #ff0097;
+  font-weight: 100px;
+}
+
+/* Modern Video Header Styles */
+.video-header {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark overlay for readability */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.header-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.header-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.header-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.header-socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.header-socials i {
+  color: white;
+  font-size: 2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.header-socials i:hover {
+  transform: translateY(-3px);
+  color: #007bff;
+  /* Primary color on hover */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-header {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
 
   .header-subtitle {
     font-size: 1.1rem;
@@ -257,5 +451,156 @@ i#iconDamas {
 
   .header-logo {
     max-width: 100px;
+  }
+}
+
+/* Modern Discipline Cards Section */
+#institucionbanner {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#institucionbanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+#institucionbanner .container {
+  position: relative;
+  z-index: 2;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.discipline-card {
+  display: block;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+
+.discipline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.discipline-card:hover::before {
+  transform: scaleX(1);
+}
+
+.discipline-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.3);
+  text-decoration: none;
+}
+
+.discipline-icon {
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.discipline-icon img {
+  max-height: 100px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.discipline-card:hover .discipline-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.discipline-title {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.discipline-card:hover .discipline-title {
+  color: #007bff;
+}
+
+.discipline-arrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.discipline-arrow i {
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.discipline-card:hover .discipline-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive adjustments for discipline cards */
+@media (max-width: 767.98px) {
+  .bgfondo {
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 40px 0 !important;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  .discipline-card {
+    padding: 25px 15px;
+  }
+
+  .discipline-icon img {
+    max-height: 80px;
+  }
+
+  .discipline-title {
+    font-size: 1.1rem;
+  }
+
+  .discipline-card:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .discipline-icon img {
+    max-height: 90px;
   }
 }

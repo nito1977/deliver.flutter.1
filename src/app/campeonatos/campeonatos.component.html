@@ -1,8 +1,4 @@
-<div class="container-fluid">
-  <div class="mr-auto px-2 bd-highlight"><h3 ><strong class="text-primary">Estadísticas</strong> FSP</h3></div>
-</div>
-      
-      
+
 <div class="row p-2">
   <!-- Left Column: Accordion -->
   <div class="col-md-3 card">
@@ -169,6 +165,38 @@
           <app-boletin></app-boletin>
         </div>
       </div>  
+      <div class="card bg-secondary text-white shadow border-0 mt-2">
+        <div class="card-body p-4">    
+          <div class="text-center mb-3">
+            <i class="fa fa-download fa-2x mb-2 text-white-50"></i>
+            <h4 class="card-title font-weight-bold mb-0">Descargas</h4>
+          </div>
+          <div class="downloads-list">
+            <a class="download-item" routerLink="/descargas/actas/" target="_blank">
+              <i class="fa fa-file-text-o mr-2"></i> Actas
+            </a>
+            <a class="download-item" routerLink="/descargas/resoluciones/" target="_blank">
+              <i class="fa fa-gavel mr-2"></i> Resoluciones
+            </a>
+            <a class="download-item" routerLink="/descargas/documentos-utiles/" target="_blank">
+              <i class="fa fa-files-o mr-2"></i> Docs. Útiles
+            </a>
+            <a class="download-item" routerLink="/descargas/comunicados/" target="_blank">
+              <i class="fa fa-bullhorn mr-2"></i> Comunicados
+            </a>
+            <a class="download-item" routerLink="/descargas/boletines/" target="_blank">
+              <i class="fa fa-newspaper-o mr-2"></i> Boletines anteriores
+            </a>
+            <a class="download-item" routerLink="/descargas/Tablas%20Finales" target="_blank">
+              <i class="fa fa-table mr-2"></i> Tablas Finales
+            </a>
+            <div class="download-divider"></div>
+            <a class="download-item" href="https://fspatin.com/descargas/Documentos%20Utiles/ESTATUTOfsp_APROBADO_EN_ASAMBLEA_22_12_04.pdf" target="_blank">
+              <i class="fa fa-book mr-2"></i> Estatuto
+            </a>
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
 
@@ -177,7 +205,7 @@
     <div *ngIf="buscando" class="text-center p-2"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
         
         <!-- Primera -->
-        <div class="row">
+        <div class="row pt-2">
           <div *ngFor="let camp of detalleCamp" class="col-md-6 col-lg-4 mb-3">
             <div class="card h-100 shadow-sm border-0 campeonato-card">
               <div class="card-body p-3">

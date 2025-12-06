@@ -25,18 +25,69 @@
     </div>
   </div>
 </header>
+<div class="container-fluid">
+  <div class="mr-auto px-2 pt-4 bd-highlight"><h3 ><strong class="text-primary">Estadísticas</strong> FSP</h3></div>
+</div>
 <div class="container-fluid bg-light text-dark p-2" id="compestadistico">
   <div class="col-12 col-lg-12 mb-2">
       <app-campeonatos></app-campeonatos>
   </div>
 </div>  
-
-<div class="container p-2 mb-4">
+<div class="container-fluid">
+    <div class="mr-auto px-2 pt-4 bd-highlight"><h3 ><strong class="text-primary">Noticias</strong> FSP</h3></div>
+</div>
+<div class="container p-2 mb-4">  
   <app-instagram-carousel></app-instagram-carousel>
 </div>
 <div class="container p-2 mb-4">
   <app-amsgaleria [idGaleria]="12"></app-amsgaleria>
 </div>
+<div class="bgfondo container-fluid text-center py-5" id="institucionbanner">
+    <div class="container">
+      <div class="section-header mb-4">
+        <h2 class="text-white font-weight-bold mb-2">Disciplinas FSP</h2>
+        <p class="text-white-50">Conocé todas las modalidades que practicamos</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <a [routerLink]="['/categoria',7]" class="discipline-card">
+            <div class="discipline-icon">
+              <img src="./assets/svg/7.png" alt="Patín Artístico" class="img-fluid">
+            </div>
+            <h3 class="discipline-title">Patín Artístico</h3>
+            <div class="discipline-arrow">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <a [routerLink]="['/categoria',6]" class="discipline-card">
+            <div class="discipline-icon">
+              <img src="./assets/svg/6.png" alt="Hockey Patín" class="img-fluid">
+            </div>
+            <h3 class="discipline-title">Hockey Patín</h3>
+            <div class="discipline-arrow">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <a [routerLink]="['/categoria',8]" class="discipline-card">
+            <div class="discipline-icon">
+              <img src="./assets/svg/8.png" alt="Patín Carrera" class="img-fluid">
+            </div>
+            <h3 class="discipline-title">Patín Carrera</h3>
+            <div class="discipline-arrow">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="container text-center p-2 ">
     <!-- <div class="mr-auto p-3 bd-highlight">
@@ -64,37 +115,7 @@
     <app-amsvideo [idGaleria]="16"></app-amsvideo>
     <app-amsvideo [idGaleria]="17"></app-amsvideo> -->
 
-  <div class="bgfondo container-fluid text-center pt-4">
-
-      <!-- <img class="logofondo" src="./assets/logo.png" alt="FSP">
-      <h2 class="text-white p-2 pt-4">Federación Sanjuanina de Patín</h2> -->
-    <div class="container" id="institucion">
-      <div class="row">
-
-          <div class="col-12 col-lg-6 col-xl-4 hover-effect">
-            <a [routerLink]="['/categoria',7]" >
-              <img src="./assets/svg/7.png"  style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
-              <h3 class="text-white lead">P. Artístico</h3>
-            </a>
-          </div>
-
-
-          <div class="col-12 col-lg-6 col-xl-4 hover-effect">
-            <a [routerLink]="['/categoria',6]" >
-              <img src="./assets/svg/6.png"  style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
-              <h3 class="text-white lead">H. Patín</h3>
-            </a>
-          </div>
-
-        <div class="col-12 col-lg-6 col-xl-4 hover-effect">
-          <a [routerLink]="['/categoria',8]" >
-            <img src="./assets/svg/8.png" style="max-height: 100px;" alt="Logo FSP" class="img-fluid p-1 mb-1">
-            <h3 class="text-white lead">P. Carrera</h3>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <div class="container text-center p-2 ">
     <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Hockey Patín</h3></div>

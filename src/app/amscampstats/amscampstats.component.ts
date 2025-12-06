@@ -23,7 +23,7 @@ export class AmscampstatsComponent implements OnInit, OnChanges {
   tit1: string;
   tit2: string;
   showAllMatches: boolean = false;
-  initialMatchCount: number = 6; // Show 6 matches initially (3 rows x 2 columns)
+  initialMatchCount: number = 10; // Show 10 matches initially (5 rows x 2 columns)
 
   constructor(public _http: ServicioService, public _route: ActivatedRoute) { }
 
