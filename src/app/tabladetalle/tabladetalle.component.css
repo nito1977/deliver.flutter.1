@@ -1,3 +1,197 @@
-td {
-  font-size: 10px!important;
+/* Mobile optimizations */
+@media (max-width: 767.98px) {
+  th {
+    font-size: 11px !important;
+    padding: 4px !important;
+  }
+
+  td {
+    font-size: 11px !important;
+    padding: 4px !important;
+  }
+
+  .table-header {
+    padding: 12px !important;
+  }
+
+  .table-title {
+    font-size: 14px !important;
+  }
+
+  .table-meta {
+    margin-top: 8px;
+  }
+
+  .position-number {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    margin-right: 6px;
+  }
+
+  .team-name {
+    font-size: 11px;
+  }
+}
+
+/* Modern Table Container */
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.table-header {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.table-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.table-title i {
+  color: #ffd700;
+}
+
+.table-meta {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.table-meta .badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+
+/* Table Styling */
+.table-standings {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.table-standings thead {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-bottom: none;
+}
+
+.table-standings thead th {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  padding: 10px 8px !important;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.table-standings tbody tr {
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table-standings tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table-standings tbody tr.top-position {
+  background-color: #e7f3ff;
+}
+
+.table-standings tbody tr.top-position:hover {
+  background-color: #d0e9ff;
+}
+
+.table-standings tbody td {
+  padding: 10px 8px !important;
+  vertical-align: middle;
+  font-size: 13px;
+  color: #212529;
+  border: none;
+}
+
+.team-col {
+  min-width: 150px;
+}
+
+.team-name {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.position-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #495057;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.top-position .position-number {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+}
+
+.points {
+  font-weight: 700;
+  color: #007bff;
+  font-size: 14px;
+}
+
+/* Button Toolbar */
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.btn-group {
+  gap: 4px;
+}
+
+/* Modern Button Styles */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.btn-dark {
+  background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark:hover,
+.btn-dark:active {
+  background: linear-gradient(135deg, #212529 0%, #000000 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }

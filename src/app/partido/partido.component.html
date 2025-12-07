@@ -1,54 +1,75 @@
 <app-loader *ngIf="!buscando"></app-loader>
-<div class="container-fluid p-1">
 
-  <div class="container p-1">
-    <div class="row p-2 bg-dark text-white">
-          <div class="col-9 col-md-9">
-            <h5 class="mb-0">{{t.nomCampeonato}}</h5>
+<div class="container-fluid p-3" *ngIf="buscando">
+  <!-- Match Header Card -->
+  <div class="match-detail-card mb-4">
+    <div class="match-header">
+      <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+        <div class="championship-info">
+          <h5 class="mb-1 font-weight-bold"><i class="fa fa-trophy mr-2 text-warning"></i>{{t.nomCampeonato}}</h5>
+          <div class="text-white-50 small">
+            <i class="fa fa-calendar mr-1"></i> {{t.fechapartido}}
           </div>
-          <div class="col-3 col-md-3">
-            <h5 class="align-text-top text-white"><strong class="text-info">Estado: </strong> {{t.estado}}</h5>
-          </div>
-          <div class="col-6 col-md-12">
-            <h6 class="text-muted pt-0"><strong>Fecha: </strong>{{t.fechapartido}}</h6>
-          </div>
-          <hr>
-    </div>
-    <div class="row bg-primary text-white rounded p-1">
-      <div class="col align-items-center text-center">
-        <img class="logoclub mr-0 pr-0" src='./assets/logos/clubes/{{t.l}}.png'/>
-        <h5 class="d-block d-sm-block d-md-none">{{t.loc}}</h5>
-        <h6 class="d-none d-md-block d-lg-block">{{t.Nomloc}}</h6>
-      </div>
-      <div class="col d-flex align-items-center">
-        <h3 class="pt-1">{{t.TantosLoc}}</h3>
-      </div>
-      <div class="col d-flex align-items-center">
-        <h4 class="align-middle"> - </h4>
-      </div>
-      <div class="col d-flex align-items-center">
-        <h3 class="pt-1">{{t.TantosVis}}</h3>
-      </div>
-      <div class="col align-items-center text-center">
-        <img class="logoclub pl-0 mr-0 " src='./assets/logos/clubes/{{t.v}}.png'/>
-        <h5 class="d-block d-sm-block d-md-none">{{t.visitante}}</h5>
-        <h6 class="d-none d-md-block d-lg-block">{{t.Nomvisitante}}</h6>
+        </div>
+        <div class="match-status">
+          <span class="badge badge-light text-primary">{{t.estado}}</span>
+        </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
+    <div class="match-body">
+      <div class="scoreboard">
+        <!-- Local Team -->
+        <div class="team-container local">
+          <div class="team-logo-wrapper">
+            <img class="team-logo" src='./assets/logos/clubes/{{t.l}}.png' alt="{{t.loc}}"/>
+          </div>
+          <div class="team-details">
+            <h4 class="team-name d-none d-md-block">{{t.Nomloc}}</h4>
+            <h5 class="team-name d-md-none">{{t.loc}}</h5>
+          </div>
+        </div>
 
-        <app-partidodetalle></app-partidodetalle>
+        <!-- Score -->
+        <div class="score-container">
+          <div class="score-display">
+            <span class="score-value" [class.winner]="t.TantosLoc > t.TantosVis">{{t.TantosLoc}}</span>
+            <span class="score-divider">-</span>
+            <span class="score-value" [class.winner]="t.TantosVis > t.TantosLoc">{{t.TantosVis}}</span>
+          </div>
+        </div>
+
+        <!-- Visitor Team -->
+        <div class="team-container visitor">
+          <div class="team-logo-wrapper">
+            <img class="team-logo" src='./assets/logos/clubes/{{t.v}}.png' alt="{{t.visitante}}"/>
+          </div>
+          <div class="team-details">
+            <h4 class="team-name d-none d-md-block">{{t.Nomvisitante}}</h4>
+            <h5 class="team-name d-md-none">{{t.visitante}}</h5>
+          </div>
+        </div>
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <h6 class="p-1">Tabla de Posiciones</h6>
-        <hr>
-        <app-tabladetalle *ngIf="buscando" [idCampeonato]="t.Campeonato" [idDivision]="t.categoria" [idZona]="t.Zona"></app-tabladetalle>
+  </div>
+
+  <!-- Match Details Section -->
+  <div class="row">
+    <div class="col-12 mb-4">
+      <app-partidodetalle></app-partidodetalle>
+    </div>
+  </div>
+
+  <!-- Standings Table Section -->
+  <div class="row">
+    <div class="col-12">
+      <div class="section-header mb-3">
+        <h5 class="section-title">
+          <i class="fa fa-list-ol mr-2"></i>
+          Tabla de Posiciones
+        </h5>
       </div>
+      <app-tabladetalle *ngIf="buscando" [idCampeonato]="t.Campeonato" [idDivision]="t.categoria" [idZona]="t.Zona"></app-tabladetalle>
     </div>
   </div>
 </div>

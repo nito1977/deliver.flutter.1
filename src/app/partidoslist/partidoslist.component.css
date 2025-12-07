@@ -1,47 +1,182 @@
-@media (min-width: 200px) and (max-width: 767.98px) {
-  th {
-    font-size: 11px!important;
-    padding: 4px;
-  }
-  td {
-    font-size: 11px!important;
-    padding: 4px;
-  }
-}
-th {
-  font-size: 13px;
-  padding: 4px;
-}
-td {
-  font-size: 13px;
-  padding: 4px;
-}
-i.fa{
-  font-size: 1.5rem!important;
-  padding-top: 0rem;
-  padding-bottom: .25rem;
-}
-.table-bordered td, .table-bordered th {
-  border: 0px;
-  border-top: 1px solid #dee2e6;
-}
-.table thead th {
-  border-bottom: none;
-}
-.table td, .table th {
-  border-top: none;
-}
-@media (min-width: 768px)
-{
-  .padd-r-2 {
-    padding-right: 2px!important;
-}
+/* Mobile optimizations */
+@media (max-width: 767.98px) {
+    th {
+        font-size: 10px !important;
+        padding: 6px 4px !important;
+    }
+
+    td {
+        font-size: 11px !important;
+        padding: 8px 4px !important;
+    }
+
+    .team-logo {
+        width: 25px;
+        height: 25px;
+    }
+
+    .team-name {
+        font-size: 11px;
+    }
+
+    .match-score {
+        font-size: 12px;
+    }
 }
 
-.table-info{
-  background-color: #007bff!important;
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e9ecef;
+    margin-bottom: 20px;
 }
-.table-info, .table-info>td, .table-info>th {
-  background-color: #007bff;
-  color: white;
+
+/* Table Styling */
+.table-matches {
+    margin-bottom: 0;
+    font-size: 13px;
+    color: black;
+}
+
+.table-matches thead {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.table-matches thead th {
+    font-size: 11px;
+    font-weight: 700;
+    background: linear-gradient(0deg, #007bff 0%, #0056b3 100%);
+    padding: 15px 20px;
+    color: white;
+    text-transform: uppercase;
+    padding: 12px 8px !important;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.table-matches tbody tr {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.table-matches tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.005);
+}
+
+.table-matches tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-matches tbody td {
+    padding: 12px 8px !important;
+    vertical-align: middle;
+    font-size: 13px;
+    color: #212529;
+    border: none;
+}
+
+/* Match Date */
+.match-date {
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+}
+
+/* Team Logo */
+.team-logo-cell {
+    padding: 8px 4px !important;
+    width: 50px;
+}
+
+.team-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.team-logo:hover {
+    transform: scale(1.15);
+}
+
+/* Team Name */
+.team-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 13px;
+}
+
+/* Match Score */
+.match-score {
+    font-weight: 700;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.match-score .score {
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.match-score .score.winner {
+    color: #007bff;
+    font-size: 18px;
+}
+
+.match-score .separator {
+    color: #dee2e6;
+    margin: 0 4px;
+    font-weight: 400;
+}
+
+/* Badges */
+.badge {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    font-size: 11px;
+    padding: 4px 8px;
+    font-weight: 600;
+}
+
+/* View Button */
+.btn-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.btn-view:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.btn-view i {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .team-name {
+        font-size: 12px;
+    }
+
+    .team-logo {
+        width: 30px;
+        height: 30px;
+    }
 }

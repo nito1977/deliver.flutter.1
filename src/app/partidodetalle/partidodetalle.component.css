@@ -1,0 +1,147 @@
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Section Header */
+.section-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #007bff;
+    padding: 12px 16px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.section-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    color: #007bff;
+}
+
+/* Table Styling */
+.table-events {
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.table-events thead {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.table-events thead th {
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    padding: 12px 8px !important;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.table-events tbody tr {
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.table-events tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table-events tbody td {
+    padding: 10px 8px !important;
+    vertical-align: middle;
+    font-size: 13px;
+    color: #212529;
+    border: none;
+}
+
+/* Event Icons */
+.event-icon-cell {
+    width: 50px;
+}
+
+.event-icon {
+    font-size: 18px;
+}
+
+.icon-goal {
+    color: #28a745;
+    /* Green for goal */
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-3px);
+    }
+}
+
+.card-icon {
+    width: 14px;
+    height: 20px;
+    border-radius: 2px;
+    display: inline-block;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-yellow {
+    background-color: #ffc107;
+}
+
+.card-blue {
+    background-color: #007bff;
+}
+
+.card-red {
+    background-color: #dc3545;
+}
+
+/* Text Styling */
+.player-name {
+    color: #2c3e50;
+}
+
+.club-name {
+    font-weight: 600;
+    color: #495057;
+}
+
+.time-cell,
+.period-cell {
+    font-family: 'Roboto Mono', monospace;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767.98px) {
+
+    .table-events th,
+    .table-events td {
+        font-size: 11px;
+        padding: 8px 4px !important;
+    }
+
+    .event-icon {
+        font-size: 16px;
+    }
+
+    .card-icon {
+        width: 12px;
+        height: 18px;
+    }
+}
