@@ -1,0 +1,114 @@
+<app-loader *ngIf="buscando"></app-loader>
+
+<!-- Search View (Initial State) -->
+<div class="container-fluid d-flex align-items-center justify-content-center" *ngIf="!encontrado">
+  <div id="header" class="w-100" style="max-width: 600px;">
+    <h1 class="display-4">Historial</h1>
+    <form class="form-inline d-flex flex-column flex-sm-row" [formGroup]="mForm" (ngSubmit)="Buscar($event)">
+      <input class="form-control mb-2 mb-sm-0" type="search" placeholder="Ingrese Licencia" aria-label="Search" formControlName="idLic">
+      <button class="btn btn-info" type="submit">Buscar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Results View -->
+<div class="container-fluid" *ngIf="encontrado">
+  
+  <!-- Header with Player Name and Reset -->
+  <div class="row align-items-center mb-4">
+    <div class="col-md-8">
+      <h5 class="player-name">{{Jugador}}</h5>
+    </div>
+    <div class="col-md-4 text-md-right mt-3 mt-md-0">
+       <button class="btn btn-info" type="button" (click)="Limpiar()">
+         <i class="fa fa-search mr-2"></i> Buscar Otro
+       </button>
+    </div>
+  </div>
+
+  <!-- Stats Cards Row -->
+  <div class="row mb-4">
+    <!-- Goles -->
+    <div class="col-6 col-lg-3 mb-3">
+      <div class="stats-card">
+        <div class="card-body">
+          <img src="./assets/imagenes/gol.png" class="stats-icon" alt="Goles">
+          <h5 class="card-title">Goles</h5>
+          <h1>{{contador ? contador[1][1] : 0}}</h1>
+        </div>
+      </div>
+    </div>
+    <!-- Rojas -->
+    <div class="col-6 col-lg-3 mb-3">
+      <div class="stats-card">
+        <div class="card-body">
+          <img src="./assets/imagenes/roja.png" class="stats-icon" alt="Rojas">
+          <h5 class="card-title">Rojas</h5>
+          <h1>{{contador ? contador[1][4] : 0}}</h1>
+        </div>
+      </div>
+    </div>
+    <!-- Azules -->
+    <div class="col-6 col-lg-3 mb-3">
+      <div class="stats-card">
+        <div class="card-body">
+          <img src="./assets/imagenes/azul.png" class="stats-icon" alt="Azules">
+          <h5 class="card-title">Azules</h5>
+          <h1>{{contador ? contador[1][3] : 0}}</h1>
+        </div>
+      </div>
+    </div>
+    <!-- Amarillas -->
+    <div class="col-6 col-lg-3 mb-3">
+      <div class="stats-card">
+        <div class="card-body">
+          <img src="./assets/imagenes/amarilla.jpg" class="stats-icon" alt="Amarillas">
+          <h5 class="card-title">Amarillas</h5>
+          <h1>{{contador ? contador[1][2] : 0}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Table -->
+  <div class="row">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Cant</th>
+                <th scope="col">Club</th>
+                <th scope="col">División</th>
+                <th scope="col">Campeonato</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of detalleHistorial">
+                <td class="text-center">
+                  <ng-container *ngIf="determinaEvento(t.estado)">
+                    <img [src]="'./assets/imagenes/' + eventoimg" alt="evento">
+                  </ng-container>
+                </td>
+                <td class="text-center font-weight-bold">
+                  {{t.suma}}
+                </td>
+                <td>
+                  {{t.sob}}
+                </td>
+                <td>
+                  {{t.NombreCate}}
+                </td>
+                <td>
+                  {{t.campeonato}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

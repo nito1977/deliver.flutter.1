@@ -1,20 +1,129 @@
-.progress {
+/* Title Styling */
+h3.text-light {
+  letter-spacing: 0.5px;
+}
 
-    height: 0.5rem;
+/* Card Styling */
+.util-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+/* Left Accent Line */
+.util-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 100%;
+  background: #007bff;
+  transition: width 0.3s ease;
 }
-h3.info.text-dark {
-  font-size: 1.1rem;
+
+.util-card:hover::before {
+  width: 4px;
 }
-h3.warning.text-dark {
-  font-size: 1.1rem;
+
+/* Hover Effects */
+.util-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
-h3.success.text-dark {
-  font-size: 1.1rem;
+
+/* Icon Container */
+.card-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f8f9fa;
+  margin-right: 10px;
+  transition: all 0.3s ease;
 }
-h3.danger.text-dark {
-  font-size: 1.1rem;
+
+.card-icon i {
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
 }
-.fa-3x {
-  font-size: 2em;
+
+/* Icon Specific Colors */
+.icon-boletines {
+  color: #17a2b8;
+}
+
+.icon-resoluciones {
+  color: #17a2b8;
+}
+
+.icon-actas {
+  color: #dc3545;
+}
+
+.icon-documentos {
+  color: #ffc107;
+}
+
+.icon-comunicados {
+  color: #007bff;
+}
+
+/* Invert colors on hover */
+.util-card:hover .card-icon {
+  background: #007bff;
+}
+
+.util-card:hover .card-icon i {
+  color: white;
+}
+
+/* Text Content */
+.card-content {
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.0rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+.card-content h6 {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin: 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Custom button */
+.btn-outline-light {
+  border-width: 2px;
+  font-weight: 600;
+  padding: 10px 25px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: #007bff;
+  border-color: #007bff;
+  transform: translateY(-2px);
 }

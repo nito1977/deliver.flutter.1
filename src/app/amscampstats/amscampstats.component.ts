@@ -67,6 +67,8 @@ export class AmscampstatsComponent implements OnInit, OnChanges {
       this.tit1 = "Info";
       this.tit2 = "Damas";
     }
+    console.log('op' + this.op);
+    console.log('opDiv' + this.opDiv);
     this.buscaCampeonatosActivos(this.op, this.opDiv);
   }
 

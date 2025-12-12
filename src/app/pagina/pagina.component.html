@@ -88,7 +88,9 @@
       </div>
     </div>
   </div>
-
+<div class="container-fluid p-4">
+    <app-amsbotonesutiles></app-amsbotonesutiles>
+</div>
 <div class="container text-center p-2 ">
     <!-- <div class="mr-auto p-3 bd-highlight">
       <h3><strong class="text-primary"><i id="iconVarones" class="fa fa-user"></i> Estadísticas</strong> Hockey Patín Varones</h3>
@@ -117,12 +119,7 @@
 
   
 
-  <div class="container text-center p-2 ">
-    <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Hockey Patín</h3></div>
-  </div>
-  <div class="container ">
-    <app-amscardcarrousel [idGaleria]="6"></app-amscardcarrousel>
-  </div>
+
 
   <div class="container">
     <app-amsbanners [idGaleria]="14" [idVideo]="14"></app-amsbanners>
@@ -134,18 +131,17 @@
     <app-amsgalerias [idGaleria]="7"></app-amsgalerias>
   </div>
 
-  <div class="container-fluid ">
-    <app-amsbotonesutiles></app-amsbotonesutiles>
-  </div>
-
-
-
-
 <div class="container" *ngIf="!isApp">
   <app-amsnoticias></app-amsnoticias>
 
 </div>
 
+<div class="container text-center p-2 ">
+  <div class="mr-auto p-3 bd-highlight"><h3><strong class="text-primary">Novedades</strong> Hockey Patín</h3></div>
+</div>
+<div class="container ">
+  <app-amscardcarrousel [idGaleria]="6"></app-amscardcarrousel>
+</div>
 
 
 <!--<h3>descargas</h3>

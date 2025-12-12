@@ -66,7 +66,7 @@ export class BoletinComponent implements OnInit {
         this.buscando = false;
         this.detalleBoletines = data;
 
-        console.log(this.detalleBoletines)
+        //console.log(this.detalleBoletines)
       },
       error => {
         this.Encontrado = false

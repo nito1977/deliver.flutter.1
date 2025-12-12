@@ -1,15 +1,168 @@
-body,html {
-  height: 100%;
-}
+/* Modern Container */
 .container-fluid {
-  height: 450px!important;
-  top:0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  padding: 20px;
+  background: #f4f6f9;
+  min-height: 100vh;
 }
-.card {
-  /* border-color: #007bff!important; */
-  border-bottom: 0.4rem solid!important;
-  border-bottom-color: #071c77!important;
+
+/* Header Styling */
+#header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.display-4 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Search Form */
+.form-inline {
+  justify-content: center;
+  gap: 10px;
+}
+
+.form-control {
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  width: 300px !important;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Stats Cards */
+.stats-card {
+  background: white;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card .card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-card .card-title {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.stats-card h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.stats-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+/* Table Styling (Matching Tabla Component) */
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.table {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 15px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table tbody td {
+  padding: 15px;
+  vertical-align: middle;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  border: none;
+}
+
+/* Event Icons in Table */
+.table img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Buttons */
+.btn-info {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 25px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 2px 5px rgba(23, 162, 184, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(23, 162, 184, 0.4);
+  background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
+}
+
+/* Player Name Title */
+h5.player-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0;
+  padding-left: 10px;
+  border-left: 4px solid #007bff;
 }

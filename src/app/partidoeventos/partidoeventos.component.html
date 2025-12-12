@@ -1,79 +1,42 @@
-<!-- switch ($row_goles['estado'])
-		{
-		case 1: echo "<h1>Goleadores</h1>";// echo $row_goles['Campeonato'];
-		break;
-		case 2: echo "<h1>Tarjetas Amarillas</h1>";// echo $row_goles['Campeonato'];
-		break;
-		case 3: echo "<h1>Tarjetas Azules</h1>";// echo $row_goles['Campeonato'];
-		break;
-		case 4: echo "<h1>Tarjetas Rojas</h1>";// echo $row_goles['Campeonato'];;
-		break;
-	}
+<div class="table-container p-2 pt-4">
+  <div class="table-header" *ngIf="detalleEventos && detalleEventos.length > 0">
+    <h5 class="table-title">
+        <i class="fa fa-list-ol"></i>
+        Posiciones / Eventos
+    </h5>
+  </div>
 
-<H4> Divisi&oacute;n:</h4>
-<H3>$row_goles['NombreCate'];</H3>
--->
-<div class="table responsive">
-  <table class="table table-sm">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Club</th>
-        <th>Jugador</th>
-        <th>Cant</th>
-        <!--<th>
-                switch ($row_goles['estado'])
-                {
-                case 1: $est="Goles";
-                break;
-                case 2: $est="Amarillas";
-                break;
-                case 3: $est="Azules";
-                break;
-                case 4: $est="Rojas";
-                break;
-                }
-                echo $est;
-
-              </th>   -->
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of detalleEventos">
-      <!--
-      <?php do { ?>
-      <tr>
-        <?php
-					if ($row_goles['estado']==1) {$img='gol.fw.png';}
-					if ($row_goles['estado']==2) {$img='amarilla.jpg';}
-					if ($row_goles['estado']==3) {$img='azul.fw.png';}
-					if ($row_goles['estado']==4) {$img='roja.fw.png';}
-					$datosjugador='<a href="busqueda.php?op=2&idLic='.$row_goles["idnumerocarnet"].'">'.utf8_encode($row_goles['Apellido']).", ".utf8_encode($row_goles['NombreJug']).'</a>';
-                 ?>
-        -->
-        <td align="left">
-          <img src="./assets/imagenes/{{e.estado}}.png" />
-        </td>
-        <td><img src="./assets/logos/clubes/{{e.idclub}}.png" width="30" /></td>
-        <td class="text-left">
-          {{e.Apellido}}, {{e.NombreJug}}
-        </td>
-
-        <!--<?php if ( ( ($row_goles['suma']==9) || ($row_goles['suma']==6) || ($row_goles['suma']==3) ) && ($row_goles['estado']==3) )
-                        {
-                            $clase_gol="class= 'tarjeta'";
-                        }
-                    else
-                        {
-                        $clase_gol="class= 'goles'";
-                        } //echo '<span class="gol_norm">';
-            ?>-->
-        <td class="text-center {{clase_gol}}">{{e.suma}}</td>
-
-
-      </tr>
-
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center" style="width: 50px;">#</th>
+          <th>Club</th>
+          <th>Jugador</th>
+          <th class="text-center">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of detalleEventos; let i = index">
+          <td class="text-center">
+             <img src="./assets/imagenes/{{e.estado}}.png" class="event-icon" alt="evento" />
+          </td>
+          <td>
+            <img src="./assets/logos/clubes/{{e.idclub}}.png" class="club-logo" alt="club" />
+          </td>
+          <td class="font-weight-bold text-dark">
+            {{e.Apellido}}, {{e.NombreJug}}
+          </td>
+          <td class="highlight-col">
+            {{e.suma}}
+          </td>
+        </tr>
+        <tr *ngIf="!detalleEventos || detalleEventos.length === 0">
+            <td colspan="4" class="text-center py-4 text-muted">
+                No hay datos disponibles para mostrar.
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

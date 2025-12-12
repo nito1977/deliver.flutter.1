@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { UserService } from '../services/user/user.service';
-import { Usuarios } from '../models/usuarios';
+import { Router } from '@angular/router';
 import { ServiciosamsService } from '../servicios/serviciosams.service';
-
-
+import { Usuarios } from '../models/usuarios';
 
 @Component({
   selector: 'app-login',
@@ -18,20 +13,12 @@ export class LoginComponent implements OnInit {
   public user: Usuarios;
   public mesagge: String;
   public status: Boolean;
-  tituloEstatus = '';
-  public identity;
+  public tituloEstatus = '';
   public estatus: Boolean = false;
-  public tocken;
   public bloquear = false;
-  public listado;
-  colorLetraLogin = 'colorLetraLogin';
-  colorFondoLogin = 'colorFondoLogin';
-  colorInputLogin = 'colorInputLogin';
-  colorLabelsLogin = 'colorLabelsLogin';
+
   constructor(
-    private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService,
     private http: ServiciosamsService
   ) {
     this.user = new Usuarios('', '', 0);
@@ -39,47 +26,33 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log('identidad ' + this._userService.getIdentity());
-    // console.log(localStorage.getItem('identity'));
-    // console.log(localStorage.getItem('tocken'));
   }
+
   ngSubmit() {
     this.bloquear = true;
-    this.http.LoginGet(9, this.user).subscribe(data => {
+    this.estatus = false;
+    this.status = false;
+
+    this.http.LoginGet(9, this.user).subscribe({
+      next: (data) => {
         this.bloquear = false;
-        if (data[0] === undefined) {
+        if (!data || data[0] === undefined) {
           this.estatus = true;
-          this.tituloEstatus = 'No dispone de conexion a internet o los datos ingresados son incorrectos!';
+          this.tituloEstatus = 'Credenciales incorrectas o error de conexión.';
         } else {
-        this.listado = data;
-        this.http.setearNombreUsuario(this.listado[0].nombre);
-        this._router.navigate(['/menu']);
+          // Casting to any because the Service returns Noticias[] but we receive user data here
+          const userData: any = data[0];
+          this.http.setearNombreUsuario(userData.nombre);
+          this._router.navigate(['/menu']);
         }
       },
-      error => {
-          this.bloquear = false;
-          this.estatus = true;
-          this.tituloEstatus = 'No dispone de conexion a internet o los datos ingresados son incorrectos!';
-          console.log(<any>error);
-      });
-
-  }
-  ngSubmitPost() {
-    this.bloquear = true;
-    this.status = null;
-    this.mesagge = '';
-      this._userService.LogIn_user(this.user).subscribe(
-        result => {
-            if (result.code !== 200) {
-                console.log(result);
-            } else {
-                this.user = result.data;
-            }
-        },
-        error => {
-            alert('No dispone de conexion a internet!');
-            console.log(<any>error);
-        }
-    );
+      error: (error) => {
+        this.bloquear = false;
+        this.estatus = true;
+        this.tituloEstatus = 'Error de conexión con el servidor.';
+        console.error(error);
+      }
+    });
   }
 }
+

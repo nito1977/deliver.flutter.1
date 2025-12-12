@@ -37,7 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-src/app/historial/historial.component.html
+
 www/main.1c0eab759b20735ea139.js
 www/main.eed9463cae2d366bfe42.js
 platforms/*
