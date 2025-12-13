@@ -1,3 +1,129 @@
-<li>
-  {{userName}}
-</li>
+<div class="user-container container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fa fa-users"></i> Gestión de Usuarios</h2>
+        <button class="btn btn-primary" (click)="openModal()">
+            <i class="fa fa-plus-circle"></i> Nuevo Usuario
+        </button>
+    </div>
+
+    <!-- Feedback Messages -->
+    <div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
+    <div class="alert alert-success" *ngIf="successMsg">{{successMsg}}</div>
+
+    <!-- Users Table -->
+    <div class="table-container shadow-sm bg-white rounded">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td class="font-weight-bold">{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td>
+                            <span class="badge" [ngClass]="user.group_id == 1 ? 'badge-danger' : 'badge-info'">
+                                {{user.group_id == 1 ? 'Admin' : 'Miembro'}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge" [ngClass]="user.active == 1 ? 'badge-success' : 'badge-secondary'">
+                                {{user.active == 1 ? 'Activo' : 'Inactivo'}}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-info mr-2" (click)="openModal(user)" title="Editar">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user)" title="Eliminar">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="users.length === 0 && !loading" class="text-center p-4 text-muted">
+                No hay usuarios registrados.
+            </div>
+            <div *ngIf="loading" class="text-center p-4">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Overlay -->
+<div class="modal-backdrop fade show" *ngIf="showModal"></div>
+
+<!-- Modal Dialog -->
+<div class="modal fade show d-block" *ngIf="showModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">{{isEdit ? 'Editar Usuario' : 'Nuevo Usuario'}}</h5>
+                <button type="button" class="close text-white" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Usuario *</label>
+                            <input type="text" class="form-control" name="username" [(ngModel)]="userForm.username" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Email *</label>
+                            <input type="email" class="form-control" name="email" [(ngModel)]="userForm.email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" name="first_name" [(ngModel)]="userForm.first_name">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control" name="last_name" [(ngModel)]="userForm.last_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Contraseña {{isEdit ? '(Dejar en blanco para mantener)' : '*'}}</label>
+                            <input type="password" class="form-control" name="password" [(ngModel)]="userForm.password" [required]="!isEdit">
+                        </div>
+                         <div class="col-md-6 form-group">
+                            <label>Rol</label>
+                            <select class="form-control" name="group_id" [(ngModel)]="userForm.group_id">
+                                <option [value]="1">Administrador</option>
+                                <option [value]="2">Miembro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="activeCheck" name="active" [(ngModel)]="userForm.active">
+                            <label class="custom-control-label" for="activeCheck">Usuario Activo</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="saveUser()" [disabled]="!form.valid || loading">
+                    {{loading ? 'Guardando...' : 'Guardar'}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

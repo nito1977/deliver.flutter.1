@@ -22,6 +22,7 @@ import { CuotasformComponent } from './cuotasform/cuotasform.component';
 import { HistorialComponent } from './historial/historial.component';
 import { AmsgaleriasComponent } from './amsgalerias/amsgalerias.component';
 import { DescargasComponent } from './descargas/descargas.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 import { TabladetalleCompactoComponent } from './tabladetallecompacto/tabladetallecompacto.component';
 import { AmsnoticiaComponent } from './amsnoticia/amsnoticia.component';
 import { AmsvideoComponent } from './amsvideo/amsvideo.component';
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'boletines/', component: BoletinComponent },
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'usuarios', component: UsuarioComponent },
   { path: 'cuotas', component: CuotasformComponent },
   { path: 'descargas', component: DescargasComponent },
   { path: 'descargas/:lnk', component: DescargasComponent },

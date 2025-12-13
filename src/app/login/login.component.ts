@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiciosamsService } from '../servicios/serviciosams.service';
 import { Usuarios } from '../models/usuarios';
+import { BackendService } from '../services/backend.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private http: ServiciosamsService
+    private http: ServiciosamsService, // Kept for setearNombreUsuario compatibility
+    private authService: BackendService
   ) {
     this.user = new Usuarios('', '', 0);
     this.bloquear = false;
@@ -33,23 +35,21 @@ export class LoginComponent implements OnInit {
     this.estatus = false;
     this.status = false;
 
-    this.http.LoginGet(9, this.user).subscribe({
-      next: (data) => {
+    // Use BackendService for authentication
+    this.authService.login(this.user.nombre.toString(), this.user.clave.toString()).subscribe({
+      next: (userData) => {
         this.bloquear = false;
-        if (!data || data[0] === undefined) {
-          this.estatus = true;
-          this.tituloEstatus = 'Credenciales incorrectas o error de conexión.';
-        } else {
-          // Casting to any because the Service returns Noticias[] but we receive user data here
-          const userData: any = data[0];
-          this.http.setearNombreUsuario(userData.nombre);
-          this._router.navigate(['/menu']);
-        }
+
+        // Success: Logged in via BackendService
+        // Backward Compatibility: Set legacy global user ID
+        this.http.setearNombreUsuario(userData.username);
+
+        this._router.navigate(['/usuarios']);
       },
       error: (error) => {
         this.bloquear = false;
         this.estatus = true;
-        this.tituloEstatus = 'Error de conexión con el servidor.';
+        this.tituloEstatus = error.message || 'Credenciales incorrectas o error de conexión.';
         console.error(error);
       }
     });

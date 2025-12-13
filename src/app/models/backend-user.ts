@@ -10,4 +10,6 @@ export interface BackendUser {
     last_name: string;
     company: string;
     phone: string;
+    password?: string; // Optional for updates
+    group_id?: number; // For role management
 }

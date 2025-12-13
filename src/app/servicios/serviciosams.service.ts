@@ -6,8 +6,9 @@ import { Os } from '../models/os';
 
 import { Noticias } from '../models/noticias';
 import { Usuarios } from '../models/usuarios';
-import { Observable } from 'rxjs';
-import * as sha1 from 'js-sha1';
+import { Observable, from } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+// import * as sha1 from 'js-sha1'; // Removed CommonJS dependency
 
 import { GLOBAL } from '../services/global';
 
@@ -35,12 +36,12 @@ export class ServiciosamsService {
     console.log('el servicio esta andando');
   }
   cargaSecciones(op, nivel) {
-    return this.http.get<Seccion[]>(this.xurl + '/appams.php?opcion=' + op + '&nivel=' + nivel);
+    return this.http.get<Seccion[]>(this.xurl + '/appfsp.php?opcion=' + op + '&nivel=' + nivel);
 
   }
   buscaOs(op, busca, orden, tipoOrden, ini, fin) {
     const params = 'opcion=' + op + '&busca=' + busca + '&orden=' + orden + '&tipoOrden=' + tipoOrden + '&ini=' + ini + '&fin=' + fin;
-    return this.http.get<Os[]>(this.xurl + '/appams.php?' + params);
+    return this.http.get<Os[]>(this.xurl + '/appfsp.php?' + params);
   }
 
 
@@ -82,10 +83,18 @@ export class ServiciosamsService {
   public devolverUrlDescarga() {
     return GLOBAL.urlPublica;
   }
-  public LoginGet(op, usuario: Usuarios) {
-    const params = 'opcion=' + op + '&nombre=' + usuario.nombre + '&clave=' + sha1.sha1(usuario.clave.toString());
-    // console.log(params);
-    return this.http.get<Noticias[]>(this.usuUrl + '/appams.php?' + params);
+  public LoginGet(op, usuario: Usuarios): Observable<Noticias[]> {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(usuario.clave.toString());
+
+    return from(window.crypto.subtle.digest('SHA-1', data)).pipe(
+      switchMap((buffer) => {
+        const hashArray = Array.from(new Uint8Array(buffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const params = 'opcion=' + op + '&nombre=' + usuario.nombre + '&clave=' + hashHex;
+        return this.http.get<Noticias[]>(this.usuUrl + '/appfsp.php?' + params);
+      })
+    );
   }
 
   // de noticias
@@ -96,7 +105,7 @@ export class ServiciosamsService {
 
   public cantidadTabla(op, tabla, campo) {
     const params = 'opcion=' + op + '&tabla=' + tabla + '&campo=' + campo;
-    return this.http.get<Totales[]>(this.xurl + '/appams.php?' + params);
+    return this.http.get<Totales[]>(this.xurl + '/appfsp.php?' + params);
   }
 
   public TotaldeObrasSociales(cant) {
