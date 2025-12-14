@@ -22,6 +22,9 @@ switch ($service) {
     case 'users':
         require 'users.php';
         break;
+    case 'upload':
+        require 'upload.php';
+        break;
     default:
         http_response_code(404);
         echo json_encode(['status' => 'error', 'message' => 'Service not found or invalid']);

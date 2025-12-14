@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   colorFondo = 'bg-white';
   colorBarra = 'colorBarra';
   colorLetraBarra = 'colorLetraBarra';
-  logo = 'logoams.png';
+  logo = 'logochico.png';
   tipoNav = 'navbar-light';
   logueado = false;
   secc = new Seccion(0, 'Debe estar logueado', '', '', '', 0, '', 0, '', 0, 0, 0, '', '');

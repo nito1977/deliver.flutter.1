@@ -49,8 +49,18 @@ export class LoginComponent implements OnInit {
       error: (error) => {
         this.bloquear = false;
         this.estatus = true;
-        this.tituloEstatus = error.message || 'Credenciales incorrectas o error de conexión.';
-        console.error(error);
+
+        // Log the full error for debugging
+        console.error('Login error:', error);
+
+        // Determine user-facing message
+        if (error.status === 401 || error.status === 403) {
+          this.tituloEstatus = 'Credenciales incorrectas.';
+        } else if (error.error && error.error.message) {
+          this.tituloEstatus = error.error.message;
+        } else {
+          this.tituloEstatus = 'Error de conexión o problema en el servidor. Por favor intente más tarde.';
+        }
       }
     });
   }

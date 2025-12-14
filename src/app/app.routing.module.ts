@@ -29,6 +29,7 @@ import { AmsvideoComponent } from './amsvideo/amsvideo.component';
 import { AmsbannersComponent } from './amsbanners/amsbanners.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ClubComponent } from './club/club.component';
+import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   { path: 'cuotas', component: CuotasformComponent },
   { path: 'descargas', component: DescargasComponent },
   { path: 'descargas/:lnk', component: DescargasComponent },
+  { path: 'fiestafsp', component: CameraCaptureComponent },
   { path: '**', component: PaginaComponent }
 ];
 

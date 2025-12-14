@@ -16,7 +16,7 @@ const config = {
     // delete ALL existing files at destination before uploading, if true
     deleteRemote: false,
     // Passive mode is forced (EPSV command is not sent)
-    forcePasv: false,
+    forcePasv: true,
     // use sftp or ftp
     sftp: false,
     // Timeout in milliseconds (default: 30000)

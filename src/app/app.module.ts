@@ -59,6 +59,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { ClubComponent } from './club/club.component';
 import { InstagramCarouselComponent } from './instagram-carousel/instagram-carousel.component';
 import { AmsgaleriaComponent } from './amsgaleria/amsgaleria.component';
+import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AmsgaleriaComponent } from './amsgaleria/amsgaleria.component';
     CategoriaComponent,
     ClubComponent,
     InstagramCarouselComponent,
-    AmsgaleriaComponent
+    AmsgaleriaComponent,
+    CameraCaptureComponent
 
   ],
   imports: [

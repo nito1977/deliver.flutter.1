@@ -1,0 +1,91 @@
+<div class="camera-container">
+  
+  <!-- Upload Success / Share Screen -->
+  <!-- Upload Success / Share Screen -->
+  <div *ngIf="uploadSuccess" class="share-screen">
+      
+      <!-- Ephemeral Success Message -->
+      <div *ngIf="showSuccessMessage" class="alert alert-success success-toast">
+        <i class="fa fa-check-circle"></i> Imagen subida con éxito!
+      </div>
+      
+      <div class="image-overlay-container mb-4">
+          <img [src]="getFullImageUrl()" class="img-preview" alt="Uploaded Photo">
+          
+          <!-- Floating Share Buttons -->
+          <div class="share-buttons-overlay">
+              <h5 class="text-white text-shadow">Compartir:</h5>
+              <div class="d-flex justify-content-center">
+                  <button class="btn btn-facebook btn-circle mx-2" (click)="shareFacebook()">
+                    <i class="fa fa-facebook"></i>
+                  </button>
+                  <button class="btn btn-instagram btn-circle mx-2" (click)="shareGeneric()">
+                     <i class="fa fa-share-alt"></i>
+                  </button>
+                  <button class="btn btn-download btn-circle mx-2" (click)="downloadImage()">
+                     <i class="fa fa-download"></i>
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <button class="btn btn-outline-primary btn-block" (click)="startCamera()">
+          <i class="fa fa-camera mr-2"></i> Nueva Foto
+      </button>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    <i class="fa fa-exclamation-triangle"></i> {{errorMessage}}
+  </div>
+
+  <!-- Initial State / Start Camera -->
+  <div *ngIf="!isCameraActive && !capturedImage && !uploadSuccess" class="start-screen">
+    <div class="logo-header">
+      <img src="../assets/logochico.png" alt="Logo" class="logo" height="80">
+    </div>
+    <h3 class="screen-title">Fiesta F.S.P 2025!!</h3>
+    <p class="screen-subtitle">Toma una selfie y compártela con la comunidad</p>
+    
+    <button class="btn btn-camera btn-lg btn-block" (click)="startCamera()">
+      <i class="fa fa-camera mr-2"></i> Abrir Cámara
+    </button>
+    
+    <div class="divider">
+        <span>o</span>
+    </div>
+
+    <!-- File Upload Fallback -->
+    <label class="btn btn-upload btn-lg btn-block">
+        <i class="fa fa-image mr-2"></i> Seleccionar Foto
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+    </label>
+  </div>
+
+  <!-- Camera Preview -->
+  <div class="video-wrapper" [class.d-none]="!isCameraActive">
+    <video #videoElement autoplay playsinline></video>
+    <div class="camera-controls">
+        <button class="btn-capture" (click)="capturePhoto()"></button>
+    </div>
+  </div>
+
+  <!-- Captured Image Preview -->
+  <div *ngIf="capturedImage && !uploadSuccess" class="preview-screen">
+    <img [src]="capturedImage" class="img-preview" alt="Preview">
+    
+    <div class="action-buttons">
+      <button class="btn btn-upload flex-fill mr-2" (click)="retakePhoto()" [disabled]="isUploading">
+        <i class="fa fa-refresh mr-1"></i> Repetir
+      </button>
+      <button class="btn btn-camera flex-fill ml-2" (click)="uploadPhoto()" [disabled]="isUploading">
+        <span *ngIf="!isUploading"><i class="fa fa-cloud-upload mr-1"></i> Subir</span>
+        <span *ngIf="isUploading"><i class="fa fa-spinner fa-spin"></i> Subiendo...</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden Canvas for Capture -->
+  <canvas #canvasElement style="display: none;"></canvas>
+
+</div>

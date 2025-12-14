@@ -17,6 +17,7 @@ export class BackendService {
     // Unified API Endpoint
     private apiUrl = GLOBAL.sitio ? GLOBAL.sitio + '/api/index.php?service=auth' : 'http://localhost/api/index.php?service=auth';
     private usersApiUrl = GLOBAL.sitio ? GLOBAL.sitio + '/api/index.php?service=users' : 'http://localhost/api/index.php?service=users';
+    private uploadApiUrl = GLOBAL.sitio ? GLOBAL.sitio + '/api/index.php?service=upload' : 'http://localhost/api/index.php?service=upload';
 
     private currentUserSubject: BehaviorSubject<BackendUser>;
     public currentUser: Observable<BackendUser>;
@@ -82,6 +83,21 @@ export class BackendService {
             .pipe(map(response => {
                 if (response.status === 'success') {
                     return response.data;
+                } else {
+                    throw new Error(response.message);
+                }
+            }));
+    }
+
+    uploadPhoto(file: Blob): Observable<any> {
+        const formData = new FormData();
+        // Append the file with a filename (e.g. 'photo.jpg') so $_FILES['photo'] works
+        formData.append('photo', file, 'photo.jpg');
+
+        return this.http.post<any>(this.uploadApiUrl, formData)
+            .pipe(map(response => {
+                if (response.status === 'success') {
+                    return response; // Return full response, not just response.data
                 } else {
                     throw new Error(response.message);
                 }

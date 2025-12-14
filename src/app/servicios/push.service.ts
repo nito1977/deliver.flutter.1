@@ -39,7 +39,7 @@ export class PushService {
           title: notificacion.title, // "Primary Title",
           state: 'success', // success, info, error, warning,
           body: notificacion.text, // "Primary message to display",
-          icon: './assets/logoams.png', // url_to_small_icon",
+          icon: './assets/logochico.png', // url_to_small_icon",
           // items: [], //[{title: "Item1", message: "This is item 1."},
           // {title: "Item2", message: "This is item 2."},
           // {title: "Item3", message: "This is item 3."}],
@@ -74,14 +74,14 @@ export class PushService {
           title: notificacionChat.title, // "Primary Title",
           state: 'success', // success, info, error, warning,
           body: notificacionChat.text, // "Primary message to display",
-          icon: './assets/logoams.png', // url_to_small_icon",
+          icon: './assets/logochico.png', // url_to_small_icon",
 
           items: [
-           {title: 'Item1', message: 'This is item 1.'},
-           {title: 'Item2', message: 'This is item 2.'},
-           {title: 'Item3', message: 'This is item 3.'}],
-           acc1_func: undefined,
-           acc2_func: undefined,
+            { title: 'Item1', message: 'This is item 1.' },
+            { title: 'Item2', message: 'This is item 2.' },
+            { title: 'Item3', message: 'This is item 3.' }],
+          acc1_func: undefined,
+          acc2_func: undefined,
           callback: function (btn) {
             console.log();
           }
