@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PanelService } from '../../services/panel.service';
 import { BackendService } from '../../services/backend.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
     selector: 'app-panel-list',
@@ -158,5 +160,96 @@ export class PanelListComponent implements OnInit {
                 this.loading = false;
             }
         });
+    }
+
+    exportToCSV() {
+        if (this.items.length === 0) return;
+
+        const header = ['Carnet', 'DNI', 'Licencia', 'Apellido', 'Nombre', 'Clasificado', 'Club', 'Sexo', 'Telefono', 'Marca', 'Disciplina', 'Actividad'];
+        const csvRows = [header.join(';')];
+
+        this.items.forEach(item => {
+            const row = [
+                item.idnumerocarnet,
+                item.Documento || '',
+                item.licencia || '',
+                item.Apellido || '',
+                item.Nombre || '',
+                item.clasificado || '',
+                item.club || '',
+                item.Sexo || '',
+                item.Telefono || '',
+                item.Marca || '',
+                item.Disciplina || '',
+                item.Actividad || ''
+            ];
+            const escapedRow = row.map(v => `"${String(v).replace(/"/g, '""')}"`);
+            csvRows.push(escapedRow.join(';'));
+        });
+
+        const csvString = '\uFEFF' + csvRows.join('\n');
+        const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', `Listado_${this.type}_${new Date().toLocaleDateString()}.csv`);
+        link.click();
+    }
+
+    exportToPDF() {
+        if (this.items.length === 0) return;
+
+        const doc = new jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        const clubName = this.items[0]?.club || 'Todas las Instituciones';
+        const dateStr = new Date().toLocaleString();
+        const headerTitle = `Federación Sanjuanina de Patín - ${clubName} - ${dateStr}`;
+
+        const head = [['dni', 'lic', 'Jugador', 'F. Nac', 'Clasif', 'Club', 'Sexo', 'teléfono', 'Marca', 'Disc.', 'Act.', 'P.']];
+        const body = this.items.map(item => [
+            item.Documento || '',
+            item.licencia || '',
+            `${item.Apellido}, ${item.Nombre}`,
+            item.Fecnac || '',
+            item.clasificado || '',
+            item.club || '',
+            item.Sexo || '',
+            item.Telefono || '',
+            item.Marca || '',
+            item.Disciplina ? item.Disciplina.substring(0, 1) : '',
+            item.Actividad || '',
+            'P'
+        ]);
+
+        autoTable(doc, {
+            head: head,
+            body: body,
+            startY: 20,
+            theme: 'striped',
+            headStyles: { fillColor: [255, 255, 255], textColor: [0, 0, 0], fontStyle: 'bold', lineWidth: 0.1, lineColor: [200, 200, 200] },
+            styles: { fontSize: 8, cellPadding: 2 },
+            columnStyles: {
+                0: { cellWidth: 20 },
+                1: { cellWidth: 12 },
+                2: { cellWidth: 'auto' },
+                3: { cellWidth: 20 },
+                4: { cellWidth: 12 },
+                11: { cellWidth: 8 }
+            },
+            didDrawPage: (data) => {
+                doc.setFontSize(11);
+                doc.text(headerTitle, data.settings.margin.left, 15);
+            }
+        });
+
+        doc.save(`${clubName}_${new Date().getTime()}.pdf`);
+    }
+
+    printList() {
+        window.print();
     }
 }

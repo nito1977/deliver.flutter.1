@@ -1,0 +1,64 @@
+<div class="card shadow-sm border-0 mb-4 h-100">
+    <div class="card-header bg-white border-0 py-3">
+        <h6 class="mb-0 font-weight-bold text-dark">Historial de Pases</h6>
+    </div>
+    
+    <div class="p-4 pt-0">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="d-flex align-items-center">
+                <span class="small text-muted me-2">Mostrar</span>
+                <select class="form-select form-select-sm w-auto">
+                    <option>10</option>
+                </select>
+            </div>
+            <div class="d-flex align-items-center">
+                <span class="small text-muted me-2">Buscar:</span>
+                <input type="text" class="form-control form-control-sm">
+            </div>
+        </div>
+
+        <div class="table-responsive" style="min-height: 200px; position: relative;">
+            <!-- Loader -->
+            <div *ngIf="isLoading" class="position-absolute w-100 h-100 bg-white d-flex justify-content-center align-items-center" style="z-index: 10; top: 0; left: 0;">
+                <div class="spinner-border text-info" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+
+            <table class="table table-hover mb-0">
+                <thead class="bg-info-light">
+                    <tr>
+                        <th class="small py-2 border-0">Jugador</th>
+                        <th class="small py-2 border-0">Club</th>
+                        <th class="small py-2 border-0">Desde</th>
+                        <th class="small py-2 border-0">Hasta</th>
+                        <th class="small py-2 border-0">Tipo Pase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!isLoading && transfers.length === 0">
+                        <td colspan="5" class="text-center py-4 text-muted">No se encontraron movimientos registrados</td>
+                    </tr>
+                    <tr *ngFor="let t of transfers">
+                        <td class="small">{{ t.Jugador }}</td>
+                        <td class="small">{{ t.nombreClub }}</td>
+                        <td class="small">{{ t.Desde | date:'dd/MM/yyyy' }}</td>
+                        <td class="small">{{ t.Hasta | date:'dd/MM/yyyy' }}</td>
+                        <td class="small">{{ t.tipopase }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-3 d-flex justify-content-between align-items-center border-top mt-3">
+            <div class="small text-muted">Mostrando {{ transfers.length }} Entradas</div>
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary btn-sm" [disabled]="isLoading">Primero</button>
+                <button class="btn btn-outline-secondary btn-sm" [disabled]="isLoading">Anterior</button>
+                <button class="btn btn-primary btn-sm" [disabled]="isLoading">1</button>
+                <button class="btn btn-outline-secondary btn-sm" [disabled]="isLoading">Siguiente</button>
+                <button class="btn btn-outline-secondary btn-sm" [disabled]="isLoading">Último</button>
+            </div>
+        </div>
+    </div>
+</div>

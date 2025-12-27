@@ -23,11 +23,15 @@
 
           <!-- Right: Actions -->
           <div class="d-flex flex-wrap">
-                <button class="btn btn-dark btn-sm mr-1 mb-1"><i class="fa fa-plus"></i></button>
-                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1 active">Habilitados</button>
-                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1">Bajas</button>
-                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1">Todos</button>
-                <button class="btn btn-outline-secondary btn-sm mb-1"><i class="fa fa-file-text-o"></i></button>
+                <button class="btn btn-outline-danger btn-sm mr-1 mb-1" (click)="exportToPDF()" title="Exportar PDF">
+                    <i class="fa fa-file-pdf-o"></i> PDF
+                </button>
+                <button class="btn btn-outline-success btn-sm mr-1 mb-1" (click)="exportToCSV()" title="Exportar Excel (CSV)">
+                    <i class="fa fa-file-excel-o"></i> Excel
+                </button>
+                <button class="btn btn-outline-dark btn-sm mb-1" (click)="printList()" title="Imprimir">
+                    <i class="fa fa-print"></i> Imprimir
+                </button>
           </div>
       </div>
   </div>
@@ -119,8 +123,10 @@
                       </td>
                       
                       <!-- Column 3: Jugador -->
-                      <td class="font-weight-bold text-uppercase text-primary">
-                          {{ item.Apellido || item.apellido }}, {{ item.Nombre || item.nombre }}
+                      <td class="font-weight-bold text-uppercase">
+                          <a [routerLink]="['/panel/jugador', item.idnumerocarnet]" class="text-primary text-decoration-none">
+                            {{ item.Apellido || item.apellido }}, {{ item.Nombre || item.nombre }}
+                          </a>
                       </td>
                       <td class="d-none d-lg-table-cell">{{ (item.Fecnac || item.f_nac) | date:'MM/dd/yyyy' }}</td>
                       <td class="d-none d-md-table-cell"><span class="badge badge-light text-dark border" style="font-size: 0.85em;">{{ item.clasificado || item.clasif }}</span></td>
@@ -135,13 +141,14 @@
                           <!-- Admin Buttons -->
                           <ng-container *ngIf="currentUser?.group_id == 1">
                             <button class="btn btn-outline-info btn-sm mr-1" title="Pase"><i class="fa fa-exchange"></i></button>
-                            <button class="btn btn-outline-primary btn-sm mr-1" title="Editar"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-outline-primary btn-sm mr-1" [routerLink]="['/panel/jugador', item.idnumerocarnet]" title="Editar"><i class="fa fa-pencil"></i></button>
                             <button class="btn btn-outline-secondary btn-sm mr-1" title="Marcar"><i class="fa fa-tag"></i></button>
                             <button class="btn btn-outline-danger btn-sm" title="Baja"><i class="fa fa-trash"></i></button>
                           </ng-container>
 
                           <!-- Club Buttons -->
                           <ng-container *ngIf="currentUser?.group_id == 4">
+                            <button class="btn btn-outline-primary btn-sm mr-1" [routerLink]="['/panel/jugador', item.idnumerocarnet]" title="Editar"><i class="fa fa-pencil"></i></button>
                             <button class="btn btn-outline-success btn-sm mr-1" title="Alta" (click)="onToggleMark(item, true)"><i class="fa fa-plus"></i></button>
                             <button class="btn btn-outline-danger btn-sm" title="Baja" (click)="onToggleMark(item, false)"><i class="fa fa-minus"></i></button>
                           </ng-container>

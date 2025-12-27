@@ -1,0 +1,30 @@
+.bg-cyan {
+    background-color: #00bcd4;
+}
+
+.table th {
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: #fff;
+    padding: 12px 15px;
+}
+
+.table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+.form-select-sm,
+.form-control-sm {
+    border-radius: 4px;
+}
+
+.btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}

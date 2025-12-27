@@ -15,6 +15,15 @@ switch ($action) {
     case 'mark_player':
         markPlayer($pdo);
         break;
+    case 'get_player_detail':
+        getPlayerDetail($pdo);
+        break;
+    case 'get_transfer_history':
+        getTransferHistory($pdo);
+        break;
+    case 'update_player':
+        updatePlayer($pdo);
+        break;
     default:
         http_response_code(400);
         echo json_encode(['status' => 'error', 'message' => 'Invalid panel action']);
@@ -202,6 +211,127 @@ function markPlayer($pdo) {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
+        http_response_code(500);
+        echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
+    }
+}
+
+function getPlayerDetail($pdo) {
+    $id = $_GET['id'] ?? '';
+    if (!$id) {
+        http_response_code(400);
+        echo json_encode(['status' => 'error', 'message' => 'Missing carnet ID']);
+        return;
+    }
+
+    $sql = "SELECT int_jugador.foto, int_jugador.Fechainscr, int_jugador.idnumerocarnet, int_jugador.Apellido, int_jugador.Nombre, 
+                   int_jugador.clasificado, int_jugador.Fecnac, int_jugador.Documento, int_jugador.nrotarjeta, int_jugador.idclub, 
+                   int_clubes.Nombreclub as clubActual, int_jugador.Telefono, int_jugador.Domicilio, int_jugador.Provincia, 
+                   int_jugador.Nacionalidad, int_jugador.Localidad, int_jugador.`Obra Social`, int_jugador.Email, int_jugador.RAMA, 
+                   int_jugador.Federacion, int_jugador.CodigoPostal, int_jugador.Sexo, int_jugador.Disciplina, 
+                   int_jugador.Actividad, int_jugador.licencia, int_jugador.Marca 
+            FROM int_jugador 
+            LEFT JOIN int_clubes ON (int_clubes.idclub = int_jugador.idclub) 
+            WHERE int_jugador.idnumerocarnet = :id";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($data) {
+            echo json_encode(['status' => 'success', 'data' => $data]);
+        } else {
+            http_response_code(404);
+            echo json_encode(['status' => 'error', 'message' => 'Player not found']);
+        }
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
+    }
+}
+
+function getTransferHistory($pdo) {
+    $id = $_GET['id'] ?? '';
+    if (!$id) {
+        http_response_code(400);
+        echo json_encode(['status' => 'error', 'message' => 'Missing carnet ID']);
+        return;
+    }
+
+    $sql = "SELECT historial_pases.id, historial_pases.idnumerocarnet, CONCAT(int_jugador.Apellido, ', ', int_jugador.Nombre) AS Jugador, 
+                   historial_pases.`Club Origen` AS nombreClub, historial_pases.Desde, historial_pases.Hasta, 
+                   historial_pases.`Tipo Pase` AS tipopase 
+            FROM historial_pases 
+            INNER JOIN int_jugador ON (historial_pases.idnumerocarnet = int_jugador.idnumerocarnet) 
+            WHERE historial_pases.idnumerocarnet = :id 
+            ORDER BY historial_pases.id desc";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode(['status' => 'success', 'data' => $data]);
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
+    }
+}
+
+function updatePlayer($pdo) {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (!$data || !isset($data['idnumerocarnet'])) {
+        http_response_code(400);
+        echo json_encode(['status' => 'error', 'message' => 'Invalid data or missing ID']);
+        return;
+    }
+
+    $sql = "UPDATE `int_jugador` SET 
+            `Apellido` = :apellido, 
+            `Nombre` = :nombre, 
+            `Fecnac` = STR_TO_DATE(:fecnac, '%m/%d/%Y'), 
+            `Documento` = :documento, 
+            `Nacionalidad` = :nacionalidad, 
+            `Sexo` = :sexo, 
+            `Domicilio` = :domicilio, 
+            `Localidad` = :localidad, 
+            `CodigoPostal` = :codigo_postal, 
+            `Provincia` = :provincia, 
+            `Telefono` = :telefono, 
+            `Federacion` = :federacion, 
+            `Disciplina` = :disciplina, 
+            `Actividad` = :actividad, 
+            `Obra Social` = :obra_social, 
+            `email` = :email, 
+            `RAMA` = :rama 
+            WHERE `idnumerocarnet` = :id";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':apellido' => $data['Apellido'],
+            ':nombre' => $data['Nombre'],
+            ':fecnac' => $data['Fecnac'], // Assumes format is correct or handles conversion elsewhere
+            ':documento' => $data['Documento'],
+            ':nacionalidad' => $data['Nacionalidad'],
+            ':sexo' => $data['Sexo'],
+            ':domicilio' => $data['Domicilio'],
+            ':localidad' => $data['Localidad'],
+            ':codigo_postal' => $data['CodigoPostal'],
+            ':provincia' => $data['Provincia'],
+            ':telefono' => $data['Telefono'],
+            ':federacion' => $data['Federacion'],
+            ':disciplina' => $data['Disciplina'],
+            ':actividad' => $data['Actividad'],
+            ':obra_social' => $data['Obra Social'],
+            ':email' => $data['Email'],
+            ':rama' => $data['RAMA'],
+            ':id' => $data['idnumerocarnet']
+        ]);
+
+        echo json_encode(['status' => 'success', 'message' => 'Player updated successfully']);
+    } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
     }

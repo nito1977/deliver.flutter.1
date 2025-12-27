@@ -95,4 +95,20 @@ export class PanelService {
         let params = `&action=mark_player&idnumerocarnet=${idnumerocarnet}&mark=${mark}&username=${username}`;
         return this.http.get<any>(this.apiUrl + params);
     }
+
+    getPlayer(id: string): Observable<any> {
+        return this.http.get<any>(this.apiUrl + `&action=get_player_detail&id=${id}`).pipe(
+            map(res => res.status === 'success' ? res.data : null)
+        );
+    }
+
+    getTransferHistory(id: string): Observable<any[]> {
+        return this.http.get<any>(this.apiUrl + `&action=get_transfer_history&id=${id}`).pipe(
+            map(res => res.status === 'success' ? res.data : [])
+        );
+    }
+
+    updatePlayer(player: any): Observable<any> {
+        return this.http.post<any>(this.apiUrl + `&action=update_player`, player);
+    }
 }
