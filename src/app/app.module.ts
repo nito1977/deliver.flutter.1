@@ -63,6 +63,9 @@ import { AmsgaleriaComponent } from './amsgaleria/amsgaleria.component';
 import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
 import { PanelControlComponent } from './panel-control/panel-control.component';
 import { PanelListComponent } from './panel-control/panel-list/panel-list.component';
+import { PlayerDetailComponent } from './panel-control/player-detail/player-detail.component';
+import { PlayerFormComponent } from './panel-control/player-detail/player-form/player-form.component';
+import { PlayerHistoryComponent } from './panel-control/player-detail/player-history/player-history.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { PanelListComponent } from './panel-control/panel-list/panel-list.compon
     AmsgaleriaComponent,
     CameraCaptureComponent,
     PanelControlComponent,
-    PanelListComponent
+    PanelListComponent,
+    PlayerDetailComponent,
+    PlayerFormComponent,
+    PlayerHistoryComponent
   ],
   imports: [
     BrowserModule, FormsModule,

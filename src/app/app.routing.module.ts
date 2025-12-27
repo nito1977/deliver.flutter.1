@@ -32,6 +32,7 @@ import { ClubComponent } from './club/club.component';
 import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
 import { PanelControlComponent } from './panel-control/panel-control.component';
 import { PanelListComponent } from './panel-control/panel-list/panel-list.component';
+import { PlayerDetailComponent } from './panel-control/player-detail/player-detail.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'jugadores/habilitados', pathMatch: 'full' },
       { path: 'usuarios', component: UsuarioComponent },
       { path: 'jugadores', redirectTo: 'jugadores/habilitados', pathMatch: 'full' },
+      { path: 'jugador/:id', component: PlayerDetailComponent },
       { path: ':type', component: PanelListComponent },
       { path: ':type/:subtype', component: PanelListComponent } // Allow specific subtypes if needed
     ]
