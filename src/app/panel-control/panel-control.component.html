@@ -1,0 +1,51 @@
+<div class="panel-layout">
+    <!-- Top Black Bar -->
+    <nav class="navbar navbar-dark bg-dark top-bar p-0">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./assets/logochico.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                <span class="font-weight-bold">FSP</span>
+            </a>
+            
+            <span class="text-secondary mx-2">|</span>
+            <span class="text-light mr-3">Padron</span>
+            
+            <div class="ml-auto d-flex align-items-center text-light user-info">
+                <span class="mr-3" *ngIf="currentUser"><i class="fa fa-user mr-1"></i> Usuario {{currentUser.username}}</span>
+                <button class="btn btn-sm btn-outline-secondary" (click)="logout()">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Navigation Bar (Blue/White) -->
+    <div class="main-nav bg-light border-bottom">
+        <div class="container-fluid">
+            <ul class="nav">
+                <li class="nav-item dropdown" *ngFor="let item of menuItems" [class.active]="item.isOpen">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="toggleSubmenu(item)">
+                        {{item.label}}
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu show" *ngIf="item.children && item.isOpen">
+                        <a class="dropdown-item" *ngFor="let sub of item.children" [routerLink]="sub.route" routerLinkActive="active">
+                            {{sub.label}}
+                        </a>
+                    </div>
+                </li>
+                 <!-- Static Filters Mockup (as seen in image) -->
+                 <li class="nav-item"><a class="nav-link text-secondary" href="#">Clubes ART</a></li>
+                 <li class="nav-item"><a class="nav-link text-secondary" href="#">Género</a></li>
+                 <li class="nav-item"><a class="nav-link text-secondary" href="#">Clasif.</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="panel-content p-3">
+        <!-- If no child route is active, we might want to show a default list or the router outlet -->
+        <!-- For this task, we'll assume the interaction loads the list in router-outlet or directly here -->
+        <router-outlet></router-outlet>
+    </div>
+</div>

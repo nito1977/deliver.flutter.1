@@ -23,8 +23,14 @@ export class BackendService {
     public currentUser: Observable<BackendUser>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<BackendUser>(JSON.parse(localStorage.getItem('currentUser')));
+        const storedUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUserSubject = new BehaviorSubject<BackendUser>(storedUser);
         this.currentUser = this.currentUserSubject.asObservable();
+
+        // Restore legacy auth state for AuthGuard compatibility
+        if (storedUser && storedUser.username) {
+            GLOBAL.idUsuario = storedUser.username;
+        }
     }
 
     public get currentUserValue(): BackendUser {
@@ -42,6 +48,10 @@ export class BackendService {
                     const user = response.data;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
+
+                    // Sync legacy auth
+                    GLOBAL.idUsuario = user.username;
+
                     return user;
                 } else {
                     throw new Error(response.message || 'Error de autenticación');
@@ -51,6 +61,8 @@ export class BackendService {
 
     logout() {
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('lastAction'); // Clear auto-logout timer
+        GLOBAL.idUsuario = '';
         this.currentUserSubject.next(null);
     }
 
@@ -98,6 +110,17 @@ export class BackendService {
             .pipe(map(response => {
                 if (response.status === 'success') {
                     return response; // Return full response, not just response.data
+                } else {
+                    throw new Error(response.message);
+                }
+            }));
+    }
+
+    getClubs(): Observable<any[]> {
+        return this.http.get<any>(GLOBAL.sitio ? GLOBAL.sitio + '/api/index.php?service=panel&action=list_clubes' : 'http://localhost/api/index.php?service=panel&action=list_clubes')
+            .pipe(map(response => {
+                if (response.status === 'success') {
+                    return response.data;
                 } else {
                     throw new Error(response.message);
                 }

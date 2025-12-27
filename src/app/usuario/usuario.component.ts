@@ -14,6 +14,7 @@ export class UsuarioComponent implements OnInit {
   public showModal = false;
   public isEdit = false;
   public loading = false;
+  public clubs: any[] = []; // Store clubs list
 
   // Form model
   public userForm: BackendUser = {
@@ -48,6 +49,18 @@ export class UsuarioComponent implements OnInit {
     }
 
     this.loadUsers();
+    this.loadClubs();
+  }
+
+  loadClubs() {
+    this.backend.getClubs().subscribe({
+      next: (data) => {
+        this.clubs = data;
+      },
+      error: (err) => {
+        console.error('Error loading clubs', err);
+      }
+    });
   }
 
   loadUsers() {
@@ -128,5 +141,20 @@ export class UsuarioComponent implements OnInit {
         }
       });
     }
+  }
+  getRoleName(groupId: number): string {
+    switch (Number(groupId)) {
+      case 1: return 'Admin';
+      case 2: return 'Administrativo';
+      case 3: return 'Deportivo';
+      case 4: return 'Club';
+      default: return 'Desconocido';
+    }
+  }
+
+  getClubName(clubId: string | number): string {
+    if (!clubId) return '-';
+    const club = this.clubs.find(c => c.idclub == clubId);
+    return club ? club.nombre : '-';
   }
 }

@@ -1,12 +1,22 @@
 <div class="camera-container">
   
+  <!-- Background Video -->
+  <video #backgroundVideo autoplay muted loop playsinline class="background-video" [muted]="true">
+    <source src="./assets/video/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
   <!-- Upload Success / Share Screen -->
   <!-- Upload Success / Share Screen -->
   <div *ngIf="uploadSuccess" class="share-screen">
       
-      <!-- Ephemeral Success Message -->
-      <div *ngIf="showSuccessMessage" class="alert alert-success success-toast">
-        <i class="fa fa-check-circle"></i> Imagen subida con éxito!
+      <!-- Modern Success Message -->
+      <div *ngIf="showSuccessMessage" class="success-card">
+        <div class="success-icon">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h3 class="success-title">¡Foto subida!</h3>
+        <p class="success-subtitle">Tu selfie se compartió con éxito</p>
       </div>
       
       <div class="image-overlay-container mb-4">
@@ -19,8 +29,8 @@
                   <button class="btn btn-facebook btn-circle mx-2" (click)="shareFacebook()">
                     <i class="fa fa-facebook"></i>
                   </button>
-                  <button class="btn btn-instagram btn-circle mx-2" (click)="shareGeneric()">
-                     <i class="fa fa-share-alt"></i>
+                  <button class="btn btn-instagram btn-circle mx-2" (click)="shareInstagram()">
+                     <i class="fa fa-instagram"></i>
                   </button>
                   <button class="btn btn-download btn-circle mx-2" (click)="downloadImage()">
                      <i class="fa fa-download"></i>
@@ -48,18 +58,20 @@
     <p class="screen-subtitle">Toma una selfie y compártela con la comunidad</p>
     
     <button class="btn btn-camera btn-lg btn-block" (click)="startCamera()">
-      <i class="fa fa-camera mr-2"></i> Abrir Cámara
+      <i class="fa fa-camera mr-2"></i> Sacar selfie
     </button>
     
+    <!-- Temporarily hidden file upload option -->
+    <!--
     <div class="divider">
         <span>o</span>
     </div>
 
-    <!-- File Upload Fallback -->
     <label class="btn btn-upload btn-lg btn-block">
         <i class="fa fa-image mr-2"></i> Seleccionar Foto
         <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
     </label>
+    -->
   </div>
 
   <!-- Camera Preview -->
@@ -79,7 +91,7 @@
         <i class="fa fa-refresh mr-1"></i> Repetir
       </button>
       <button class="btn btn-camera flex-fill ml-2" (click)="uploadPhoto()" [disabled]="isUploading">
-        <span *ngIf="!isUploading"><i class="fa fa-cloud-upload mr-1"></i> Subir</span>
+        <span *ngIf="!isUploading"><i class="fa fa-heart mr-1 heart-icon"></i> Me gustó!</span>
         <span *ngIf="isUploading"><i class="fa fa-spinner fa-spin"></i> Subiendo...</span>
       </button>
     </div>

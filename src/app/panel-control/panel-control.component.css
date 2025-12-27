@@ -1,0 +1,57 @@
+.panel-layout {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    min-height: 100vh;
+}
+
+.top-bar {
+    height: 40px;
+    font-size: 0.9rem;
+}
+
+.main-nav {
+    background-color: #fff !important;
+    padding: 0 10px;
+}
+
+.main-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.main-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.main-nav .nav-item.active .nav-link {
+    background-color: #007bff;
+    color: white !important;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Custom Dropdown to look like the image */
+.dropdown-menu {
+    margin-top: 0;
+    border-radius: 0 0 4px 4px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #343a40;
+    /* Darker dropdown */
+}
+
+.dropdown-item {
+    color: #ccc;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background-color: #495057;
+    color: #fff;
+}
+
+.user-info {
+    font-size: 0.85rem;
+}

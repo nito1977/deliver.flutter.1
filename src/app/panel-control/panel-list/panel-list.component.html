@@ -1,0 +1,183 @@
+<div class="card shadow border-0">
+  <div class="card-header bg-white border-0 pt-3 pb-3">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <!-- Title & Total -->
+          <div class="d-flex align-items-baseline mr-3 mb-2 mb-lg-0">
+              <span class="text-primary h4 font-weight-bold mb-0 text-capitalize mr-2">{{ type }}</span>
+              <span class="badge badge-pill badge-light border text-muted" style="font-size: 0.9rem;">{{ items.length }}</span>
+          </div>
+          
+          <!-- Middle: Search & Filter -->
+          <div class="d-flex flex-grow-1 align-items-center mr-3 mb-2 mb-lg-0" style="max-width: 500px;">
+               <div class="input-group input-group-sm mr-2 shadow-sm">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text bg-light border-right-0">
+                          <i class="fa fa-search text-muted"></i>
+                      </span>
+                  </div>
+                   <input type="text" class="form-control border-left-0 pl-1" placeholder="Buscar..." [(ngModel)]="searchText" (ngModelChange)="filterData()">
+              </div>
+              <input type="text" class="form-control form-control-sm mr-2 shadow-sm" placeholder="Año" style="width: 70px;" [(ngModel)]="filterParams.anio">
+              <button class="btn btn-primary btn-sm shadow-sm" (click)="applyFilters()">Ir</button>
+          </div>
+
+          <!-- Right: Actions -->
+          <div class="d-flex flex-wrap">
+                <button class="btn btn-dark btn-sm mr-1 mb-1"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1 active">Habilitados</button>
+                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1">Bajas</button>
+                <button class="btn btn-outline-secondary btn-sm mr-1 mb-1">Todos</button>
+                <button class="btn btn-outline-secondary btn-sm mb-1"><i class="fa fa-file-text-o"></i></button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Active Filters Bar -->
+  <div class="filter-bar" *ngIf="hasActiveFilters">
+      <div class="d-flex align-items-center flex-wrap">
+          <span class="small font-weight-bold text-muted mr-3"><i class="fa fa-filter mr-1"></i> Filtros activos:</span>
+          <div class="d-flex flex-wrap align-items-center">
+              <div class="filter-chip mr-2 mb-1" *ngFor="let key of getActiveFilterKeys()">
+                  <span class="mr-2">{{ getFilterLabel(key) }}</span>
+                  <i class="fa fa-times cursor-pointer" (click)="removeFilter(key)" title="Eliminar filtro"></i>
+              </div>
+              <button class="btn btn-sm btn-outline-danger border-0 mb-1 ml-lg-2" (click)="clearAllFilters()" style="font-size: 0.8rem;">
+                  <i class="fa fa-trash-o mr-1"></i> Limpiar todo
+              </button>
+          </div>
+      </div>
+  </div>
+
+  <div class="card-body p-0 loading-container">
+      <!-- Loading Overlay -->
+      <div class="loading-overlay" *ngIf="loading">
+          <div class="spinner-wrapper">
+              <div class="spinner-border text-primary" role="status"></div>
+              <span class="text-uppercase small">Cargando datos...</span>
+          </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0" style="font-size: 0.9rem;">
+              <thead class="bg-light text-dark">
+                  <tr>
+                      <th class="border-top-0 border-bottom-0 pointerable" *ngIf="type === 'jugadores' || type === 'habilitados'" (click)="sortData('idnumerocarnet')">
+                          # <i class="fa" [class.fa-sort]="sortColumn!=='idnumerocarnet'" [class.fa-sort-asc]="sortColumn==='idnumerocarnet' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='idnumerocarnet' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 pointerable" *ngIf="type === 'jugadores' || type === 'habilitados'" (click)="sortData('Documento')">
+                          DNI <i class="fa" [class.fa-sort]="sortColumn!=='Documento'" [class.fa-sort-asc]="sortColumn==='Documento' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Documento' && sortDirection==='desc'"></i>
+                      </th>
+                      <!-- Hidden on mobile -->
+                      <th class="border-top-0 border-bottom-0 d-none d-md-table-cell pointerable" *ngIf="type === 'jugadores' || type === 'habilitados'" (click)="sortData('licencia')">
+                          Lic. <i class="fa" [class.fa-sort]="sortColumn!=='licencia'" [class.fa-sort-asc]="sortColumn==='licencia' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='licencia' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 pointerable" (click)="sortData('Apellido')">
+                          Jugador <i class="fa" [class.fa-sort]="sortColumn!=='Apellido'" [class.fa-sort-asc]="sortColumn==='Apellido' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Apellido' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 d-none d-lg-table-cell pointerable" (click)="sortData('Fecnac')">
+                          F. Nac <i class="fa" [class.fa-sort]="sortColumn!=='Fecnac'" [class.fa-sort-asc]="sortColumn==='Fecnac' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Fecnac' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 d-none d-md-table-cell pointerable" (click)="sortData('clasificado')">
+                          Clasif <i class="fa" [class.fa-sort]="sortColumn!=='clasificado'" [class.fa-sort-asc]="sortColumn==='clasificado' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='clasificado' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 pointerable" (click)="sortData('club')">
+                          Club <i class="fa" [class.fa-sort]="sortColumn!=='club'" [class.fa-sort-asc]="sortColumn==='club' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='club' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 d-none d-lg-table-cell pointerable" (click)="sortData('Sexo')">
+                          Sexo <i class="fa" [class.fa-sort]="sortColumn!=='Sexo'" [class.fa-sort-asc]="sortColumn==='Sexo' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Sexo' && sortDirection==='desc'"></i>
+                      </th>
+                      <!-- Phone hidden on tablets and below -->
+                      <th class="border-top-0 border-bottom-0 d-none d-xl-table-cell pointerable" (click)="sortData('Telefono')">
+                          Teléfono <i class="fa" [class.fa-sort]="sortColumn!=='Telefono'" [class.fa-sort-asc]="sortColumn==='Telefono' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Telefono' && sortDirection==='desc'"></i>
+                      </th> 
+                      <th class="border-top-0 border-bottom-0 d-none d-xl-table-cell pointerable" (click)="sortData('Marca')">
+                          Marca <i class="fa" [class.fa-sort]="sortColumn!=='Marca'" [class.fa-sort-asc]="sortColumn==='Marca' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Marca' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 d-none d-xl-table-cell pointerable" (click)="sortData('Disciplina')">
+                          Disc. <i class="fa" [class.fa-sort]="sortColumn!=='Disciplina'" [class.fa-sort-asc]="sortColumn==='Disciplina' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Disciplina' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 d-none d-lg-table-cell pointerable" (click)="sortData('Actividad')">
+                          Act. <i class="fa" [class.fa-sort]="sortColumn!=='Actividad'" [class.fa-sort-asc]="sortColumn==='Actividad' && sortDirection==='asc'" [class.fa-sort-desc]="sortColumn==='Actividad' && sortDirection==='desc'"></i>
+                      </th>
+                      <th class="border-top-0 border-bottom-0 text-right">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                      <!-- Column 0: idnumerocarnet -->
+                      <td class="text-muted small" *ngIf="type === 'jugadores' || type === 'habilitados'">
+                          {{ item.idnumerocarnet }}
+                      </td>
+                      <!-- Column 1: DNI -->
+                      <td *ngIf="type === 'jugadores' || type === 'habilitados'" class="font-weight-bold">
+                          {{ item.Documento || item.idnumerocarnet }}
+                      </td>
+                       <!-- Column 2: Lic (Hidden on mobile) -->
+                      <td *ngIf="type === 'jugadores' || type === 'habilitados'" class="d-none d-md-table-cell text-muted">
+                           {{ item.licencia || '-' }}
+                      </td>
+                      
+                      <!-- Column 3: Jugador -->
+                      <td class="font-weight-bold text-uppercase text-primary">
+                          {{ item.Apellido || item.apellido }}, {{ item.Nombre || item.nombre }}
+                      </td>
+                      <td class="d-none d-lg-table-cell">{{ (item.Fecnac || item.f_nac) | date:'MM/dd/yyyy' }}</td>
+                      <td class="d-none d-md-table-cell"><span class="badge badge-light text-dark border" style="font-size: 0.85em;">{{ item.clasificado || item.clasif }}</span></td>
+                      <td><span class="small font-weight-bold">{{ item.club }}</span></td> 
+                      <td class="d-none d-lg-table-cell">{{ item.Sexo || item.sexo }}</td>
+                      <td class="d-none d-xl-table-cell small text-muted">{{ item.Telefono || item.telefono }}</td>
+                      <td class="d-none d-xl-table-cell">{{ item.Marca || item.marca }}</td>
+                      <td class="d-none d-xl-table-cell">{{ item.Disciplina || item.disc }}</td>
+                      <td class="d-none d-lg-table-cell">{{ item.Actividad || item.act }}</td>
+                      
+                      <td class="text-right">
+                          <!-- Admin Buttons -->
+                          <ng-container *ngIf="currentUser?.group_id == 1">
+                            <button class="btn btn-outline-info btn-sm mr-1" title="Pase"><i class="fa fa-exchange"></i></button>
+                            <button class="btn btn-outline-primary btn-sm mr-1" title="Editar"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-outline-secondary btn-sm mr-1" title="Marcar"><i class="fa fa-tag"></i></button>
+                            <button class="btn btn-outline-danger btn-sm" title="Baja"><i class="fa fa-trash"></i></button>
+                          </ng-container>
+
+                          <!-- Club Buttons -->
+                          <ng-container *ngIf="currentUser?.group_id == 4">
+                            <button class="btn btn-outline-success btn-sm mr-1" title="Alta" (click)="onToggleMark(item, true)"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-outline-danger btn-sm" title="Baja" (click)="onToggleMark(item, false)"><i class="fa fa-minus"></i></button>
+                          </ng-container>
+
+                          <!-- Fallback for other roles (Optional, showing default or nothing) -->
+                          <ng-container *ngIf="currentUser?.group_id != 1 && currentUser?.group_id != 4">
+                             <span class="text-muted small">Sin acciones</span>
+                          </ng-container>
+                      </td>
+                  </tr>
+
+                  <!-- Empty States -->
+                  <tr *ngIf="items.length === 0 && !loading">
+                      <td colspan="100%" class="text-center p-5 text-muted">
+                          <i class="fa fa-search fa-3x mb-3 text-light-gray"></i>
+                          <p class="mb-0">No se encontraron resultados.</p>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+  <div class="card-footer bg-white border-0 py-3">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+          <div class="text-muted small mb-3 mb-md-0">
+              Mostrando {{items.length}} registros
+          </div>
+          <nav>
+              <pagination-controls (pageChange)="p = $event" 
+                  previousLabel="Anterior" 
+                  nextLabel="Siguiente"
+                  class="my-pagination">
+              </pagination-controls>
+          </nav>
+      </div>
+  </div>
+
+</div>

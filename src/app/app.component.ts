@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators'; import { AutoLogoutService } from './services/autoLogout/auto-logout.service';
 
 
 @Component({
@@ -15,13 +15,21 @@ export class AppComponent implements OnInit {
   colorFondo = 'bg-white';
   colorBarra = 'colorBarra';
   colorLetraBarra = 'colorLetraBarra';
-  constructor(private router: Router, private route: ActivatedRoute) {
+  showNavbar = true;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private autoLogout: AutoLogoutService // Initialize listeners and interval
+  ) {
 
   }
   ngOnInit() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    ).subscribe((event: NavigationEnd) => { // Type cast event
+      // Check if current route is panel
+      this.showNavbar = !event.urlAfterRedirects.includes('/panel');
+
       const fragment = this.route.snapshot.fragment;
       if (fragment) {
         const element = document.getElementById(fragment);

@@ -44,7 +44,12 @@ export class LoginComponent implements OnInit {
         // Backward Compatibility: Set legacy global user ID
         this.http.setearNombreUsuario(userData.username);
 
-        this._router.navigate(['/usuarios']);
+        // Check role for redirection
+        if (userData.group_id == 4) {
+          this._router.navigate(['/panel/jugadores/habilitados']);
+        } else {
+          this._router.navigate(['/panel']);
+        }
       },
       error: (error) => {
         this.bloquear = false;

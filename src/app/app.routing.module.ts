@@ -30,6 +30,8 @@ import { AmsbannersComponent } from './amsbanners/amsbanners.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ClubComponent } from './club/club.component';
 import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
+import { PanelControlComponent } from './panel-control/panel-control.component';
+import { PanelListComponent } from './panel-control/panel-list/panel-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: PaginaComponent },
@@ -56,12 +58,27 @@ const appRoutes: Routes = [
   { path: 'boletines/', component: BoletinComponent },
   { path: 'boletines/:idAnio/:idBoletin/:idMes', component: BoletinComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'usuarios', component: UsuarioComponent },
+
   { path: 'cuotas', component: CuotasformComponent },
   { path: 'descargas', component: DescargasComponent },
   { path: 'descargas/:lnk', component: DescargasComponent },
   { path: 'fiestafsp', component: CameraCaptureComponent },
-  { path: '**', component: PaginaComponent }
+
+  // Panel Control Routes
+  {
+    path: 'panel',
+    component: PanelControlComponent,
+    canActivate: [CanActivateViaAuthGuard],
+    children: [
+      { path: '', redirectTo: 'jugadores/habilitados', pathMatch: 'full' },
+      { path: 'usuarios', component: UsuarioComponent },
+      { path: 'jugadores', redirectTo: 'jugadores/habilitados', pathMatch: 'full' },
+      { path: ':type', component: PanelListComponent },
+      { path: ':type/:subtype', component: PanelListComponent } // Allow specific subtypes if needed
+    ]
+  },
+
+  { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 @NgModule({

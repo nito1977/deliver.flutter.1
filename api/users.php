@@ -8,7 +8,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 try {
     switch ($action) {
         case 'list':
-            $stmt = $pdo->prepare("SELECT u.id, u.username, u.email, u.first_name, u.last_name, u.active, g.group_id 
+            $stmt = $pdo->prepare("SELECT u.id, u.username, u.email, u.first_name, u.last_name, u.active, u.company, g.group_id 
                                    FROM users u 
                                    LEFT JOIN users_groups g ON u.id = g.user_id 
                                    GROUP BY u.id");
@@ -26,8 +26,8 @@ try {
 
             if ($id) {
                 // UPDATE
-                $sql = "UPDATE users SET username=?, email=?, first_name=?, last_name=?, active=? WHERE id=?";
-                $params = [$username, $email, $data['first_name'] ?? '', $data['last_name'] ?? '', $data['active'] ?? 1, $id];
+                $sql = "UPDATE users SET username=?, email=?, first_name=?, last_name=?, active=?, company=? WHERE id=?";
+                $params = [$username, $email, $data['first_name'] ?? '', $data['last_name'] ?? '', $data['active'] ?? 1, $data['company'] ?? '', $id];
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute($params);
 
@@ -46,9 +46,9 @@ try {
             } else {
                 // CREATE
                 $hashed = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users (username, password, email, first_name, last_name, active, ip_address, created_on) VALUES (?, ?, ?, ?, ?, 1, '127.0.0.1', ?)";
+                $sql = "INSERT INTO users (username, password, email, first_name, last_name, active, ip_address, created_on, company) VALUES (?, ?, ?, ?, ?, 1, '127.0.0.1', ?, ?)";
                 $stmt = $pdo->prepare($sql);
-                $stmt->execute([$username, $hashed, $email, $data['first_name'] ?? '', $data['last_name'] ?? '', time()]);
+                $stmt->execute([$username, $hashed, $email, $data['first_name'] ?? '', $data['last_name'] ?? '', time(), $data['company'] ?? '']);
                 $newId = $pdo->lastInsertId();
 
                 $pdo->prepare("INSERT INTO users_groups (user_id, group_id) VALUES (?, ?)")->execute([$newId, $groupId]);

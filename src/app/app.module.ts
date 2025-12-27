@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app.routing.module';
 
@@ -60,6 +61,8 @@ import { ClubComponent } from './club/club.component';
 import { InstagramCarouselComponent } from './instagram-carousel/instagram-carousel.component';
 import { AmsgaleriaComponent } from './amsgaleria/amsgaleria.component';
 import { CameraCaptureComponent } from './componentes/camera-capture/camera-capture.component';
+import { PanelControlComponent } from './panel-control/panel-control.component';
+import { PanelListComponent } from './panel-control/panel-list/panel-list.component';
 
 @NgModule({
   declarations: [
@@ -84,14 +87,17 @@ import { CameraCaptureComponent } from './componentes/camera-capture/camera-capt
     ClubComponent,
     InstagramCarouselComponent,
     AmsgaleriaComponent,
-    CameraCaptureComponent
-
+    AmsgaleriaComponent,
+    CameraCaptureComponent,
+    PanelControlComponent,
+    PanelListComponent
   ],
   imports: [
     BrowserModule, FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   exports: [HttpClientModule],
   providers: [ServicioService, UserService, PushService, CanActivateViaAuthGuard, FileuploadService],

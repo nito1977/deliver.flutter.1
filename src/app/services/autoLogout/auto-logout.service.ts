@@ -1,8 +1,9 @@
-
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BackendService } from '../backend.service';
+
 const MINUTES_UNITL_AUTO_LOGOUT = 30; // in mins
-const CHECK_INTERVAL = 300000; // 300000 controla cada 5 minutos  // 15000 (15 segundos); // in ms
+const CHECK_INTERVAL = 60000; // Check every 1 minute
 const STORE_KEY = 'lastAction';
 
 @Injectable({
@@ -17,11 +18,13 @@ export class AutoLogoutService {
     localStorage.setItem(STORE_KEY, lastAction.toString());
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: BackendService) {
     this.check();
     this.initListener();
     this.initInterval();
-    localStorage.setItem(STORE_KEY, Date.now().toString());
+    if (!this.getLastAction()) {
+      this.setLastAction(Date.now());
+    }
   }
 
   initListener() {
@@ -45,13 +48,21 @@ export class AutoLogoutService {
 
   check() {
     const now = Date.now();
-    const timeleft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
+    const lastAction = this.getLastAction();
+
+    // If no user is logged in, no need to check or auto-logout
+    if (!localStorage.getItem('currentUser')) {
+      return;
+    }
+
+    const timeleft = lastAction + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
     const diff = timeleft - now;
     const isTimeout = diff < 0;
 
     if (isTimeout) {
-      localStorage.clear();
-      this.router.navigate(['./login']);
+      console.log('Session timed out. Logging out...');
+      this.authService.logout();
+      this.router.navigate(['/login']);
     }
   }
 }

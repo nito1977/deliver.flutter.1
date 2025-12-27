@@ -16,7 +16,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "node deploy.js"
+    "deploy": "node deploy.js",
+    "deploy:backend": "node deploy.js --backend"
   },
   "author": "aromero",
   "private": true,

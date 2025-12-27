@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { GLOBAL } from '../../services/global';
 
@@ -7,9 +7,10 @@ import { GLOBAL } from '../../services/global';
     templateUrl: './camera-capture.component.html',
     styleUrls: ['./camera-capture.component.css']
 })
-export class CameraCaptureComponent implements OnDestroy {
+export class CameraCaptureComponent implements OnDestroy, AfterViewInit {
     @ViewChild('videoElement') videoElement: ElementRef<HTMLVideoElement>;
     @ViewChild('canvasElement') canvasElement: ElementRef<HTMLCanvasElement>;
+    @ViewChild('backgroundVideo') backgroundVideo: ElementRef<HTMLVideoElement>;
 
     stream: MediaStream | null = null;
     isCameraActive = false;
@@ -22,6 +23,17 @@ export class CameraCaptureComponent implements OnDestroy {
     errorMessage = '';
 
     constructor(private backendService: BackendService) { }
+
+    ngAfterViewInit() {
+        // Ensure background video plays
+        if (this.backgroundVideo && this.backgroundVideo.nativeElement) {
+            const video = this.backgroundVideo.nativeElement;
+            video.muted = true;
+            video.play().catch(error => {
+                console.log('Background video autoplay prevented:', error);
+            });
+        }
+    }
 
     ngOnDestroy() {
         this.stopCamera();
@@ -59,11 +71,18 @@ export class CameraCaptureComponent implements OnDestroy {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
 
-        // Draw status
+        // Get canvas context
         const context = canvas.getContext('2d');
-        // Mirror the image for selfie feel if using front camera, but usually video element is mirrored via CSS.
-        // For simplicity, let's just draw it.
+
+        // Flip the image horizontally to correct the mirror effect from selfie camera
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+
+        // Draw the video frame
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Reset transformations for future use
+        context.setTransform(1, 0, 0, 1, 0, 0);
 
         // Convert to data URL for preview
         this.capturedImage = canvas.toDataURL('image/jpeg');
@@ -138,24 +157,26 @@ export class CameraCaptureComponent implements OnDestroy {
         return baseUrl + this.uploadedImageUrl;
     }
 
-    async shareGeneric() {
+    async shareInstagram() {
         if (!this.uploadedImageUrl) {
             alert('Debes subir la imagen primero antes de compartir.');
             return;
         }
 
+        const fullUrl = this.getFullImageUrl();
+        const shareText = 'Fiesta F.S.P 2025!! 🎉\n#fiestafsp2025 #FederacionSanjuaninaDePatín @federacionpatin';
+
+        // Try to use Web Share API (works on mobile)
         if ((navigator as any).share) {
             try {
-                const fullUrl = this.getFullImageUrl();
-
                 // Fetch the image to share as a file
                 const response = await fetch(fullUrl);
                 const blob = await response.blob();
-                const file = new File([blob], 'foto-fsp-2025.jpg', { type: 'image/jpeg' });
+                const file = new File([blob], 'fiesta-fsp-2025.jpg', { type: 'image/jpeg' });
 
                 const shareData = {
                     title: 'Fiesta F.S.P 2025!!',
-                    text: 'Federación Sanjuanina de Patín @federacionpatin',
+                    text: shareText,
                     files: [file]
                 };
 
@@ -163,10 +184,10 @@ export class CameraCaptureComponent implements OnDestroy {
                 if ((navigator as any).canShare && (navigator as any).canShare(shareData)) {
                     await (navigator as any).share(shareData);
                 } else {
-                    // Fallback: try sharing just the URL
+                    // Fallback: share just text and let user choose Instagram
                     await (navigator as any).share({
                         title: 'Fiesta F.S.P 2025!!',
-                        text: 'Federación Sanjuanina de Patín @federacionpatin',
+                        text: shareText,
                         url: fullUrl
                     });
                 }
@@ -174,14 +195,23 @@ export class CameraCaptureComponent implements OnDestroy {
                 console.error('Error sharing:', error);
                 // If user cancelled, don't show alert
                 if (error.name !== 'AbortError') {
-                    if (confirm('No se pudo compartir. ¿Deseas descargar la imagen?')) {
+                    if (confirm('No se pudo compartir directamente. ¿Deseas descargar la imagen para compartirla manualmente en Instagram Stories?')) {
                         this.downloadImage();
+                        // Show instructions
+                        setTimeout(() => {
+                            alert('💡 Para compartir en Instagram Stories:\n\n1. Abre Instagram\n2. Toca tu foto de perfil para crear una historia\n3. Selecciona la imagen descargada\n4. Agrega el texto: #fiestafsp2025 @federacionpatin\n5. ¡Comparte!');
+                        }, 500);
                     }
                 }
             }
         } else {
-            // Browser doesn't support sharing, download directly
-            this.downloadImage();
+            // Desktop or browser without share support
+            if (confirm('Para compartir en Instagram Stories, descarga la imagen y súbela manualmente.\n\n¿Descargar ahora?')) {
+                this.downloadImage();
+                setTimeout(() => {
+                    alert('💡 Para compartir en Instagram Stories:\n\n1. Abre Instagram en tu móvil\n2. Toca tu foto de perfil para crear una historia\n3. Selecciona la imagen descargada\n4. Agrega el texto: #fiestafsp2025 @federacionpatin\n5. ¡Comparte!');
+                }, 500);
+            }
         }
     }
 
